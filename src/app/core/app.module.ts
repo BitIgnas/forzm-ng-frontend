@@ -1,4 +1,3 @@
-import { LoginFormComponent } from './../components/auth/login/login-form/login-form.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,14 +15,16 @@ import { NgFileValidatorLibModule } from 'angular-file-validator';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { RegisterConfirmationComponent } from '../components/auth/register/register-confirmation/register-confirmation.component';
 import { RegisterProfileComponent } from '../components/auth/register/register-profile/register-profile.component';
+import { LoginFormComponent } from '../components/auth/login/login-form/login-form.component';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    LoginFormComponent,
     RegisterComponent,
+    LoginFormComponent,
     RegisterProfileComponent,
     DndDirective,
     ProgressComponent,
@@ -34,7 +35,8 @@ import { RegisterProfileComponent } from '../components/auth/register/register-p
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
+    NgxWebstorageModule.forRoot()
   ],
   providers: [RegisterGuard],
   bootstrap: [AppComponent]

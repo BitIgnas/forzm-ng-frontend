@@ -1,4 +1,7 @@
-import { FormGroup } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { LoginPayload } from './../../../../core/models/login-payload';
+import { AuthService } from 'src/app/services/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,15 +11,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
+  loginPayload: LoginPayload;
+  apiErrorMessage: string;
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
 
+    this.loginPayload = {
+      username: '',
+      password: ''
+    }
+  }
+
+  checkIfErrorExist(isPresent: boolean) {
+    if(isPresent) {
+      return false;
+    }
   }
 
   onSubmit() {
-    
+    this.loginPayload.username = this.loginForm.controls['username'].value;
+    this.loginPayload.password = this.loginForm.controls['password'].value;
+
+    this.authService.login(this.loginPayload).subscribe(
+      response => {
+        console.log(response)
+      },(error: HttpErrorResponse) => {
+        if(error.status == 403) {
+          this.apiErrorMessage = 'Username or password is incorrect'
+        }
+      })
+      
   }
 
 }

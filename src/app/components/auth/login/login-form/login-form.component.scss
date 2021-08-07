@@ -1,17 +1,13 @@
-.login-background {
-    background-image: url("../../../../../assets/img/login-img.png");
-    background-size: cover;
-    height: 839px;
-}
-
 
 .login-form {
     background-color: #322B4E;
+    height: 839px;
 }
 
 .login-body {
-    width: 611px;
-    height: 750px;
+    margin-top: 5rem;
+    width: 490px;
+    height: 500px;
     background: #061022;
     border-radius: 65px;    
     position: relative;
@@ -31,9 +27,9 @@
     background-color: #15172b;
     border-radius: 65px;
     box-sizing: border-box;
-    height: 750px;
+    height: 600px;
     padding: 20px;
-    width: 611px;
+    width: 530px;
   }
   
   .title {
@@ -114,6 +110,7 @@
     transition: transform 200ms, color 200ms;
     top: 20px;
     padding: 0 7rem;
+    
   }
   
   .input:focus ~ .placeholder,
@@ -141,10 +138,9 @@
     cursor: pointer;
     height: 50px;
     margin-top: 38px;
-    // outline: 0;
     text-align: center;
     width: 100%;
-    width: 20rem;
+    width: 14.5rem;
     margin-left: 8rem;
     font-family: "Teko", sans-serif;
     font-size: 36px;
@@ -186,9 +182,17 @@
   .invalid-feedback {
     font-family: "Teko", sans-serif;
     color: #DD5347;
-    font-size: 20px;
+    font-size: 18px;
     padding-left: 9rem;
     position: absolute;
     z-index:1
   }
   
+  .api-error {
+    font-family: "Teko", sans-serif;
+    color: #DD5347;
+    font-size: 18px;
+    padding-left: 9rem;
+    position: absolute;
+    margin-top: 18px;
+  }

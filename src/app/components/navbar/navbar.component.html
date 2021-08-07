@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xxl navbar-light navbar-background">
-    <a class="navbar-brand ps-4" [routerLink]="'/home'"><img src="../assets/img/brand-logo.png"></a>
+    <a class="navbar-brand ps-4" routerLink="/home"><img src="../assets/img/brand-logo.png"></a>
     <button class="navbar-toggler me-3" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,19 +7,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav navbar-center pt-5 p-sm-0">
             <li class="nav-item pt-4 ps-4">
-                <a class="nav-link" [routerLink]="'/home'">Home</a>
+                <a class="nav-link" routerLink="/home">Home</a>
             </li>
             <li class="nav-item pt-xl-4 ps-5 ">
-                <a class="nav-link" href="#">Forums</a>
+                <a class="nav-link" routerLink="/home">Forums</a>
             </li>
             <li class="nav-item pt-xl-4 ps-5 ">
-                <a class="nav-link" href="#">Search</a>
+                <a class="nav-link" routerLink="/home">Search</a>
             </li>
             <li class="nav-item pt-xl-4 ps-5 ">
-                <a class="nav-link" [routerLink]="'/register'">Join Now</a>
+                <a class="nav-link" routerLink="/register">Join Now</a>
             </li>
             <li class="nav-item pt-xl-4 ps-5 ">
-
+                <a class="nav-link" routerLink="/login">Login</a>
             </li>
         </ul>
     </div>
