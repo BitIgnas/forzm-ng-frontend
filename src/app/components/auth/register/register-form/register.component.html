@@ -1,0 +1,101 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5 hidden-xs d-none d-md-block login-background"></div>
+            <div class="col-md-7 login-form mx-auto pt-5 d-flex justify-content-center">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="login-body">
+                        <div class="form pt-5">
+                            <div class="title">Welcome</div>
+                            <div class="subtitle">Let's create your account!</div>
+                            <div class="input-container ic1">
+                                <input formControlName="username" id="firstname" class="input" type="text"
+                                    placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="firstname" class="placeholder">Username</label>
+                            </div>
+                            <div class="col-md-12 invalid-feedback d-flex justify-content-start" *ngIf="registerForm.controls['username'].errors?.required && (registerForm.controls['username'].dirty ||
+                                registerForm.controls['username'].touched)">
+                                <span>Username is required</span>
+                            </div>
+                            <div class="col-md-12 invalid-feedback d-flex justify-content-start" *ngIf="registerForm.controls['username'].errors?.minlength && (registerForm.controls['username'].dirty ||
+                                registerForm.controls['username'].touched)">
+                                <span>Username is too short</span>
+                            </div>
+                            <div class="col-md-12 invalid-feedback d-flex justify-content-start" *ngIf="registerForm.controls['username'].errors?.maxlength && (registerForm.controls['username'].dirty ||
+                                registerForm.controls['username'].touched)">
+                                <span>Username is too long</span>
+                            </div>
+                            <div class="input-container ic2">
+                                <input formControlName="email" id="lastname" class="input" type="text"
+                                    placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="lastname" class="placeholder">Email</label>
+                            </div>
+                            <div class="col-md-12  invalid-feedback d-flex justify-content-start" *ngIf="registerForm.controls['email'].errors?.email && (registerForm.controls['email'].dirty ||
+                                registerForm.controls['email'].touched)">
+                                <span>Invalid email</span>
+                            </div>
+                            <div class="col-md-12  invalid-feedback d-flex justify-content-start" *ngIf="registerForm.controls['email'].errors?.required && (registerForm.controls['email'].dirty ||
+                                registerForm.controls['email'].touched)">
+                                <span>Email is required</span>
+                            </div>
+                            <div class="input-container ic2">
+                                <input formControlName="password" id="lastname" class="input" type="password"
+                                    placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="lastname" class="placeholder">Password</label>
+                            </div>
+                            <div class="col-md-12  invalid-feedback d-flex justify-content-start" *ngIf="registerForm.controls['password'].errors?.required && (registerForm.controls['password'].dirty ||
+                                registerForm.controls['password'].touched)">
+                                <span>Password is required</span>
+                            </div>
+                            <div class="col-md-12 invalid-feedback d-flex justify-content-start" *ngIf="registerForm.controls['password'].errors?.maxlength && (registerForm.controls['password'].dirty ||
+                                registerForm.controls['password'].touched)">
+                                <span>Password is too long</span>
+                            </div>
+                            <div class="col-md-12 invalid-feedback d-flex justify-content-start" *ngIf="registerForm.controls['password'].errors?.minlength && (registerForm.controls['password'].dirty ||
+                                registerForm.controls['password'].touched)">
+                                <span>Password is too short</span>
+                            </div>
+                            <div class="input-container ic2">
+                                <input formControlName="confirm_password" id="email" class="input" type="password"
+                                    placeholder=" " />
+                                <div class="cut cut-short"></div>
+                                <label for="email" class="placeholder">Confirm password</label>
+                            </div>
+                            <div class="col-md-12 d-flex justify-content-start invalid-feedback" *ngIf="registerForm.hasError('notSame') && (registerForm.controls['confirm_password'].dirty ||
+                                registerForm.controls['confirm_password'].touched)">
+                                <span>Passwords do not match</span>
+                            </div>
+                            <div class="col-md-12 d-flex justify-content-cente">
+                                <span class="invalid-feedback"> {{ apiErrorMsg }}</span>
+                            </div>
+
+                            <button type="text" class="submit" [disabled]="registerForm.invalid">submit</button>
+                            <div class="row">
+                                <div class="col-md-12 d-flex justify-content-center pt-4">
+                                    <a href="#"><img src="../../../../assets/img/company-icons/Google - Original.png"
+                                            class="p-2"></a>
+                                    <a href="#"><img src="../../../../assets/img/company-icons/Facebook - Original.png"
+                                            class="p-2"></a>
+                                    <a href="#"><img src="../../../../assets/img/company-icons/Reddit - Original.png"
+                                            class="p-2"></a>
+                                    <a href="#"><img src="../../../../assets/img/company-icons/Discord - Original.png"
+                                            class="p-2"></a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-center ps-5">
+                                        <span class="policy">By this you are agreing to user <a href="#"><span
+                                                    class="policy-heading">policy</span></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

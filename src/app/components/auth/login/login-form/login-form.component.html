@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5 hidden-xs d-none d-md-block login-background"></div>
+            <div class="col-md-7 login-form mx-auto pt-5 d-flex justify-content-center">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="login-body">
+                        <div class="form pt-5">
+                            <div class="title">Welcome</div>
+                            <div class="subtitle">Let's create your account!</div>
+                            <div class="input-container ic1">
+                                <input formControlName="username" id="firstname" class="input" type="text"
+                                    placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="firstname" class="placeholder">Username</label>
+                            </div>
+                            <div class="col-md-12 invalid-feedback d-flex justify-content-start" *ngIf="loginForm.controls['username'].errors?.required && (loginForm.controls['username'].dirty ||
+                            loginForm.controls['username'].touched)">
+                                <span>Username is required</span>
+                            </div>
+
+                            <div class="input-container ic2">
+                                <input formControlName="password" id="lastname" class="input" type="password"
+                                    placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="lastname" class="placeholder">Password</label>
+                            </div>
+                            <div class="col-md-12  invalid-feedback d-flex justify-content-start" *ngIf="loginForm.controls['password'].errors?.required && (loginForm.controls['password'].dirty ||
+                            loginForm.controls['password'].touched)">
+                                <span>Password is required</span>
+                            </div>
+
+                            <div class="input-container ic2">
+                                <input formControlName="confirm_password" id="email" class="input" type="password"
+                                    placeholder=" " />
+                                <div class="cut cut-short"></div>
+                                <label for="email" class="placeholder">Confirm password</label>
+                            </div>
+
+                            <div class="col-md-12 d-flex justify-content-cente">
+                                <span class="invalid-feedback"> </span>
+                            </div>
+
+                            <button type="text" class="submit" [disabled]="loginForm.invalid">submit</button>
+                            <div class="row">
+                                <div class="col-md-12 d-flex justify-content-center pt-4">
+                                    <a href="#"><img src="../../../../assets/img/company-icons/Google - Original.png"
+                                            class="p-2"></a>
+                                    <a href="#"><img src="../../../../assets/img/company-icons/Facebook - Original.png"
+                                            class="p-2"></a>
+                                    <a href="#"><img src="../../../../assets/img/company-icons/Reddit - Original.png"
+                                            class="p-2"></a>
+                                    <a href="#"><img src="../../../../assets/img/company-icons/Discord - Original.png"
+                                            class="p-2"></a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-center ps-5">
+                                        <span class="policy">By this you are agreing to user <a href="#"><span
+                                                    class="policy-heading">policy</span></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

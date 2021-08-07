@@ -1,0 +1,27 @@
+.navbar-center {
+    position: absolute;
+    margin: 7rem;
+}
+
+ul {
+    padding-left: 2rem;
+}
+
+a {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 30px;
+}
+
+.navbar-background {
+    background-color: #FFF;
+}
+
+.navbar-nav {
+    margin-top: 7.8rem;
+}
+
+@media only screen and (max-width: 1600px) {
+    .navbar-nav {
+        margin-top: 6rem;
+    }
+}

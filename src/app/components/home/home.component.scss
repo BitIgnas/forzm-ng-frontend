@@ -1,0 +1,83 @@
+.img {
+  background-image: url(../../../assets/img/bg-home.jpg);
+  background-size: cover;
+  height: 1000px;
+}
+
+.card-start {
+  width: 1067px;
+  height: 36px;
+  background: #322b4e;
+  margin-top: 12rem;
+}
+
+h5 {
+  color: #fff;
+  font-family: "Teko", sans-serif;
+  font-size: 28px;
+}
+
+.featured {
+  margin-bottom: 20rem;
+}
+
+.card-content {
+    width: 1067px;
+    height: 655px;
+    background: #EAEAEA;
+}
+
+.card-body {
+  width: 270px;
+  height: 168px;
+  background-color: #2C3451;
+}
+
+.card-title {
+  margin-top: 7.6rem;
+  background: #061022;
+  color: #fff;
+  font-family: "Teko", sans-serif;
+  height: 26px;
+}
+
+.forum-box {
+   background-color: red;
+   height: 55px;
+   background-image: url(../../../assets/img/forum-all-box.png);
+  background-size: cover;
+}
+
+.forum-heading {
+  color: #fff;
+  font-size: 36px;
+  font-family: "Teko", sans-serif;
+}
+
+@media only screen and (max-width: 990px) {
+  .card-content {
+    width: 1067px;
+    height: 1015px;
+    background: #EAEAEA;
+  }
+
+  .img {
+    background-image: url(../../../assets/img/bg-home.jpg);
+    background-size: cover;
+    height: 1300px;
+  }
+}
+
+@media only screen and (max-width: 745px) {
+  .card-content {
+    width: 1067px;
+    height: 1750px;
+    background: #EAEAEA;
+  }
+
+  .img {
+    background-image: url(../../../assets/img/bg-home.jpg);
+    background-size: cover;
+    height: 2000px;
+  }
+}

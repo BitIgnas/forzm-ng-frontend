@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5 hidden-xs d-none d-md-block login-background"></div>
+            <div class="col-md-7 login-form mx-auto pt-5 d-flex justify-content-center">
+                <form [formGroup]="fileForm" (ngSubmit)="uploadUserProfile()" novalidate>
+                    <div class="login-body">
+                        <div class="form pt-4">
+                            <div class="title">Next</div>
+                            <div class="subtitle">Let's add avatar!</div>
+                            <div class="profile-heading">Choose your avatar picture</div>
+                            <div class="container" appDnd (fileDropped)="onFileDropped($event)">
+                                <input [writeFile]="true" formControlName="profilePhoto" type="file" #fileDropRef
+                                    id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+                                <img src="../../../assets/img/upload-icon.svg" alt="">
+                                <h3 style="color: aliceblue;">Drag and drop file here</h3>
+                                <h3 style="color: aliceblue;">or</h3>
+                                <label for=" fileDropRef">Browse for file</label>
+                            </div>
+                            <div class="files-list">
+                                <div class="single-file" *ngFor="let file of filesList | slice:0:1; let i = index">
+                                    <div class="info">
+                                        <h4 class="name">
+                                            {{ file?.name }}
+                                        </h4>
+                                        <p class="size">
+                                            {{ formatBytes(file?.size) }}
+                                        </p>
+                                        <app-progress [progress]="file?.progress"></app-progress>
+                                    </div>
+                                    <img src="../../../assets/img/ic-delete-file 1.svg" class="delete" width="20px"
+                                        alt="file" (click)="deleteFile(i)">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 error-heading">
+                                        {{ errorMessage }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 error-heading">
+                                        <div class="col-md-12 error-heading">
+                                            <div *ngIf="fileForm.controls['profilePhoto'].invalid &&
+                                                 (fileForm.controls['profilePhoto'].touched ||
+                                                fileForm.controls['profilePhoto'].dirty)">
+                                                Wrong file type</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="submit" (click)="uploadUserProfile()"
+                                [disabled]="fileForm.invalid">upload</button>
+                            <button type="text" class="skip" (click)="skipUserProfile()">skip</button>
+                            <div class="row">
+                                <div class="col-md-12 d-flex justify-content-center ps-3 pt-3">
+                                    <span class="policy">By this you are agreing to user <a href="#"><span
+                                                class="policy-heading">policy</span></a></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
