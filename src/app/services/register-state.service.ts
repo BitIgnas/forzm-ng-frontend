@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
-import { RegisterPayload } from '../core/models/register-payload';
+import { RegisterPayload } from '../models/register-payload';
 
 @Injectable({
   providedIn: 'root'

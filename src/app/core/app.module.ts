@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../components/home/home.component';
 import { RegisterComponent } from '../components/auth/register/register-form/register.component';
-import { NavbarComponent } from '../components/navbar/navbar.component';
 import { DndDirective } from './directives/dnd.directive';
 import { ProgressComponent } from '../components/progress/progress.component';
 import { RegisterGuard } from './guards/register-guard.guard';
@@ -17,6 +16,7 @@ import { RegisterConfirmationComponent } from '../components/auth/register/regis
 import { RegisterProfileComponent } from '../components/auth/register/register-profile/register-profile.component';
 import { LoginFormComponent } from '../components/auth/login/login-form/login-form.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { NavbarComponent } from '../shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [

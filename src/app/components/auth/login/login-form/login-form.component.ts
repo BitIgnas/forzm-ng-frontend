@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { LoginPayload } from './../../../../core/models/login-payload';
+import { LoginPayload } from '../../../../models/login-payload';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';

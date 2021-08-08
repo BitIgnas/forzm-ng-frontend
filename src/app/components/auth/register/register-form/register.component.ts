@@ -1,17 +1,20 @@
 import { Router } from '@angular/router';
-import { RegisterPayload } from 'src/app/core/models/register-payload';
-import { Component, OnInit } from '@angular/core';
+import { RegisterPayload } from 'src/app/models/register-payload';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RegisterStateService } from 'src/app/services/register-state.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
+  private subs = new SubSink();
+
   registerPayload: RegisterPayload
   registerForm: FormGroup;
   apiErrorMsg: string;
@@ -30,6 +33,10 @@ export class RegisterComponent implements OnInit {
       email: '',
       password:''
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 
   buildForm() {
@@ -53,7 +60,7 @@ export class RegisterComponent implements OnInit {
     this.registerPayload.email = this.registerForm.controls.email.value;
     this.registerPayload.password = this.registerForm.controls.password.value;
 
-    this.authService.register(this.registerPayload).subscribe((response) => {
+    this.subs.sink = this.authService.register(this.registerPayload).subscribe((response) => {
       if(response) {
         this.router.navigate(['/register/profile']);
         this.registerState.setUser(this.registerPayload);

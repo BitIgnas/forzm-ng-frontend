@@ -1,13 +1,14 @@
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators, FormGroupDirective } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ViewChild, ElementRef } from "@angular/core";
 import { map } from 'rxjs/internal/operators/map';
 import { FileCheck } from 'angular-file-validator';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { RegisterStateService } from 'src/app/services/register-state.service';
-import { RegisterPayload } from 'src/app/core/models/register-payload';
+import { RegisterPayload } from 'src/app/models/register-payload';
 import { ApiStorageService } from 'src/app/services/api-storage.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-register-profile',
@@ -15,7 +16,6 @@ import { ApiStorageService } from 'src/app/services/api-storage.service';
   styleUrls: ['./register-profile.component.scss']
 })
 export class RegisterProfileComponent implements OnInit {
-
   registerState: RegisterPayload;
   fileForm: FormGroup;
   filesList: any[] = [];
