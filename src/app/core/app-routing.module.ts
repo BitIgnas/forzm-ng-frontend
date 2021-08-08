@@ -1,3 +1,4 @@
+import { ForumAllComponent } from './../components/forum/forum-all/forum-all.component';
 
 import { RegisterConfirmationComponent } from '../components/auth/register/register-confirmation/register-confirmation.component';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,8 @@ const routes: Routes = [
     { path: 'user', component: RegisterComponent},
     { path: 'profile', component: RegisterProfileComponent, canActivate: [RegisterGuard]},
     { path: 'success', component: RegisterConfirmationComponent}
-  ]}
+  ]},
+  { path: 'forum/all', component: ForumAllComponent }
 ];
 
 @NgModule({

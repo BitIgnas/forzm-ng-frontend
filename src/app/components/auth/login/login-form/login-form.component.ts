@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginPayload } from '../../../../models/login-payload';
 import { AuthService } from 'src/app/services/auth.service';
@@ -16,7 +17,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class LoginFormComponent implements OnInit {
 
     this.authService.login(this.loginPayload).subscribe(
       response => {
-        console.log(response)
+        this.router.navigate(['/forum/all'])
       },(error: HttpErrorResponse) => {
         if(error.status == 403) {
           this.apiErrorMessage = 'Username or password is incorrect'

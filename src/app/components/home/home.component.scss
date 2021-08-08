@@ -11,6 +11,11 @@
   margin-top: 12rem;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
 h5 {
   color: #fff;
   font-family: "Teko", sans-serif;
@@ -42,9 +47,9 @@ h5 {
 }
 
 .forum-box {
-   background-color: red;
-   height: 55px;
-   background-image: url(../../../assets/img/forum-all-box.png);
+  background-color: red;
+  height: 55px;
+  background-image: url(../../../assets/img/forum-all-box.png);
   background-size: cover;
 }
 
@@ -52,6 +57,11 @@ h5 {
   color: #fff;
   font-size: 36px;
   font-family: "Teko", sans-serif;
+}
+
+.title-heading {
+  height: 30px;
+  font-size: 24px;
 }
 
 @media only screen and (max-width: 990px) {

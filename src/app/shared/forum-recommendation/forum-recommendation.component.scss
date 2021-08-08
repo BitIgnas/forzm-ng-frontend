@@ -1,0 +1,82 @@
+.forum-card {
+    height: 97px;
+    background: #322B4E;
+    width: 1065px;
+    position: relative;
+  }
+
+  .forum-card-title {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 34px;    
+    position: absolute;
+    padding-right: 5rem;
+    
+    color: #4DCD52;
+  }
+
+  .forum-card-description {
+    font-family: Open Sans;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #fff;
+  }
+
+  .forum-card-button {
+    width: 1067px;
+    height: 35px;
+    background: #061022;
+  }
+
+  .forum-card-date {
+    font-size: 20px;
+    font-family: Teko;
+    color: #fff;
+  }
+
+  .forum-date {
+    color: #4DCD52;
+    font-size: 20px;
+    font-family: Teko;
+  }
+
+  .forum-card-start {
+    width: 1065px;
+    height: 38px;
+    background: #061022;
+    margin-top: 2rem;
+    color: #fff;
+    font-family: "Teko", sans-serif;
+    font-size: 28px;
+  }
+
+  .form-recommendation {
+    width: 1067px;
+    height: 160px;
+    background: #322B4E;
+    color: #fff;
+    font-family: "Teko", sans-serif;
+    font-size: 25px;
+  }
+
+  .container {
+      padding-left: 2.6rem;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .forum-card-title {
+        font-family: Teko;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 34px;    
+        position: absolute;
+        padding-right: 5rem;
+        
+        color: #4DCD52;
+      }
+}

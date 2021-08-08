@@ -17,58 +17,17 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 card-content">
                 <div class="row d-flex mt-3 mx-2">
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start ">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
+                    <div *ngFor="let forum of (forums$ | async) | slice:0:9" class="col-md-12 card-body m-2"
+                        [ngStyle]="{ 'background': 'url(' + forum.imageUrl + ')'}" [routerLink]="'/login'">
+                        <div class="row">
+                            <h3 class="card-title d-inline-block align-items-end title-heading">{{ forum.name }}</h3>
                         </div>
                     </div>
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start ">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start ">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-12 card-body m-2">
-                        <div class="row text-start">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">Assassin’s creed</h3>
-                        </div>
-                    </div>
-
-
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12" [routerLink]="'/forum/all'">
                     <div class="row forum-box d-flex ms-3 me-3 forum-heading pt-2">
                         <div class="col-md-6">
-                            <h2 class="forum-heading">View All Forums</h2>
+                            <h2 class="forum-heading"><a [routerLink]="'/forum/all'">View All Forums</a></h2>
                         </div>
                         <div class="col-md-6 d-md-flex justify-content-end align-items-center d-none d-md-block">
                             <img src="../assets/img/icon.png" width="30" height="30"

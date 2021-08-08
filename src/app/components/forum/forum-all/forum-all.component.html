@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<section class="img">
+    <div class="container">
+        <app-forum-recommendation></app-forum-recommendation>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 ps-2 pe-2 forum-card-start p-1">
+                <span class="ps-3">All Game Forums</span>
+            </div>
+            <div class="forums" *ngFor="let forum of (forums$ | async)">
+                <app-forum-card [forum]="forum"></app-forum-card>
+            </div>
+        </div>
+    </div>
+</section>

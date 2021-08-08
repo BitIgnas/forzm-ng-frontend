@@ -1,3 +1,5 @@
+import { ForumRecommendationComponent } from './../shared/forum-recommendation/forum-recommendation.component';
+import { ForumAllComponent } from './../components/forum/forum-all/forum-all.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,6 +19,7 @@ import { RegisterProfileComponent } from '../components/auth/register/register-p
 import { LoginFormComponent } from '../components/auth/login/login-form/login-form.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { ForumCardComponent } from '../shared/forum-card/forum-card.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
     RegisterProfileComponent,
     DndDirective,
     ProgressComponent,
-    RegisterConfirmationComponent
+    ForumAllComponent,
+    RegisterConfirmationComponent,
+    ForumCardComponent,
+    ForumRecommendationComponent
   ],
   imports: [
     BrowserModule,
