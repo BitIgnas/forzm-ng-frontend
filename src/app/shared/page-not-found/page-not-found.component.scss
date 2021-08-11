@@ -1,0 +1,90 @@
+.img {
+    background-image: url("../../../assets/img/bg-home.jpg");
+    background-size: cover;
+    height: 839px;
+  }
+
+  .forum-card-start {
+    width: 1065px;
+    background: #061022;
+    margin-top: 2rem;
+    color: #fff;
+    font-family: "Teko", sans-serif;
+    font-size: 28px;
+  }
+
+  .type-heading {
+      color: #4DCD52;
+  }
+  
+  .not-found-body {
+    margin-top: 7rem;
+    background: #322B4E;
+    height: 600px;
+  }
+
+  .submit {
+    background-color: #52BB77;
+    border-radius: 18px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    height: 50px;
+    margin-top: 38px;
+    // outline: 0;
+    text-align: center;
+    width: 100%;
+    width: 10rem;
+    font-family: "Teko", sans-serif;
+    font-size: 36px;
+  }
+  
+  .submit:active {
+    background-color: #22EF6A;
+  }
+  
+  .policy {
+    color: #fff;
+  }
+  
+  .policy-heading {
+    color: #1877F2;
+  }
+  
+  .skip {
+    background-color: #1877F2;
+    border-radius: 18px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    height: 50px;
+    margin-top: 38px;
+    text-align: center;
+    width: 100%;
+    width: 10rem;
+    font-family: "Teko", sans-serif;
+    font-size: 36px;
+  }
+  
+  .skip:active {
+    background-color: #003479;
+  }
+
+  .error-title {
+      margin-top: 14rem;
+    color: #fff;
+    font-family: "Teko", sans-serif;
+    font-size: 28px;
+  }
+
+  @media only screen and (max-width: 990px) {
+    .btn-row {
+        padding-left: 9rem;
+    }
+  }
+  
+
+ 
+  

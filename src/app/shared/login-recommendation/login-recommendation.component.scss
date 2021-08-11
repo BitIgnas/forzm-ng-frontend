@@ -1,0 +1,55 @@
+.forum-card-start {
+    width: 1065px;
+    height: 48px;
+    background: #061022;
+    margin-top: 0.4rem;
+    color: #fff;
+    font-family: "Teko", sans-serif;
+    font-size: 28px;
+    position: relative;
+  }
+
+  .submit {
+    margin-left: 18rem;
+    margin-top: 0.1rem;
+    background-color: #52BB77;
+    border-radius: 18px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    height: 35px;
+    text-align: center;
+    width: 100%;
+    width: 9rem;
+    font-family: "Teko", sans-serif;
+    margin-right: 1rem;
+    font-size: 26px;
+    position: absolute;
+  }
+  
+  .submit:active {
+    background-color: #22EF6A;
+  }
+
+  .skip {
+    margin-left: 27.8rem;
+    margin-top: 0.1rem;
+    background-color: #1877F2;
+    border-radius: 18px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    height: 35px;
+    text-align: center;
+    width: 100%;
+    font-family: "Teko", sans-serif;
+    width: 9rem;
+    font-size: 28px;
+    position: absolute;
+  }
+
+  .skip:active {
+    background-color: #003479;
+  }

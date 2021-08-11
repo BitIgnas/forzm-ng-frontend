@@ -1,7 +1,7 @@
 .img {
     background-image: url("../../../../assets/img/bg-home.jpg");
     background-size: cover;
-    min-height: 1190px;
+    height: 1190px;
   }
 
   .forum-card-start {
@@ -13,7 +13,10 @@
     font-size: 28px;
   }
 
-
+  .type-heading {
+      color: #4DCD52;
+  }
+  
   .forum-pagination {
     background: #061022;
     width: 1065px;

@@ -13,6 +13,8 @@ import { Forum } from 'src/app/models/forum';
 export class ForumAllComponent implements OnInit {
 
   forums$: Observable<Forum[]>;
+  forumNumber: number;
+  page: number = 1;
 
   constructor(
     private forumService: ForumService,
@@ -28,11 +30,20 @@ export class ForumAllComponent implements OnInit {
       }
     );
 
+    this.getForumNumberCount();
     this.displayAllForums();
   }
 
   displayAllForums() {
     this.forums$ = this.forumService.getAllForums();
+  }
+
+  getForumNumberCount() {
+    this.forumService.getAllForums().subscribe(
+      (data) => {
+        this.forumNumber = data.length;
+      }
+    )
   }
 
 }

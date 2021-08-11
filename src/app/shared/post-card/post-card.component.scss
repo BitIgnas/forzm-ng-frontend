@@ -43,32 +43,3 @@
     font-size: 20px;
     font-family: Teko;
   }
-
-  .post-col {
-    padding-left: 10rem;
-  }
-
-  .post-count {
-    font-family: Teko;
-    color: #4DCD52;
-    font-size: 21px;
-  }
-
-  .post-heading {
-    color: #fff;
-    font-size: 24px;
-  }
-
-  @media only screen and (max-width: 800px) {
-    .forum-card-title {
-        font-family: Teko;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 24px;
-        line-height: 34px;    
-        position: absolute;
-        padding-right: 5rem;
-        
-        color: #4DCD52;
-      }
-}

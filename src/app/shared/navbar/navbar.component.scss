@@ -9,7 +9,7 @@ ul {
 
 a {
     font-family: 'Orbitron', sans-serif;
-    font-size: 30px;
+    font-size: 32px;
 }
 
 .navbar-background {
@@ -18,10 +18,12 @@ a {
 
 .navbar-nav {
     margin-top: 7.8rem;
+    margin-left: 6rem;
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1800px) {
     .navbar-nav {
-        margin-top: 6rem;
+        margin-top: 7.8rem;
+        margin-left: 2rem;
     }
 }

@@ -69,8 +69,8 @@
                                 registerForm.controls['confirm_password'].touched)">
                                 <span>Passwords do not match</span>
                             </div>
-                            <div class="col-md-12 d-flex justify-content-cente">
-                                <span class="invalid-feedback"> {{ apiErrorMsg }}</span>
+                            <div class="col-md-12 d-flex justify-content-lg-start">
+                                <span class="api-error"> {{apiErrorMsg}}</span>
                             </div>
 
                             <button type="text" class="submit" [disabled]="registerForm.invalid">submit</button>

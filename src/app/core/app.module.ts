@@ -1,3 +1,9 @@
+import { ForumCreateFormComponent } from './../components/forum/forum-create-form/forum-create-form.component';
+import { ForumDescriptionComponent } from './../shared/forum-description/forum-description.component';
+import { PageNotFoundComponent } from './../shared/page-not-found/page-not-found.component';
+import { PostCardComponent } from './../shared/post-card/post-card.component';
+import { ForumSubforumsComponent } from '../components/forum/forum-subforum-all/forum-subforums.component';
+import { LoginRecommendationComponent } from './../shared/login-recommendation/login-recommendation.component';
 import { ForumRecommendationComponent } from './../shared/forum-recommendation/forum-recommendation.component';
 import { ForumAllComponent } from './../components/forum/forum-all/forum-all.component';
 import { NgModule } from '@angular/core';
@@ -10,7 +16,7 @@ import { RegisterComponent } from '../components/auth/register/register-form/reg
 import { DndDirective } from './directives/dnd.directive';
 import { ProgressComponent } from '../components/progress/progress.component';
 import { RegisterGuard } from './guards/register-guard.guard';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgFileValidatorLibModule } from 'angular-file-validator';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
@@ -20,6 +26,8 @@ import { LoginFormComponent } from '../components/auth/login/login-form/login-fo
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { ForumCardComponent } from '../shared/forum-card/forum-card.component';
+import { ForumSubforumComponent } from '../components/forum/forum-subforum/forum-subforum.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -34,12 +42,21 @@ import { ForumCardComponent } from '../shared/forum-card/forum-card.component';
     ForumAllComponent,
     RegisterConfirmationComponent,
     ForumCardComponent,
-    ForumRecommendationComponent
+    ForumRecommendationComponent,
+    LoginRecommendationComponent,
+    ForumSubforumsComponent,
+    ForumSubforumComponent,
+    PostCardComponent,
+    PageNotFoundComponent,
+    ForumDescriptionComponent,
+    ForumCreateFormComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     RxReactiveFormsModule,
     NgxWebstorageModule.forRoot()

@@ -1,0 +1,112 @@
+<app-navbar></app-navbar>
+<section class="img">
+    <div class="container">
+        <form>
+            <div class="row d-flex justify-content-center">
+
+                <div class="col-md-10 form-card-start mt-4 ps-4">
+                    <span class="form-start-heading">Let’s create forum!</span>
+                </div>
+                <div class="col-md-10 form-card-content">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-4 pt-4">
+                            <span class="form-field-title ms-4">Forum Name</span>
+                        </div>
+                        <div class="col-md-4 pt-4 me-4">
+                            <div class="input-container ic1">
+                                <input id="firstname" class="input" type="text" placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="firstname" class="placeholder">Forum Name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-4 pt-5">
+                            <span class="form-field-title ms-4">Select Forum Game Genre</span>
+                        </div>
+
+                        <div class="col-md-4 pt-5 me-4">
+                            <div class="input-container ic1">
+                                <select id="gametype" class="input" placeholder=" ">
+                                    <option value="">Select Forum Game Type</option>
+                                    <option value="Strategy">Strategy</option>
+                                    <option value="RPG">RPG</option>
+                                    <option value="Fighting">Fighting</option>
+                                    <option value="Adventure">Adventure</option>
+                                    <option value="sport">Sport</option>
+                                    <option value="puzzle">Puzzle</option>
+                                    <option value="simulation">Simulator</option>
+                                    <option value="action">Action</option>
+                                    <option value="mmo">MMO</option>
+                                    <option value="music">Music</option>
+                                </select>
+                                <div class="cut"></div>
+                                <label for="gametype" class="placeholder">Game Type</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-4 pt-5">
+                            <span class="form-field-title ms-4">Create Forum Description</span>
+                        </div>
+                        <div class="col-md-4 pt-5 me-4">
+                            <div class="input-container ic1">
+                                <textarea id="firstname" rows="4" cols="50" class="input" style="height: 140px;"
+                                    type="text" placeholder=" "></textarea>
+                                <div class="cut"></div>
+                                <label for="firstname" class="placeholder">Description</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center pt-5 mt-5">
+                        <div class="col-md-4 pt-4 mt-3">
+                            <span class="form-field-title ms-4 ">Add Forum Image</span>
+                        </div>
+                        <div class="col-md-4 pt-4 me-4">
+                            <div class="img-container" appDnd (fileDropped)="onFileDropped($event)">
+                                <input [writeFile]="true" formControlName="profilePhoto" type="file" #fileDropRef
+                                    id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+                                <h3 style="color: aliceblue;">Drag and drop file here</h3>
+                                <h3 style="color: aliceblue;">or</h3>
+                                <label for=" fileDropRef">Browse for file</label>
+                            </div>
+                            <div class="files-list">
+                                <div class="single-file" *ngFor="let file of filesList | slice:0:1; let i = index">
+                                    <div class="info">
+                                        <h4 class="name">
+                                            {{ file?.name }}
+                                        </h4>
+                                        <p class="size">
+                                            {{ formatBytes(file?.size) }}
+                                        </p>
+                                        <app-progress [progress]="file?.progress"></app-progress>
+                                    </div>
+                                    <img src="../../../assets/img/ic-delete-file 1.svg" class="delete" width="20px"
+                                        alt="file" (click)="deleteFile(i)">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 error-heading">
+                                        {{ errorMessage }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 error-heading">
+                                        <div class="col-md-12 error-heading">
+                                            <div *ngIf="fileForm.controls['profilePhoto'].invalid &&
+                                                 (fileForm.controls['profilePhoto'].touched ||
+                                                fileForm.controls['profilePhoto'].dirty)">
+                                                Wrong file type</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

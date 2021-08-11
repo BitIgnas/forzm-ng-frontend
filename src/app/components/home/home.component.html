@@ -15,17 +15,22 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-md-8 card-content">
-                <div class="row d-flex mt-3 mx-2">
-                    <div *ngFor="let forum of (forums$ | async) | slice:0:9" class="col-md-12 card-body m-2"
-                        [ngStyle]="{ 'background': 'url(' + forum.imageUrl + ')'}" [routerLink]="'/login'">
+            <div class="col-md-12 card-content">
+                <div class="row d-flex">
+                    <div class="col-md-4 pt-3 px-3" *ngFor="let forum of (forums$ | async) | slice:0:9" [routerLink]="'/login'">
                         <div class="row">
-                            <h3 class="card-title d-inline-block align-items-end title-heading">{{ forum.name }}</h3>
+                            <div class="col-md-12" [routerLink]="['/forum/', forum.name, 'sub-forums']">
+                                <img class="img-fluid w-100 h-75" [src]="forum.imageUrl">
+                                <div class="col-md-12 pb-2 card-title">
+                                    <h3 class="card-title">{{ forum.name }}</h3>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                        </div>
+
+                        </div>
                 <div class="col-md-12" [routerLink]="'/forum/all'">
-                    <div class="row forum-box d-flex ms-3 me-3 forum-heading pt-2">
+                    <div class="row forum-box d-flex ms-1 me-1 forum-heading pt-2">
                         <div class="col-md-6">
                             <h2 class="forum-heading"><a [routerLink]="'/forum/all'">View All Forums</a></h2>
                         </div>

@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<section class="img">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9 not-found-body ">
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <span class="error-title">404 page was not found!</span>
+                    </div>
+                </div>
+                <div class="row btn-row">
+                    <div class="col-md-6 d-flex justify-content-lg-end">
+                        <button [routerLink]="['/home']" class="submit">home</button>
+                    </div>
+                    <div class="col-md-6 ">
+                        <button [routerLink]="['/forum/all']" class="skip">forums</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

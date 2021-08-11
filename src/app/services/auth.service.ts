@@ -63,7 +63,14 @@ export class AuthService {
   }
 
   logOut(): void {
-    this.httpClient.post<any>(`${this.baseUrl}/api/auth/logout`, this.getRefreshToken()).subscribe();
+    this.httpClient.post<any>(`${this.baseUrl}/api/auth/logout`, this.getRefreshToken()).subscribe(
+      tap(() => {
+          this.localStorageService.clear("authenticationToken");
+          this.localStorageService.clear("refreshToken");
+          this.localStorageService.clear("expiresAt");
+          this.localStorageService.clear("username");
+      })
+    );
   }
 
   getRefreshToken() {

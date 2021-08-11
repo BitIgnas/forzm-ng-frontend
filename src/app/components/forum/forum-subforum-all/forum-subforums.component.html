@@ -1,0 +1,116 @@
+<app-navbar></app-navbar>
+<img class="img-fluid cont-img" [src]="forum.imageUrl">
+<section>
+    <div class="container sub-forums">
+        <app-forum-recommendation></app-forum-recommendation>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 ps-2 pe-2 forum-card-start p-1">
+                <span class="ps-3">Forums: {{ forumName }} - Sub-Forums </span>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <app-login-recommendation [text]="'Log in or sign up to create post'"></app-login-recommendation>
+            </div>
+            <div class="forum">
+                <div class="row d-flex justify-content-center pt-2">
+                    <div class="col-md-10 ps-3 pe-5 forum-card pt-2"
+                        [routerLink]="['/forum/', forumName, 'sub-forum', 'discussion']">
+                        <div class="row">
+                            <div class="col-md-1 col-2  ms-1 mt-3"><img src="../../../../assets/img/subforum-icon.png">
+                            </div>
+                            <div class="col-md-9 col-8 pt-3 pe-2">
+                                <div class="row p-x-5">
+                                    <div class="col-md-12">
+                                        <a [routerLink]="['/forum/', forumName, 'sub-forum', 'discussion']"><span
+                                                class="forum-card-title pe-1">Discussion - {{ forumName
+                                                }}</span></a>
+                                    </div>
+                                    <div class="row d-none d-xl-block">
+                                        <div class="col-12 pt-4">
+                                            <span class="forum-card-description">This is {{ forumName }} sub-forum
+                                                which discussions on topics are held
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-10 ps-3 pe-5 forum-card mt-2"
+                        [routerLink]="['/forum/', forumName, 'sub-forum', 'help']">
+                        <div class="row">
+                            <div class="col-md-1 col-2  ms-1 mt-4"><img src="../../../../assets/img/subforum-icon.png">
+                            </div>
+                            <div class="col-md-9 col-8 pt-4 pe-2">
+                                <div class="row p-x-5">
+                                    <div class="col-md-12">
+                                        <a [routerLink]="['/forum/', forumName, 'sub-forum', 'help']"><span
+                                                class="forum-card-title pe-1">Help - {{ forumName
+                                                }}</span></a>
+                                    </div>
+                                    <div class="row d-none d-xl-block">
+                                        <div class="col-12 pt-4">
+                                            <span class="forum-card-description">This is {{ forumName }} sub-forum
+                                                where user can leave specific question on topic</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-10 ps-3 pe-5 forum-card mt-2"
+                        [routerLink]="['/forum/', forumName, 'sub-forum', 'news']">
+                        <div class="row">
+                            <div class="col-md-1 col-2  ms-1 mt-4"><img src="../../../../assets/img/subforum-icon.png">
+                            </div>
+                            <div class="col-md-9 col-8 pt-4 pe-2">
+                                <div class="row p-x-5">
+                                    <div class="col-md-12">
+                                        <a [routerLink]="['/forum/', forumName, 'sub-forum', 'news']"><span
+                                                class="forum-card-title pe-1">News - {{ forumName
+                                                }}</span></a>
+                                    </div>
+                                    <div class="row d-none d-xl-block">
+                                        <div class="col-12 pt-4">
+                                            <span class="forum-card-description">This is {{ forumName }} sub-forum
+                                                dedicated to news about game</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-10 ps-3 pe-5 forum-card mt-2"
+                        [routerLink]="['/forum/', forumName, 'sub-forum', 'updates']">
+                        <div class="row">
+                            <div class="col-md-1 col-2  ms-1 mt-4"><img src="../../../../assets/img/subforum-icon.png">
+                            </div>
+                            <div class="col-md-9 col-8 pt-4 pe-2">
+                                <div class="row p-x-5">
+                                    <div class="col-md-12">
+                                        <a [routerLink]="['/forum/', forumName, 'sub-forum', 'updates']"><span
+                                                class="forum-card-title pe-1">Updates - {{ forumName
+                                                }}</span></a>
+                                    </div>
+                                    <div class="row d-none d-xl-block">
+                                        <div class="col-12 pt-4">
+                                            <span class="forum-card-description">This is {{ forumName }} updates
+                                                sub-forum</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

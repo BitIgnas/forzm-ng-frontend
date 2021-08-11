@@ -6,8 +6,22 @@
             <div class="col-md-10 ps-2 pe-2 forum-card-start p-1">
                 <span class="ps-3">All Game Forums</span>
             </div>
-            <div class="forums" *ngFor="let forum of (forums$ | async)">
+            <div class="row d-flex justify-content-center">
+                <app-login-recommendation [text]="'Log in or sign up to create forum'"></app-login-recommendation>
+            </div>
+            <div class="forums"
+                *ngFor="let forum of (forums$ | async) | paginate: { id: 'forum_pagination',
+                                                                                                                                                                                    itemsPerPage: 5,
+                                                                                                                                                                                    currentPage: page,
+                                                                                                                                                                                    totalItems: forumNumber }">
                 <app-forum-card [forum]="forum"></app-forum-card>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 d-flex justify-content-center text-center forum-pagination mt-xl-1">
+                    <pagination-controls class="forum_pagination" id="forum_pagination" [maxSize]="forumNumber"
+                        (pageChange)="page = $event" directionLinks="true">
+                    </pagination-controls>
+                </div>
             </div>
         </div>
     </div>
