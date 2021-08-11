@@ -8,6 +8,13 @@
                         <div class="form pt-5">
                             <div class="title">Login</div>
                             <div class="subtitle">Sign In to your account!</div>
+
+                            <div class="input-container ic2 ">
+                                <input formControlName="username" id="lastname" class="input" type="password"
+                                    placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="lastname" class="placeholder">Password</label>
+                            </div>
                             
                             <div class="col-md-12 invalid-feedback d-flex justify-content-start" *ngIf="loginForm.controls['username'].errors?.required && (loginForm.controls['username'].dirty ||
                                 loginForm.controls['username'].touched)">

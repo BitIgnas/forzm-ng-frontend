@@ -1,4 +1,4 @@
-export interface Forum {
+export interface ForumResponse {
     name: string;
     description: string;
     forumGameType: string;

@@ -9,15 +9,14 @@ import { AuthService } from "src/app/services/auth.service";
     providedIn: 'root'
 })
 export class TokenInterceptor implements HttpInterceptor {
-
     isTokenRefreshing = false;
     refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject(null);
 
-    constructor(
-        public authService: AuthService
-    ) { }
+    constructor(public authService: AuthService) { }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    intercept(req: HttpRequest<any>, next: HttpHandler):
+        Observable<HttpEvent<any>> {
+
         if (req.url.indexOf('refresh') !== -1 || req.url.indexOf('login') !== -1) {
             return next.handle(req);
         }

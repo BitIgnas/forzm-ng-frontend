@@ -3,8 +3,9 @@ import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Forum } from '../models/forum';
 import { shareReplay, tap } from 'rxjs/operators';
+import { ForumPayload } from '../models/forum-payload';
+import { ForumResponse } from '../models/forum-response';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +19,15 @@ export class ForumService {
 
   private baseUrl = environment.baseUrl;
 
-  getAllForums(): Observable<Forum[]> {
-    return this.httpClient.get<Forum[]>(`${this.baseUrl}/api/forum/all`)
+  getAllForums(): Observable<ForumResponse[]> {
+    return this.httpClient.get<ForumResponse[]>(`${this.baseUrl}/api/forum/all`)
       .pipe(
         shareReplay()
       );
   }
 
-  createForum(forum: Forum): Observable<Forum> {
-    return this.httpClient.post<Forum>(`${this.baseUrl}/api/forum/save`, forum)
+  createForum(forum: ForumPayload): Observable<ForumResponse> {
+    return this.httpClient.post<ForumResponse>(`${this.baseUrl}/api/forum/save`, forum)
       .pipe(
         tap(() => {
           this.refreshService.refresh();
@@ -34,7 +35,7 @@ export class ForumService {
       );
   }
 
-  deleteForum(forum: Forum): Observable<any> {
+  deleteForum(forum: ForumPayload): Observable<any> {
     return this.httpClient.delete<any>(`${this.baseUrl}/api/forum/delete`, { body: forum })
       .pipe(
         tap(() => {
@@ -43,7 +44,7 @@ export class ForumService {
       );
   }
 
-  findForumByName(name: string): Observable<Forum> {
-    return this.httpClient.get<Forum>(`${this.baseUrl}/api/forum/${name}`);
+  findForumByName(name: string): Observable<ForumResponse> {
+    return this.httpClient.get<ForumResponse>(`${this.baseUrl}/api/forum/${name}`);
   }
 }

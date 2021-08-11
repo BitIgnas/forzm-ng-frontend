@@ -3,7 +3,7 @@ import { RefreshService } from './../../../services/refresh.service';
 import { ForumService } from './../../../services/forum.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Forum } from 'src/app/models/forum';
+import { ForumResponse } from 'src/app/models/forum-response';
 
 @Component({
   selector: 'app-forum-all',
@@ -12,7 +12,7 @@ import { Forum } from 'src/app/models/forum';
 })
 export class ForumAllComponent implements OnInit {
 
-  forums$: Observable<Forum[]>;
+  forums$: Observable<ForumResponse[]>;
   forumNumber: number;
   page: number = 1;
 

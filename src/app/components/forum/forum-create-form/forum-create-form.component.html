@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <section class="img">
     <div class="container">
-        <form>
+        <form [formGroup]="forumForm" (ngSubmit)="onSubmit()" novalidate>
             <div class="row d-flex justify-content-center">
 
                 <div class="col-md-10 form-card-start mt-4 ps-4">
@@ -14,10 +14,25 @@
                         </div>
                         <div class="col-md-4 pt-4 me-4">
                             <div class="input-container ic1">
-                                <input id="firstname" class="input" type="text" placeholder=" " />
+                                <input formControlName="forumName" id="firstname" class="input" type="text" placeholder=" " />
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Forum Name</label>
                             </div>
+                        </div>
+                        <div class="col-md-12 pt-5 mt-3 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            *ngIf="forumForm.controls['forumName'].errors?.required && (forumForm.controls['forumName'].dirty ||
+                                forumForm.controls['forumName'].touched)">
+                            <span class="pt-3 ps-2">Forum name is required</span>
+                        </div>
+                        <div class="col-md-12 pt-5 mt-3 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            *ngIf="forumForm.controls['forumName'].errors?.maxlength && (forumForm.controls['forumName'].dirty ||
+                                forumForm.controls['forumName'].touched)">
+                            <span class="pt-3 ps-2">Forum name is too long</span>
+                        </div>
+                        <div class="col-md-12 pt-5 mt-3 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            *ngIf="forumForm.controls['forumName'].errors?.minlength && (forumForm.controls['forumName'].dirty ||
+                                forumForm.controls['forumName'].touched)">
+                            <span class="pt-3 ps-2">Forum name is to short</span>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
@@ -27,23 +42,28 @@
 
                         <div class="col-md-4 pt-5 me-4">
                             <div class="input-container ic1">
-                                <select id="gametype" class="input" placeholder=" ">
+                                <select formControlName="forumGameType" id="gametype" class="input" placeholder=" ">
                                     <option value="">Select Forum Game Type</option>
-                                    <option value="Strategy">Strategy</option>
+                                    <option value="STRATEGY">Strategy</option>
                                     <option value="RPG">RPG</option>
-                                    <option value="Fighting">Fighting</option>
-                                    <option value="Adventure">Adventure</option>
-                                    <option value="sport">Sport</option>
-                                    <option value="puzzle">Puzzle</option>
-                                    <option value="simulation">Simulator</option>
-                                    <option value="action">Action</option>
-                                    <option value="mmo">MMO</option>
-                                    <option value="music">Music</option>
+                                    <option value="FIGHTING">Fighting</option>
+                                    <option value="ADVENTURE">Adventure</option>
+                                    <option value="SPORT">Sport</option>
+                                    <option value="PUZZLE">Puzzle</option>
+                                    <option value="SIMULATION">Simulator</option>
+                                    <option value="ACTION">Action</option>
+                                    <option value="MMO">MMO</option>
+                                    <option value="MUSIC">Music</option>
                                 </select>
                                 <div class="cut"></div>
                                 <label for="gametype" class="placeholder">Game Type</label>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            *ngIf="forumForm.controls['forumGameType'].errors && (forumForm.controls['forumGameType'].dirty ||
+                                forumForm.controls['forumGameType'].touched)">
+                            <span>Forum game type is required</span>
                     </div>
 
                     <div class="row d-flex justify-content-center">
@@ -52,12 +72,27 @@
                         </div>
                         <div class="col-md-4 pt-5 me-4">
                             <div class="input-container ic1">
-                                <textarea id="firstname" rows="4" cols="50" class="input" style="height: 140px;"
+                                <textarea formControlName="forumDescription" id="firstname" rows="4" cols="50" class="input" style="height: 140px;"
                                     type="text" placeholder=" "></textarea>
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Description</label>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12 pt-5 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            *ngIf="forumForm.controls['forumDescription'].errors?.required && (forumForm.controls['forumDescription'].dirty ||
+                                forumForm.controls['forumDescription'].touched)">
+                            <span class="pt-4 mt-3 ps-2">Forum description is required</span>
+                    </div>
+                    <div class="col-md-12 pt-5 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            *ngIf="forumForm.controls['forumDescription'].errors?.maxlength && (forumForm.controls['forumDescription'].dirty ||
+                                forumForm.controls['forumDescription'].touched)">
+                            <span class="pt-4 mt-3 ps-2">Forum description is too long</span>
+                    </div>
+                    <div class="col-md-12 pt-5 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            *ngIf="forumForm.controls['forumDescription'].errors?.minlength && (forumForm.controls['forumDescription'].dirty ||
+                                forumForm.controls['forumDescription'].touched)">
+                            <span class="pt-4 mt-3 ps-2">Forum description is too short</span>
                     </div>
 
                     <div class="row d-flex justify-content-center pt-5 mt-5">
@@ -94,16 +129,22 @@
                                 <div class="row">
                                     <div class="col-md-12 error-heading">
                                         <div class="col-md-12 error-heading">
-                                            <div *ngIf="fileForm.controls['profilePhoto'].invalid &&
-                                                 (fileForm.controls['profilePhoto'].touched ||
-                                                fileForm.controls['profilePhoto'].dirty)">
-                                                Wrong file type</div>
+                                            <div
+                                                *ngIf="forumForm.controls['profilePhoto'].invalid &&
+                                                 (forumForm.controls['profilePhoto'].touched ||forumForm.controls['profilePhoto'].dirty)">Wrong file type</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 pt-1 d-flex justify-content-end">
+                            <button type="submit" class="submit">create</button>
+                        </div>
+                        <div class="col-md-6 pt-1  d-flex justify-content-start">
+                            <button class="delete-btn">discard</button>
+                        </div>
                     </div>
                 </div>
             </div>

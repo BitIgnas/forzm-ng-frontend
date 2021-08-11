@@ -21,4 +21,14 @@ export class ApiStorageService {
     xhr.open('POST', `${this.baseUrl}/api/storage/user/${username}/upload`, true);
     xhr.send(formData);
   }
+
+  uploadForumImage(file: File, forumName: string): void {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', `${this.baseUrl}/api/storage/forum/${forumName}/upload`, true);
+    xhr.send(formData);
+  }
 }

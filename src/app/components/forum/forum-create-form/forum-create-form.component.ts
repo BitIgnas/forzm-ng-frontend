@@ -1,5 +1,9 @@
+import { AuthService } from 'src/app/services/auth.service';
+import { ForumPayload } from './../../../models/forum-payload';
+import { ForumResponse } from './../../../models/forum-response';
+import { ForumService } from './../../../services/forum.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { RegisterPayload } from 'src/app/models/register-payload';
@@ -14,7 +18,8 @@ import { RegisterStateService } from 'src/app/services/register-state.service';
 export class ForumCreateFormComponent implements OnInit {
 
   cregisterState: RegisterPayload;
-  fileForm: FormGroup;
+  forumForm: FormGroup;
+  forumPayload: ForumPayload;
   filesList: any[] = [];
   errorMessage: string;
   file: File;
@@ -23,29 +28,31 @@ export class ForumCreateFormComponent implements OnInit {
 
   constructor(
     private apiStorage: ApiStorageService,
+    private forumService: ForumService,
     private sharing: RegisterStateService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.fileForm = this.formBuilder.group({
+    this.forumForm = this.formBuilder.group({
+      forumName: ['', [Validators.required, Validators.maxLength(40), Validators.minLength(3)]],
+      forumGameType: ['', Validators.required],
+      forumDescription: ['', [Validators.required, Validators.maxLength(140), Validators.minLength(4)]],
       profilePhoto:['', [ 
-          RxwebValidators.file({maxFiles: 1}),
-          RxwebValidators.image({maxHeight:2000,maxWidth:2000}),
-          RxwebValidators.extension({extensions:["jpeg","jpg", "png"]})
-        ]       
-      ], 
-  });
+        RxwebValidators.file({maxFiles: 1}),
+        RxwebValidators.image({maxHeight:2000,maxWidth:2000}),
+        RxwebValidators.extension({extensions:["jpeg","jpg", "png"]})
+        ]
+      ]
+    })
 
-    this.sharing.getUser().subscribe(
-      (data: RegisterPayload) => {
-    
-      },
-      (error: string) => {
-        console.log(error);
-      }
-    )
+    this.forumPayload = {
+      name: '',
+      gameType: '',
+      description: ''
+    }
   }
   
   onFileDropped($event) {
@@ -71,9 +78,9 @@ export class ForumCreateFormComponent implements OnInit {
       console.log("Upload in progress...");
       return;
     }
-      this.fileForm.get('profilePhoto').reset();
-      this.fileForm.get('profilePhoto').updateValueAndValidity();
-      this.fileForm.get('profilePhoto').clearValidators();
+      this.forumForm.get('profilePhoto').reset();
+      this.forumForm.get('profilePhoto').updateValueAndValidity();
+      this.forumForm.get('profilePhoto').clearValidators();
       this.filesList.splice(index, 1);
       this.file = null;
       return;
@@ -121,16 +128,13 @@ export class ForumCreateFormComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
   }
 
-  uploadUserProfile() {
-    if(this.file != null) {
-      
-    } else {
-      this.errorMessage = "No file was selected"
-    }
-  }
+  onSubmit() {
+    this.forumPayload.name = this.forumForm.controls['forumName'].value;
+    this.forumPayload.gameType = this.forumForm.controls['forumGameType'].value;
+    this.forumPayload.description = this.forumForm.controls['forumDescription'].value;
 
-  skipUserProfile() {
-    this.router.navigate(['/register/success']);
+    this.auth.refresAuthenticationToken();
+    this.apiStorage.uploadForumImage(this.file, this.forumPayload.name);
+    this.forumService.createForum(this.forumPayload).subscribe();
   }
-
 }

@@ -1,5 +1,5 @@
+import { ForumResponse } from './../../../models/forum-response';
 import { SubSink } from 'subsink';
-import { Forum } from 'src/app/models/forum';
 import { ForumService } from '../../../services/forum.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -12,7 +12,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class ForumSubforumsComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   forumName: string;
-  forum: Forum;
+  forum: ForumResponse;
 
   constructor(
     private activatedRouter: ActivatedRoute,
@@ -36,7 +36,7 @@ export class ForumSubforumsComponent implements OnInit, OnDestroy {
 
   getForumSubForums() {
     this.subs.sink = this.forumService.findForumByName(this.forumName).subscribe(
-      (forum: Forum) => {
+      (forum: ForumResponse) => {
         this.forum = forum;
         },
         (error) => {

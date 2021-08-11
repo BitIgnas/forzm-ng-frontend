@@ -1,7 +1,7 @@
 import { ForumService } from './../../services/forum.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Forum } from 'src/app/models/forum';
+import { ForumResponse } from 'src/app/models/forum-response';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { Forum } from 'src/app/models/forum';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  forums$: Observable<Forum[]>;
+  forums$: Observable<ForumResponse[]>;
 
   constructor(
     private forumService: ForumService

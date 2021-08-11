@@ -1,8 +1,8 @@
 import { SubSink } from 'subsink';
 import { PostService } from './../../services/post.service';
-import { Forum } from './../../models/forum';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Input } from '@angular/core';
+import { ForumResponse } from 'src/app/models/forum-response';
 
 @Component({
   selector: 'app-forum-card',
@@ -11,7 +11,7 @@ import { Input } from '@angular/core';
 })
 export class ForumCardComponent implements OnInit, OnDestroy {
   private sub = new SubSink();
-  @Input() forum: Forum;
+  @Input() forum: ForumResponse;
   forumPostCount: number;
 
   constructor(

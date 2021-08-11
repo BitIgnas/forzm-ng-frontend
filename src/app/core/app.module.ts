@@ -17,7 +17,7 @@ import { DndDirective } from './directives/dnd.directive';
 import { ProgressComponent } from '../components/progress/progress.component';
 import { RegisterGuard } from './guards/register-guard.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgFileValidatorLibModule } from 'angular-file-validator';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { RegisterConfirmationComponent } from '../components/auth/register/register-confirmation/register-confirmation.component';
@@ -28,6 +28,7 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { ForumCardComponent } from '../shared/forum-card/forum-card.component';
 import { ForumSubforumComponent } from '../components/forum/forum-subforum/forum-subforum.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TokenInterceptor } from '../shared/interceptors/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RxReactiveFormsModule,
     NgxWebstorageModule.forRoot()
   ],
-  providers: [RegisterGuard],
+  providers: [RegisterGuard, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
