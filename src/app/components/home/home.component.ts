@@ -1,3 +1,4 @@
+import { filter, map } from 'rxjs/operators';
 import { ForumService } from './../../services/forum.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,9 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.forums$ = this.forumService.getAllForums();
+    this.forums$ = this.forumService.getAllForums().pipe(
+      map(forums => forums.filter(forum => forum.imageUrl != null))
+    );
   }
 
 }

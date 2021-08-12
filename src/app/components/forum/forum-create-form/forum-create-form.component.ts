@@ -42,7 +42,7 @@ export class ForumCreateFormComponent implements OnInit {
       forumDescription: ['', [Validators.required, Validators.maxLength(140), Validators.minLength(4)]],
       profilePhoto:['', [ 
         RxwebValidators.file({maxFiles: 1}),
-        RxwebValidators.image({maxHeight:2000,maxWidth:2000}),
+        RxwebValidators.image({minHeight:800,minWidth:1600}),
         RxwebValidators.extension({extensions:["jpeg","jpg", "png"]})
         ]
       ]
@@ -50,7 +50,7 @@ export class ForumCreateFormComponent implements OnInit {
 
     this.forumPayload = {
       name: '',
-      gameType: '',
+      forumGameType: '',
       description: ''
     }
   }
@@ -130,11 +130,18 @@ export class ForumCreateFormComponent implements OnInit {
 
   onSubmit() {
     this.forumPayload.name = this.forumForm.controls['forumName'].value;
-    this.forumPayload.gameType = this.forumForm.controls['forumGameType'].value;
+    this.forumPayload.forumGameType = this.forumForm.controls['forumGameType'].value;
     this.forumPayload.description = this.forumForm.controls['forumDescription'].value;
 
-    this.auth.refresAuthenticationToken();
-    this.apiStorage.uploadForumImage(this.file, this.forumPayload.name);
-    this.forumService.createForum(this.forumPayload).subscribe();
+    if(this.file != null) {
+      this.forumService.createForum(this.forumPayload).subscribe(
+        (response) => {
+          this.router.navigate(['/forum/all'])
+        }
+      );
+      this.apiStorage.uploadForumImage(this.file, this.forumPayload.name);
+    } else {
+      this.forumService.createForum(this.forumPayload).subscribe();
+    }
   }
 }

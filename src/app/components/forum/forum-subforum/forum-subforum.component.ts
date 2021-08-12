@@ -1,3 +1,4 @@
+import { ForumResponse } from 'src/app/models/forum-response';
 import { ForumService } from './../../../services/forum.service';
 import { PostResponse } from './../../../models/post-response';
 import { Observable } from 'rxjs';
@@ -13,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class ForumSubforumComponent implements OnInit {
   posts$: Observable<PostResponse[]>
   forumName: string;
+  forum: ForumResponse;
   postType: string;
   post: PostResponse;
   
@@ -35,8 +37,9 @@ export class ForumSubforumComponent implements OnInit {
 
   checkIfForumExists(forumName: string) {
     this.forumService.findForumByName(this.forumName).subscribe(
-      (res) => {
+      (forum: ForumResponse) => {
        this.getAllPostsByForum(this.forumName, this.postType);
+       this.forum = forum;
       },
       (err) => {
         this.router.navigate(['**'])

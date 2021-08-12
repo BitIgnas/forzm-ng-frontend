@@ -1,5 +1,5 @@
 export interface ForumPayload {
     name: string;
-    gameType: string;
+    forumGameType: string;
     description: string;
 }

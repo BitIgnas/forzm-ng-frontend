@@ -47,19 +47,19 @@ export class AuthService {
     );
   }
 
-  refresAuthenticationToken(): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/api/auth/token/refresh`, this.getRefreshToken()).pipe(
-      tap(clear => {
-        this.localStorageService.clear("authenticationToken");
-        this.localStorageService.clear("expiresAt");
-      }),
-      map((authResponse: AuthenticationResponse) => {
-        this.localStorageService.store("authenticationToken", authResponse.authenticationToken);
-        this.localStorageService.store("refreshToken", authResponse.refreshToken);
-        this.localStorageService.store("expiresAt", authResponse.expiresAt);
-        this.localStorageService.store("username", authResponse.username);
+  refresAuthenticationToken(): Observable<AuthenticationResponse> {
+    console.log(this.getRefreshToken())
+
+    return this.httpClient.post<AuthenticationResponse>(`${this.baseUrl}/api/auth/token/refresh`, this.getRefreshToken()).pipe(
+      (tap(response => {
+        this.localStorageService.clear('authenticationToken');
+        this.localStorageService.clear('expiresAt');
+
+        this.localStorageService.store("expiresAt", response.expiresAt);
+        this.localStorageService.store("authenticationToken", response.authenticationToken);
+
       })
-    );
+    ));
   }
 
   logOut(): void {

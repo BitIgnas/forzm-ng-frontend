@@ -29,6 +29,7 @@ import { ForumCardComponent } from '../shared/forum-card/forum-card.component';
 import { ForumSubforumComponent } from '../components/forum/forum-subforum/forum-subforum.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TokenInterceptor } from '../shared/interceptors/token-interceptor';
+import { LoginGuard } from './guards/login-guard.guard';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,9 @@ import { TokenInterceptor } from '../shared/interceptors/token-interceptor';
     RxReactiveFormsModule,
     NgxWebstorageModule.forRoot()
   ],
-  providers: [RegisterGuard, 
+  providers: [
+    RegisterGuard, 
+    LoginGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
