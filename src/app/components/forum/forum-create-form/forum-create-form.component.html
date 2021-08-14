@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-md-10 form-card-content">
                     <div class="row d-flex justify-content-center">
-                        <div class="col-md-4 pt-4">
+                        <div class="col-md-4 mt-4">
                             <span class="form-field-title ms-4">Forum Name</span>
                         </div>
                         <div class="col-md-4 pt-4 me-4">
@@ -19,20 +19,24 @@
                                 <label for="firstname" class="placeholder">Forum Name</label>
                             </div>
                         </div>
-                        <div class="col-md-12 pt-5 mt-3 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            <div class="col-md-12 mt-5 invalid-feedback d-flex justify-content-center invalid-feedback"
+                            *ngIf="forumForm.get('forumName').hasError('pattern') && (forumForm.controls['forumName'].touched)">
+                            <span class="mt-4 m-5 ps-2">Forum name is invalid</span>
+                        </div>
+                        <div class="col-md-12 mt-5 invalid-feedback d-flex justify-content-center invalid-feedback"
                             *ngIf="forumForm.controls['forumName'].errors?.required && (forumForm.controls['forumName'].dirty ||
                                 forumForm.controls['forumName'].touched)">
-                            <span class="pt-3 ps-2">Forum name is required</span>
+                            <span class="mt-4 ps-2">Forum name is required</span>
                         </div>
                         <div class="col-md-12 pt-5 mt-3 invalid-feedback d-flex justify-content-center invalid-feedback"
                             *ngIf="forumForm.controls['forumName'].errors?.maxlength && (forumForm.controls['forumName'].dirty ||
                                 forumForm.controls['forumName'].touched)">
-                            <span class="pt-3 ps-2">Forum name is too long</span>
+                            <span class="mt-4 ps-2">Forum name is too long</span>
                         </div>
                         <div class="col-md-12 pt-5 mt-3 invalid-feedback d-flex justify-content-center invalid-feedback"
                             *ngIf="forumForm.controls['forumName'].errors?.minlength && (forumForm.controls['forumName'].dirty ||
                                 forumForm.controls['forumName'].touched)">
-                            <span class="pt-3 ps-2">Forum name is to short</span>
+                            <span class="mt-4 ps-2">Forum name is to short</span>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
@@ -46,6 +50,7 @@
                                     <option value="">Select Forum Game Type</option>
                                     <option value="STRATEGY">Strategy</option>
                                     <option value="RPG">RPG</option>
+                                    <option value="FPS">FPS</option>
                                     <option value="FIGHTING">Fighting</option>
                                     <option value="ADVENTURE">Adventure</option>
                                     <option value="SPORT">Sport</option>
@@ -123,26 +128,25 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 error-heading">
-                                        {{ errorMessage }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 error-heading">
                                         <div class="col-md-12 error-heading">
                                             <div
-                                                *ngIf="forumForm.controls['profilePhoto'].invalid &&
+                                                *ngIf="forumForm.controls['profilePhoto'].errors?.extension &&
                                                  (forumForm.controls['profilePhoto'].touched ||forumForm.controls['profilePhoto'].dirty)">Wrong file type</div>
+                                        </div>
+                                        <div class="col-md-12 d-flex ps-2">
+                                            <span class="error-heading"> {{ errorMessage }} </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="row btn-container">
-                        <div class="col-md-6 pt-1 d-flex justify-content-lg-end">
+                        <div class="col-md-6 d-flex justify-content-lg-end">
                             <button type="submit" class="submit">create</button>
                         </div>
-                        <div class="col-md-6 pt-1  d-flex justify-content-lg-start">
+                        <div class="col-md-6   d-flex justify-content-lg-start">
                             <button class="delete-btn" [routerLink]="['/forum/all']">discard</button>
                         </div>
                     </div>

@@ -11,6 +11,11 @@
   margin-top: 12rem;
 }
 
+.img-card {
+  height: 160px;
+  width:100%;
+}
+
 a {
   color: #fff;
   text-decoration: none;
@@ -50,7 +55,7 @@ h5 {
 .forum-box {
   background-color: red;
   height: 55px;
-  background-image: url(../../../assets/img/forum-all-box.png);
+  background-image: url("../../../assets/img/forum-all-box.png");
   background-size: cover;
 }
 

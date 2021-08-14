@@ -32,8 +32,8 @@ export class PostService {
     return this.httpClient.get<PostResponse[]>(`${this.baseUrl}/api/post/${forumName}/${postType}/all`);
   }
 
-  getPostByName(postName: string): Observable<PostResponse> {
-    return this.httpClient.get<PostResponse>(`${this.baseUrl}/api/post/${postName}`);
+  findByPostTitleAndId(postName: string, postId: number): Observable<PostResponse> {
+    return this.httpClient.get<PostResponse>(`${this.baseUrl}/api/post/${postName}/${postId}`);
   }
 
   getPostCountByForumName(forumName: string): Observable<number> {

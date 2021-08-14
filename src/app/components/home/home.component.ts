@@ -1,3 +1,4 @@
+import { PostService } from './../../services/post.service';
 import { filter, map } from 'rxjs/operators';
 import { ForumService } from './../../services/forum.service';
 import { Observable } from 'rxjs';
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   forums$: Observable<ForumResponse[]>;
 
   constructor(
-    private forumService: ForumService
+    private forumService: ForumService,
+    private postService: PostService
   ) { }
 
   ngOnInit(): void {

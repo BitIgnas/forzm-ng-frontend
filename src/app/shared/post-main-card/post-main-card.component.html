@@ -1,0 +1,51 @@
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-10 card-head pt-lg-2 mt-lg-2 ps-lg-4">
+        <span class="post-title-top ">{{ post?.postType}} - {{ post?.title }}  |  {{post?.forumForumName}} </span> 
+    </div>
+    <div class="col-md-10 card-top mt-2">
+        <span class="card-top-title ps-3">{{ post?.created | date: 'yyyy-MM-dd /  h:mm a' }}</span>
+    </div>
+    <div class="col-md-10 card-content">
+        <div class="row">
+            <div class="col-2 col-side">
+                <div class="row">
+                    <div class="col-10 ps-lg-3 d-flex justify-content-start">
+                        <span class="card-username pt-2 ps-lg-5">{{ post?.userUsername}}</span>
+                    </div>
+                    <div class="col-10 d-flex justify-content-start">
+                        <span class="card-username pt-2 ps-lg-5"><img [src]="post?.userProfileImageUrl" onerror="this.src='../../../assets/img/user-stock.png'" class="img"></span>
+                    </div>
+                    <div class="col-10 d-flex justify-content-start">
+                        <span class="card-date pt-5 ps-lg-5">Date Joined: {{ post?.userDateCreated |  date: 'MMM  y'  }}</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-9 d-inline-block">
+                <div class="row pt-3 col-buttom">
+                    <div class="col-md-12">
+                        <span class="post-title ps-lg-2"> {{ post?.title }} - {{ post?.postType }}</span>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-md-12">
+                        <p class="post-content">
+                            {{ post?.content }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 pt-4 col-buttom">
+                
+            </div>
+
+            <div class="col-md-11 pt-2 d-flex justify-content-end" *ngIf="userLoggedIn">
+                <button class="reply-btn" >Reply</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-login-recommendation [text]="['Log in or sign up to leave a comment']"></app-login-recommendation>

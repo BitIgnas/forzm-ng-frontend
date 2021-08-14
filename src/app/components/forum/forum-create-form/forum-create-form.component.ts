@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import { ForumPayload } from './../../../models/forum-payload';
 import { ForumResponse } from './../../../models/forum-response';
@@ -37,14 +38,10 @@ export class ForumCreateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.forumForm = this.formBuilder.group({
-      forumName: ['', [Validators.required, Validators.maxLength(40), Validators.minLength(3)]],
+      forumName: ['', Validators.compose([Validators.pattern(/^[^`~!@#$%\^&*()_+={}|[\]\\:';"<>?,./]*$/), Validators.required])],
       forumGameType: ['', Validators.required],
       forumDescription: ['', [Validators.required, Validators.maxLength(140), Validators.minLength(4)]],
-      profilePhoto:['', [ 
-        RxwebValidators.file({maxFiles: 1}),
-        RxwebValidators.image({minHeight:800,minWidth:1600}),
-        RxwebValidators.extension({extensions:["jpeg","jpg", "png"]})
-        ]
+      profilePhoto:['', [ RxwebValidators.extension({extensions:["jpeg","jpg", "png", "jfif"]})]
       ]
     })
 
@@ -136,12 +133,26 @@ export class ForumCreateFormComponent implements OnInit {
     if(this.file != null) {
       this.forumService.createForum(this.forumPayload).subscribe(
         (response) => {
-          this.router.navigate(['/forum/all'])
+          this.router.navigate(['/forum/all']);
+          this.apiStorage.uploadForumImage(this.file, this.forumPayload.name);
+        },
+        (error: HttpErrorResponse) => {
+          if(error.status == 409) {
+            this.errorMessage = "Forum already exists";
+          }
+        }      
+      );
+    } else {
+      this.forumService.createForum(this.forumPayload).subscribe(
+        (response) => {
+          this.router.navigate(['/forum/all']);
+        },
+        (error: HttpErrorResponse) => {
+          if(error.status == 409) {
+            this.errorMessage = "Forum already exists";
+          }
         }
       );
-      this.apiStorage.uploadForumImage(this.file, this.forumPayload.name);
-    } else {
-      this.forumService.createForum(this.forumPayload).subscribe();
     }
   }
 }

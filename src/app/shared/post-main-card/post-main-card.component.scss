@@ -1,0 +1,104 @@
+.card-top {
+    width: 1067px;
+    height: 32px;
+    background: #061022;
+}
+
+.card-top-title {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 34px;
+    color: #fff;
+}
+
+.card-content {
+    width: 1067px;
+    height: 376px;
+    background: #322B4E;
+}
+
+.card-username {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 46px;
+    color: #fff;
+}
+
+.img {
+    width: 70px;
+    height: 70px;
+    border-radius: 101px;
+}
+
+.card-date {
+    margin-top: 0.2rem;
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 34px;
+    color: #fff;
+}
+
+.col-side {
+    margin-top: 1.5rem;
+    border-right: 2px solid #fff;
+    height: 275px;
+}
+
+.post-title {
+    font-family: Teko;
+    font-size: 32px;
+    line-height: 46px;
+    color: #fff;
+}
+
+.col-buttom {
+    border-bottom: 3px solid #FFFFFF;
+}
+
+.post-content {
+    color: rgb(184, 179, 179);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card-head {
+    width: 1067px;
+    height: 55px;
+    background-color: #061022;
+}
+
+.post-title-top {
+    font-family: Teko;
+    font-size: 32px;
+    line-height: 46px;
+    color: #fff;
+}
+
+.reply-btn {
+    font-family: Teko;
+    text-decoration: none;
+    border: none;
+    background: #061022;
+    border-radius: 6px;
+    width: 115px;
+    height: 30px;
+    color: #fff;
+    font-size: 22px;
+}
+
+.reply-btn:active {
+    font-family: Teko;
+    text-decoration: none;
+    border: none;
+    background: #22374F;
+    border-radius: 6px;
+    width: 115px;
+    height: 30px;
+    color: #fff;
+    font-size: 22px;
+}

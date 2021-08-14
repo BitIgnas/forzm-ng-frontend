@@ -13,7 +13,7 @@
                                 <input formControlName="username" id="lastname" class="input" type="password"
                                     placeholder=" " />
                                 <div class="cut"></div>
-                                <label for="lastname" class="placeholder">Password</label>
+                                <label for="lastname" class="placeholder">Username</label>
                             </div>
                             
                             <div class="col-md-12 invalid-feedback d-flex justify-content-start" *ngIf="loginForm.controls['username'].errors?.required && (loginForm.controls['username'].dirty ||
@@ -37,7 +37,7 @@
 
 
 
-                            <button type="text" class="submit" [disabled]="loginForm.invalid">submit</button>
+                            <button type="text" class="submit" [disabled]="loginForm.invalid">login</button>
                             <div class="row">
                                 <div class="col-md-12 d-flex justify-content-center pt-4">
                                     <a href="#"><img src="../../../../assets/img/company-icons/Google - Original.png"

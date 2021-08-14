@@ -13,6 +13,7 @@ import { RegisterProfileComponent } from '../components/auth/register/register-p
 import { LoginFormComponent } from '../components/auth/login/login-form/login-form.component';
 import { ForumSubforumComponent } from '../components/forum/forum-subforum/forum-subforum.component';
 import { LoginGuard } from './guards/login-guard.guard';
+import { ForumSubforumPostComponent } from '../components/forum-subforum-post/forum-subforum-post.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'forum/create', component: ForumCreateFormComponent, canActivate: [LoginGuard]},
   { path: 'forum/:forum-name/sub-forums', component: ForumSubforumsComponent},
   { path: 'forum/:forum-name/sub-forum/:sub-forum', component: ForumSubforumComponent},
+  { path: 'forum/:forum-name/sub-forum/:sub-forum/:post-title/:post-id', component: ForumSubforumPostComponent},
   { path: '**', redirectTo: 'page-not-found', pathMatch: 'full'},
   { path: 'page-not-found', component: PageNotFoundComponent}
 ];

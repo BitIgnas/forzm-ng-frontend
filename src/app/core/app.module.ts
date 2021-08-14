@@ -1,3 +1,4 @@
+import { PostMainCardComponent } from './../shared/post-main-card/post-main-card.component';
 import { ForumCreateFormComponent } from './../components/forum/forum-create-form/forum-create-form.component';
 import { ForumDescriptionComponent } from './../shared/forum-description/forum-description.component';
 import { PageNotFoundComponent } from './../shared/page-not-found/page-not-found.component';
@@ -28,8 +29,9 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { ForumCardComponent } from '../shared/forum-card/forum-card.component';
 import { ForumSubforumComponent } from '../components/forum/forum-subforum/forum-subforum.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { TokenInterceptor } from '../shared/interceptors/token-interceptor';
+import { TokenInterceptor } from './interceptors/token-interceptor';
 import { LoginGuard } from './guards/login-guard.guard';
+import { ForumSubforumPostComponent } from '../components/forum-subforum-post/forum-subforum-post.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { LoginGuard } from './guards/login-guard.guard';
     PostCardComponent,
     PageNotFoundComponent,
     ForumDescriptionComponent,
-    ForumCreateFormComponent
+    ForumCreateFormComponent,
+    ForumSubforumPostComponent,
+    PostMainCardComponent
   ],
   imports: [
     NgxPaginationModule,

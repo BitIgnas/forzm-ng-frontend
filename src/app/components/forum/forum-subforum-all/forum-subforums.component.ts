@@ -44,5 +44,4 @@ export class ForumSubforumsComponent implements OnInit, OnDestroy {
         }
     );
   }
-
 }

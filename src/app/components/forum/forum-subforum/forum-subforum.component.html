@@ -1,22 +1,19 @@
 <app-navbar></app-navbar>
 <section class="img">
-    <img class="img-fluid cont-img" [src]="forum.imageUrl">
+    <img class="img-fluid cont-img" [src]="forum?.imageUrl" >
     <div class="container sub-forums">
         <app-forum-recommendation></app-forum-recommendation>
         <div class="row d-flex justify-content-center">
             <div class="col-md-10 ps-2 pe-2 forum-card-start p-1">
-                <span class="ps-3">Forum: {{ forumName}} - <span class="type-heading">{{ postType.toUpperCase() }}
+                <span class="ps-3">Forum: {{ forumName }} - <span class="type-heading">{{ postType.toUpperCase() }}
                     </span></span>
             </div>
             <div class="row d-flex justify-content-center" *ngFor="let post of (posts$ | async)">
                 <app-post-card [post]="post"></app-post-card>
-            </div>
-            <div class="posts">
-
-            </div>
-            <div class="row d-flex justify-content-center">
-
-            </div>
+            </div>  
+            <div class="col-md-10 mt-2 empty-box d-flex justify-content-center" *ngIf="(posts$ | async).length == 0">
+                <span class="mt-2">Looks like this {{ postType }} sub-forum is empty!</span>
+            </div>     
         </div>
     </div>
 </section>

@@ -48,8 +48,6 @@ export class AuthService {
   }
 
   refresAuthenticationToken(): Observable<AuthenticationResponse> {
-    console.log(this.getRefreshToken())
-
     return this.httpClient.post<AuthenticationResponse>(`${this.baseUrl}/api/auth/token/refresh`, this.getRefreshToken()).pipe(
       (tap(response => {
         this.localStorageService.clear('authenticationToken');
@@ -57,7 +55,6 @@ export class AuthService {
 
         this.localStorageService.store("expiresAt", response.expiresAt);
         this.localStorageService.store("authenticationToken", response.authenticationToken);
-
       })
     ));
   }

@@ -9,7 +9,7 @@
                         <h5 class="d-inline-block justify-content-start pt-1">- HOME</h5>
                     </div>
                     <div class="col-xl-8">
-                        <h5 class="d-flex justify-content-end pt-1 me-4">FEATURED</h5>
+                        <h5 class="d-flex justify-content-end pt-1 me-4">TRENDING</h5>
                     </div>
                 </div>
             </div>
@@ -20,9 +20,9 @@
                     <div class="col-md-4 pt-3 px-3" *ngFor="let forum of (forums$ | async) | slice:0:9" [routerLink]="'/login'">
                         <div class="row">
                             <div class="col-md-12" [routerLink]="['/forum/', forum.name, 'sub-forums']">
-                                <img class="img-fluid w-100 h-75" [src]="forum.imageUrl">
+                                <picture><img class="img-card" [src]="forum.imageUrl"></picture>
                                 <div class="col-md-12 pb-2 card-title">
-                                    <h3 class="card-title">{{ forum.name }}</h3>
+                                    <h3 class="card-title ps-2">{{ forum.name }}</h3>
                                 </div>
                             </div>
                         </div>
