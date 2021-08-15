@@ -1,3 +1,5 @@
+import { QuillTextEditorComponent } from './../shared/quill-text-editor/quill-text-editor.component';
+import { CreatePostComponent } from './../components/post/create-post/create-post.component';
 import { PostMainCardComponent } from './../shared/post-main-card/post-main-card.component';
 import { ForumCreateFormComponent } from './../components/forum/forum-create-form/forum-create-form.component';
 import { ForumDescriptionComponent } from './../shared/forum-description/forum-description.component';
@@ -32,6 +34,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { LoginGuard } from './guards/login-guard.guard';
 import { ForumSubforumPostComponent } from '../components/forum-subforum-post/forum-subforum-post.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,9 @@ import { ForumSubforumPostComponent } from '../components/forum-subforum-post/fo
     ForumDescriptionComponent,
     ForumCreateFormComponent,
     ForumSubforumPostComponent,
-    PostMainCardComponent
+    PostMainCardComponent,
+    CreatePostComponent,
+    QuillTextEditorComponent
   ],
   imports: [
     NgxPaginationModule,
@@ -65,6 +70,7 @@ import { ForumSubforumPostComponent } from '../components/forum-subforum-post/fo
     FormsModule,
     HttpClientModule,
     RxReactiveFormsModule,
+    QuillModule,
     NgxWebstorageModule.forRoot()
   ],
   providers: [

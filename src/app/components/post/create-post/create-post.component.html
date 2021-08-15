@@ -1,0 +1,93 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container">
+        <form>
+            <div class="row d-flex justify-content-center mt-4">
+                <div class="col-md-10 post-start">
+                    <span class="heading ps-3">Create Post</span>
+                </div>
+                <div class="col-md-10 post-card">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-7 first-col pb-2">
+                            <span class="heading">Post title</span>
+                        </div>
+                        <div class="col-md-8 ps-lg-5">
+                            <div class="input-container ic1">
+                                <input formControlName="forumName" id="firstname" class="input" type="text" placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="firstname" class="placeholder">Your post title</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7 pt-5 pb-2">
+                            <span class="heading">Post content - optional</span>
+                        </div>
+                        <div class="col-md-8 ps-lg-5 pt-2 d-flex justify-content-center">
+                            <div class="form-group text-editor">
+                                <app-quill-text-editor></app-quill-text-editor>
+                            </div>
+                        </div>
+                        <div class="col-md-7 pt-4 pb-2">
+                            <span class="heading">Post type</span>
+                        </div>
+                        <div class="col-md-8 ps-lg-5">
+                            <input
+                            type="radio"
+                            class="btn-check"
+                            id="type"
+                            autocomplete="off"
+                            value="DISCUSSION"
+                          />
+                          <label
+                            class="btn btn-sm btn-box-check mx-2"
+                            for="type"
+                            >Discussion</label
+                          >
+
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            id="type"
+                            autocomplete="off"
+                            value="NEWS"
+
+                          />
+                          <label
+                            class="btn btn-sm btn-box-check mx-2"
+                            for="type"
+                            >News</label
+                          >
+
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            id="type"
+                            autocomplete="off"
+                            value="HELP"
+
+                          />
+                          <label
+                            class="btn btn-sm btn-box-check mx-2"
+                            for="type"
+                            >Help</label
+                          >
+
+                          <input
+                            type="radio"
+                            class="btn-check"
+                            id="type"
+                            autocomplete="off"
+                            value="UPDATES"
+
+                          />
+                          <label
+                            class="btn btn-sm btn-box-check mx-2"
+                            for="type"
+                            >Updates</label
+                          >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
