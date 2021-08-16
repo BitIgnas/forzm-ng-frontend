@@ -30,9 +30,7 @@
                 </div>
                 <div class="row pt-3">
                     <div class="col-md-12">
-                        <p class="post-content">
-                            {{ post?.content }}
-                        </p>
+                        <p class="post-content" [innerHTML]="post?.contentMarkup"></p>
                     </div>
                 </div>
             </div>
@@ -41,7 +39,7 @@
                 
             </div>
 
-            <div class="col-md-11 pt-2 d-flex justify-content-end" *ngIf="!userLoggedIn">
+            <div class="col-md-11 pt-2 d-flex justify-content-end" *ngIf="userLoggedIn">
                 <button class="reply-btn" >Reply</button>
             </div>
         </div>

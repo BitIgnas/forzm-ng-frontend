@@ -26,6 +26,8 @@ export class PostMainCardComponent implements OnInit {
     } else {
       this.userLoggedIn = false;
     }
+
+    console.log('testas' + this.post)
   }
 
 }

@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { ForumResponse } from './../../../models/forum-response';
 import { SubSink } from 'subsink';
 import { ForumService } from '../../../services/forum.service';
@@ -13,9 +14,11 @@ export class ForumSubforumsComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   forumName: string;
   forum: ForumResponse;
+  isUserLoggedIn: boolean;
 
   constructor(
     private activatedRouter: ActivatedRoute,
+    private authService: AuthService,
     private forumService: ForumService,
     private router: Router
   ) { }
@@ -27,6 +30,7 @@ export class ForumSubforumsComponent implements OnInit, OnDestroy {
       }
     );
 
+    this.checkIfUserLoggedIn();
     this.getForumSubForums();
   }
 
@@ -43,5 +47,13 @@ export class ForumSubforumsComponent implements OnInit, OnDestroy {
           this.router.navigate(['**']);
         }
     );
+  }
+
+  checkIfUserLoggedIn() {
+    if(this.authService.getJwtToken() != null) {
+      this.isUserLoggedIn = true;
+    } else {
+      this.isUserLoggedIn = false;
+    }
   }
 }

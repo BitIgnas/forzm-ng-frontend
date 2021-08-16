@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { SubSink } from 'subsink';
 import { ForumResponse } from 'src/app/models/forum-response';
 import { ForumService } from './../../../services/forum.service';
@@ -17,12 +18,14 @@ export class ForumSubforumComponent implements OnInit, OnDestroy {
   posts$: Observable<PostResponse[]>
   forumName: string;
   forum: ForumResponse;
+  isUserLoggedIn: boolean;
   postType: string;
   post: PostResponse;
   
   constructor(
     private postService: PostService,
     private forumService: ForumService,
+    private authService: AuthService,
     private activatedRouter: ActivatedRoute,
     private router: Router
   ) { }
@@ -30,6 +33,8 @@ export class ForumSubforumComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.forumName = this.activatedRouter.snapshot.params['forum-name'];
     this.postType = this.activatedRouter.snapshot.params['sub-forum'];
+
+    this.checkIfUserLoggedIn();
     this.validateForumSubForumParam(this.postType);
     this.checkIfForumExists(this.forumName);
   }
@@ -66,5 +71,13 @@ export class ForumSubforumComponent implements OnInit, OnDestroy {
         }
       }
     )
+  }
+
+  checkIfUserLoggedIn() {
+    if(this.authService.getJwtToken() != null) {
+      this.isUserLoggedIn = true;
+    } else {
+      this.isUserLoggedIn = false;
+    }
   }
 }

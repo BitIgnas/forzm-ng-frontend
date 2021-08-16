@@ -4,14 +4,20 @@
     <div class="container sub-forums">
         <app-forum-recommendation></app-forum-recommendation>
         <div class="row d-flex justify-content-center">
-            <div class="col-md-10 ps-2 pe-2 forum-card-start p-1">
-                <span class="ps-3">Forum: {{ forumName }} - <span class="type-heading">{{ postType.toUpperCase() }}
-                    </span></span>
+            <div class="col-md-12 ps-2 pe-2 forum-card-start">
+                <div class="row">
+                    <div class="col-md-9 pt-1">
+                        <span class="ps-3">Forum: {{ forumName }} - <span class="type-heading">{{ postType.toUpperCase() }} </span></span>
+                    </div>
+                    <div class="col-md-3 ps-lg-4">
+                        <button class="btn-create" [routerLink]="['/forum', forum?.name, 'post', 'create']" *ngIf="isUserLoggedIn">create post +</button>
+                    </div>
+                </div>
             </div>
             <div class="row d-flex justify-content-center" *ngFor="let post of (posts$ | async)">
                 <app-post-card [post]="post"></app-post-card>
             </div>  
-            <div class="col-md-10 mt-2 empty-box d-flex justify-content-center" *ngIf="(posts$ | async).length == 0">
+            <div class="col-md-10 mt-2 empty-box d-flex justify-content-center" *ngIf="(posts$ | async)?.length == 0">
                 <span class="mt-2">Looks like this {{ postType }} sub-forum is empty!</span>
             </div>     
         </div>

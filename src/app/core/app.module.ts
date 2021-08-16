@@ -35,6 +35,7 @@ import { TokenInterceptor } from './interceptors/token-interceptor';
 import { LoginGuard } from './guards/login-guard.guard';
 import { ForumSubforumPostComponent } from '../components/forum-subforum-post/forum-subforum-post.component';
 import { QuillModule } from 'ngx-quill';
+import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { QuillModule } from 'ngx-quill';
     ForumSubforumPostComponent,
     PostMainCardComponent,
     CreatePostComponent,
-    QuillTextEditorComponent
+    QuillTextEditorComponent,
+    HtmlToTextPipe
   ],
   imports: [
     NgxPaginationModule,

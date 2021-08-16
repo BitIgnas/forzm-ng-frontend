@@ -50,7 +50,7 @@ export class ForumSubforumPostComponent implements OnInit {
   }
 
   validatePost(postTitle: string, postId: number) {
-    this.postService.findByPostTitleAndId(this.postTitle, this.postId).subscribe(
+    this.postService.findByPostTitleAndId(this.prepareUrlPostTitle(this.postTitle), this.postId).subscribe(
       (post: PostResponse) => {
         this.post = post;
       },
@@ -62,4 +62,7 @@ export class ForumSubforumPostComponent implements OnInit {
     )
   }
 
+  prepareUrlPostTitle(title: string) {
+    return title.split("?").join("%3F")
+  }
 }

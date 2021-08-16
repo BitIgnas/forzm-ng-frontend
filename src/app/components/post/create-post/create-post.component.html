@@ -1,29 +1,47 @@
 <app-navbar></app-navbar>
 <section>
-    <div class="container">
-        <form>
-            <div class="row d-flex justify-content-center mt-4">
-                <div class="col-md-10 post-start">
+  <img class="img-fluid img-container" [src]="forum?.imageUrl">
+    <div class="container content-container ">
+        <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 post-start mt-4">
                     <span class="heading ps-3">Create Post</span>
                 </div>
                 <div class="col-md-10 post-card">
                     <div class="row d-flex justify-content-center">
+                      <div class="col-md-7 pb-2">
+                        <span class="heading">{{ forum?.name }} - Forum</span>
+                      </div>
                         <div class="col-md-7 first-col pb-2">
                             <span class="heading">Post title</span>
                         </div>
                         <div class="col-md-8 ps-lg-5">
                             <div class="input-container ic1">
-                                <input formControlName="forumName" id="firstname" class="input" type="text" placeholder=" " />
+                                <input formControlName="postTitle" id="firstname" class="input" type="text" placeholder=" " />
                                 <div class="cut"></div>
                                 <label for="firstname" class="placeholder">Your post title</label>
                             </div>
                         </div>
-                        <div class="col-md-7 pt-5 pb-2">
+                        <div class="col-md-7 invalid-col" *ngIf="postForm.controls['postTitle'].errors?.required &&
+                         (postForm.controls['postTitle'].dirty || postForm.controls['postTitle'].touched)">
+                          <span class="invalid-text">Post title is required</span>
+                        </div>
+
+                        <div class="col-md-7 invalid-col" *ngIf="postForm.controls['postTitle'].errors?.minlength &&
+                         (postForm.controls['postTitle'].dirty || postForm.controls['postTitle'].touched)">
+                          <span class="invalid-text">Post title is to short</span>
+                        </div>
+
+                        <div class="col-md-7 invalid-col" *ngIf="postForm.controls['postTitle'].errors?.maxlength &&
+                         (postForm.controls['postTitle'].dirty || postForm.controls['postTitle'].touched)">
+                          <span class="invalid-text">Post title is too long</span>
+                        </div>
+                        <div class="col-md-7 pt-3 pb-2">
                             <span class="heading">Post content - optional</span>
                         </div>
                         <div class="col-md-8 ps-lg-5 pt-2 d-flex justify-content-center">
                             <div class="form-group text-editor">
-                                <app-quill-text-editor></app-quill-text-editor>
+                              <quill-editor formControlName="textEditor" [styles]="textEditorStyle" [modules]="config"></quill-editor>
                             </div>
                         </div>
                         <div class="col-md-7 pt-4 pb-2">
@@ -31,59 +49,69 @@
                         </div>
                         <div class="col-md-8 ps-lg-5">
                             <input
+                            formControlName="postType"
                             type="radio"
                             class="btn-check"
-                            id="type"
-                            autocomplete="off"
+                            id="DISCUSSION"
                             value="DISCUSSION"
                           />
                           <label
                             class="btn btn-sm btn-box-check mx-2"
-                            for="type"
+                            for="DISCUSSION"
                             >Discussion</label
                           >
 
                           <input
+                          formControlName="postType"
                             type="radio"
                             class="btn-check"
-                            id="type"
+                            id="News"
                             autocomplete="off"
                             value="NEWS"
 
                           />
                           <label
                             class="btn btn-sm btn-box-check mx-2"
-                            for="type"
+                            for="News"
                             >News</label
                           >
 
                           <input
+                          formControlName="postType"
                             type="radio"
                             class="btn-check"
-                            id="type"
+                            id="Help"
                             autocomplete="off"
                             value="HELP"
 
                           />
                           <label
                             class="btn btn-sm btn-box-check mx-2"
-                            for="type"
+                            for="Help"
                             >Help</label
                           >
 
                           <input
+                          formControlName="postType"
                             type="radio"
                             class="btn-check"
-                            id="type"
+                            id="Updates"
                             autocomplete="off"
                             value="UPDATES"
 
                           />
                           <label
-                            class="btn btn-sm btn-box-check mx-2"
-                            for="type"
+                            class="btn btn-sm btn-box-check mx-2 box"
+                            for="Updates"
                             >Updates</label
                           >
+                        </div>
+                        <div class="col-md-7 invalid-col">
+                          <span class="invalid-text">{{ errorMessage }}</span>
+                        </div>
+                        <div class="col-md-8 pt-3 ps-lg-5 d-flex justify-content-center">
+                          <button type="submit" class="submit me-3">create post</button>
+                          <button type="text" class="discard" [routerLink]="['/forum', forum?.name, 'sub-forums']">discard</button>
                         </div>
                     </div>
                 </div>
