@@ -1,3 +1,4 @@
+import { UtilsService } from './../../../services/utils.service';
 import { PostService } from './../../../services/post.service';
 import { PostPayload } from './../../../models/post-payload';
 import { HtmlToTextPipe } from './../../../core/pipes/html-to-text.pipe';
@@ -39,6 +40,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     private forumService: ForumService,
     private postService: PostService,
     private formBuilder: FormBuilder,
+    private utilsService: UtilsService,
     private router: Router
   ) { }
 
@@ -69,16 +71,10 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  convertHtmlToText(value: any): string {
-    const temp = document.createElement('div');
-    temp.innerHTML = value;
-    return temp.textContent || temp.innerText || '';
-  }
-
   onSubmit() {
     if(this.postForm.controls['postType'].value != "") {
       this.postPayload.title = this.postForm.controls['postTitle'].value;
-      this.postPayload.content = this.convertHtmlToText(this.postForm.controls['textEditor'].value);
+      this.postPayload.content = this.utilsService.convertHtmlToText(this.postForm.controls['textEditor'].value);
       this.postPayload.contentMarkup = this.postForm.controls['textEditor'].value;
       this.postPayload.postType = this.postForm.controls['postType'].value;
       this.postPayload.forumName = this.forum.name;

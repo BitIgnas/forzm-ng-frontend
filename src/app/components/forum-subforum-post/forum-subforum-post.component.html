@@ -1,7 +1,104 @@
 <app-navbar></app-navbar>
-<img class="img-fluid cont-img" [src]="post?.forumImageUrl" >
-<section>
+<section class="main-section">
+    <img class="img-fluid cont-img" [src]="post?.forumImageUrl" >
     <div class="container sub-forums">
-        <app-post-main-card [post]="post"></app-post-main-card>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 card-head pt-lg-2 mt-lg-2 ps-lg-4">
+                <span class="post-title-top ">{{ post?.postType}} - {{ post?.title }}  |  {{post?.forumForumName}} </span> 
+            </div>
+            <div class="col-md-10 card-top mt-2">
+                <span class="card-top-title ps-3">Posted: {{ post?.created | date: 'yyyy-MM-dd /  h:mm a' }}</span>
+            </div>
+            <div class="col-md-10 card-content">
+                <div class="row">
+                    <div class="col-2 col-side">
+                        <div class="row">
+                            <div class="col-10 ps-lg-3 d-flex justify-content-start">
+                                <span class="card-username pt-2 ps-lg-5">{{ post?.userUsername }}</span>
+                            </div>
+                            <div class="col-10 d-flex justify-content-start">
+                                <span class="card-username pt-2"><img [src]="post?.userProfileImageUrl" onerror="this.src='../../../assets/img/user-stock.png'" class="img"></span>
+                            </div>
+                            <div class="col-10 d-flex justify-content-start">
+                                <span class="card-date pt-5 ps-lg-5">Date Joined: {{ post?.userDateCreated |  date: 'MMM  y'  }}</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-9 d-inline-block">
+                        <div class="row pt-3 col-buttom">
+                            <div class="col-md-12">
+                                <span class="post-title ps-lg-2"> {{ post?.title }} - {{ post?.postType }}</span>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col-md-12">
+                                <p class="post-content" [innerHTML]="post?.contentMarkup"></p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-12 pt-4 col-buttom">
+                        
+                    </div>
+        
+                    <div class="col-md-11 pt-1 d-flex justify-content-end pb-2" *ngIf="isUserLoggedIn" (click)="displayCommentBox()">
+                        <button class="reply-btn" >Reply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <app-login-recommendation [text]="['Log in or sign up to leave a comment']"></app-login-recommendation>
+    
+        <div class="row d-flex justify-content-center pt-1" *ngIf="(comments$ | async)?.length == 0">
+            <div class="col-md-10 no-post-card d-flex justify-content-center">
+                <span class="text">No comments. Be first to reply!</span>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center pt-1" *ngIf="displayForm">
+            <div class="col-md-10 comment-box-start ps-lg-4">
+                <span class="text">Add Comment</span>
+            </div>
+            <div class="col-md-12 comment-box ps-lg-4">
+                <div class="row">
+                    <div class="col-md-2 pt-2">
+                        <img [src]="currentUser?.profileImageUrl" onerror="this.src='../../../assets/img/user-stock.png'" class="img">
+                    </div>
+                    <div class="col-md-10 pt-4 pb-4 ps-3">
+                        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-9 p-0 m-0"><div class="input-container ic2 ">
+                                    <input formControlName="content" id="lastname" class="input" type="text"
+                                        placeholder=" " />
+                                    <div class="cut"></div>
+                                    <label for="lastname" class="placeholder">Add Comment</label>
+                                </div>
+                            </div>
+                                <div class="col-md-2 p-0 m-0 pb-2">
+                                    <button class="submit" type="submit">comment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comments" *ngFor="let comment of (comments$ | async)| paginate: { id: 'forum_pagination',
+                                                                                            itemsPerPage: 3,
+                                                                                            currentPage: page,
+                                                                                            totalItems: commentNumber }">
+            <app-comment-card [comment]=comment></app-comment-card>
+        </div>
+
+        <div class="row d-flex justify-content-center" *ngIf="(comments$ | async)?.length > 3">
+            <div class="col-md-12 d-flex justify-content-center text-center forum-pagination mt-xl-1">
+                <pagination-controls class="forum_pagination" id="forum_pagination" [maxSize]="commentNumber"
+                    (pageChange)="page = $event" directionLinks="true">
+                </pagination-controls>
+            </div>
+        </div>
     </div>
 </section>

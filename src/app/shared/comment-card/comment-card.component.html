@@ -1,0 +1,27 @@
+<div class="row d-flex justify-content-center pt-2">
+    <div class="col-md-10 comment-top">
+        <span class="comment-date ps-3"> {{ comment?.dateReplied | date: 'yyyy-MM-dd /  h:mm a' }}</span>
+    </div>
+    <div class="col-md-10 comment-body">
+        <div class="row">
+            <div class="col-2 col-side">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <span class="comment-user">{{ comment?.userUsername }}</span>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <img [src]="comment?.userProfileImageUrl" onerror="this.src = '../../../assets/img/user-stock.png'" class="img ms-lg-3">
+                    </div>
+                    <div class="col-10 ms-lg-2 d-flex justify-content-center">
+                        <span class="user-date ps-lg-5 pt-4">Date Joined: {{ comment?.userDateCreated |  date: 'MMM  y'  }}</span>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="col-8 pt-2">
+                <p class="comment-content">{{ comment?.content }}</p>
+            </div>
+            <hr class="line">
+        </div>
+    </div>
+</div>

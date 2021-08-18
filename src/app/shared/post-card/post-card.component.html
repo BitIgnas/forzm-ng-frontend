@@ -8,8 +8,7 @@
                 <div class="row p-x-5">
                     <div class="col-md-12">
                         <a [routerLink]="['/forum/', post.forumForumName, 'sub-forum', post.postType.toLowerCase(), post.title, post.id]"><span class="forum-card-title pe-1">{{
-                                post.title }} -
-                                {{ post.postType}}</span></a>
+                            post.title }} - {{ post.postType}}</span></a>
                     </div>
                     <div class="row d-none d-xl-block">
                         <div class="col-12 pt-4">
@@ -22,7 +21,7 @@
     </div>
     <div class="col-md-10 ps-4 pt-1 ps-3 pe-5 forum-card-button">
         <span class=" forum-card-date pb-5">Started by: {{ post.userUsername }},   {{ post.created | date:
-            ' MMMM d, y h:mm a'}} <span class="forum-date">
-            </span></span>
+            ' MMMM d, y h:mm a'}} <span class="forum-date"></span>
+        </span>
     </div>
 </div>

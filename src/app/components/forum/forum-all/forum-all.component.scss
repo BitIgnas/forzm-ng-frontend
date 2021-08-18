@@ -1,13 +1,15 @@
 .img {
     background-image: url("../../../../assets/img/bg-home.jpg");
     background-size: cover;
-    min-height: 1190px;
+    min-height: 839px;
+    height: auto;
+    padding-bottom: 0.4rem;
   }
 
   .forum-card-start {
     width: 1065px;
     background: #061022;
-    margin-top: 2rem;
+    margin-top: 0.7rem;
     color: #fff;
     font-family: "Teko", sans-serif;
     font-size: 28px;

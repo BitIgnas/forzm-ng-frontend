@@ -9,6 +9,7 @@ import { map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from 'ngx-webstorage';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,10 @@ export class AuthService {
         this.localStorageService.store("authenticationToken", response.authenticationToken);
       })
     ));
+  }
+
+  getCurrentUserFromAuthToken(): Observable<User> {
+    return this.httpClient.get<User>(`${this.baseUrl}/api/auth/user/${this.getJwtToken()}`);
   }
 
   logOut(): void {

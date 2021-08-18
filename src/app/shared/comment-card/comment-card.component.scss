@@ -1,0 +1,63 @@
+.comment-top {
+    width: 1067px;
+    height: 32px;
+    background: #061022;
+}
+
+.comment-date {
+    margin-top: 0.1rem;
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 34px;
+    color: #fff;
+}
+
+.comment-body {
+    height: auto;
+    width: 1067px;
+    background: #322B4E;
+}
+
+.comment-user {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+
+    color: #fff;
+}
+
+.img {
+    margin-top: 0.4rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 101px;
+}
+
+.col-side {
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
+    border-right: 2px solid #fff;
+    height: 100%;
+}
+
+.comment-content {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+.user-date {
+    margin-top: 0.2rem;
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 34px;
+    color: #fff;
+}
+
+.line {
+    border-top: 4px solid rgb(255, 255, 255);
+}

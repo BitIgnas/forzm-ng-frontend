@@ -1,11 +1,27 @@
 .cont-img {
     width: 100%;
-    height: 839px;
+    height: 100%;
     position: absolute;
+}
+
+.main-section {
+  width: 100%;
+  min-height: 839px;
+  height: auto;
+  padding-bottom: 2rem;
+  position: absolute;
 }
 
 .sub-forums {
   position: relative;
+}
+
+.img {
+  margin-top: 0.4rem;
+  margin-left: 2.4rem;
+  width: 70px;
+  height: 70px;
+  border-radius: 101px;
 }
 
 .forum-card-start {
@@ -32,3 +48,262 @@ section {
   background: #061022;
   height: 50px;
 }
+
+.no-post-card {
+  width: 1067px;
+  background: #061022;
+}
+
+.text {
+  font-family: "Teko", sans-serif;
+  color: #fff;
+  font-size: 22px;
+}
+
+.comment-box-start {
+  background: #061022;
+  width: 1067px;
+  height: 30px;
+}
+
+.comment-box {
+  background: #322B4E;
+  height: auto;
+  width: 1067px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+}
+
+
+.input {   
+  background-color: #3E4854;
+  border-radius: 12px 0 0 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.input-desc {
+  background-color: #3E4854;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+  padding-bottom: 3rem;
+}
+
+.cut {
+  background-color: #322B4E;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 100px;
+}
+
+.cut-short {
+  width: 50px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: #4DCD52;
+}
+
+.input:focus ~ .placeholder {
+  color: #4DCD52;
+}
+
+.submit {
+  background-color: #52BB77;
+  border-radius: 0 12px 12px 0 ;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+  font-family: "Teko", sans-serif;
+  font-size: 28px;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #22EF6A;
+}
+
+.btn-col {
+  margin-top: 6px;
+}
+
+.card-top {
+  width: 1067px;
+  height: 32px;
+  background: #061022;
+}
+
+.card-top-title {
+  font-family: Teko;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 34px;
+  color: #fff;
+}
+
+.card-content {
+  width: 1067px;
+  height: auto;
+  background: #322B4E;
+}
+
+.card-username {
+  font-family: Teko;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 46px;
+  color: #fff;
+}
+
+.img {
+  width: 70px;
+  height: 70px;
+  border-radius: 101px;
+}
+
+.card-date {
+  margin-top: 0.2rem;
+  font-family: Teko;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 34px;
+  color: #fff;
+}
+
+.col-side {
+  margin-top: 1.5rem;
+  border-right: 2px solid #fff;
+  height: auto;
+}
+
+.post-title {
+  font-family: Teko;
+  font-size: 32px;
+  line-height: 46px;
+  color: #fff;
+}
+
+.col-buttom {
+  border-bottom: 3px solid #FFFFFF;
+}
+
+.post-content {
+  color: rgb(184, 179, 179);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.card-head {
+  width: 1067px;
+  height: 55px;
+  background-color: #061022;
+}
+
+.post-title-top {
+  font-family: Teko;
+  font-size: 32px;
+  line-height: 46px;
+  color: #fff;
+}
+
+.reply-btn {
+  font-family: Teko;
+  text-decoration: none;
+  border: none;
+  background: #061022;
+  border-radius: 6px;
+  width: 115px;
+  height: 30px;
+  color: #fff;
+  font-size: 22px;
+}
+
+.reply-btn:active {
+  font-family: Teko;
+  text-decoration: none;
+  border: none;
+  background: #22374F;
+  border-radius: 6px;
+  width: 115px;
+  height: 30px;
+  color: #fff;
+  font-size: 22px;
+}
+
+.forum-pagination {
+  background: #061022;
+  width: 1065px;
+  padding-top: 0.3rem;
+  padding-right: 4rem;
+}
+
+::ng-deep ul > li:not(.active) {
+  font-family: "Teko", sans-serif;
+  font-size: 20px;
+  color: #fff !important;
+
+}
+
+::ng-deep > .active {
+  font-family: "Teko", sans-serif;
+  font-size: 20px;
+  background-color: #061022 !important;
+}
+
+.forum-pagination > .active > a {
+  color: #fff;
+}
+
+
+
+  

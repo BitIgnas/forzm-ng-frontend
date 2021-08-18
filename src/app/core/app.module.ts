@@ -1,6 +1,6 @@
+import { CommentCardComponent } from './../shared/comment-card/comment-card.component';
 import { QuillTextEditorComponent } from './../shared/quill-text-editor/quill-text-editor.component';
 import { CreatePostComponent } from './../components/post/create-post/create-post.component';
-import { PostMainCardComponent } from './../shared/post-main-card/post-main-card.component';
 import { ForumCreateFormComponent } from './../components/forum/forum-create-form/forum-create-form.component';
 import { ForumDescriptionComponent } from './../shared/forum-description/forum-description.component';
 import { PageNotFoundComponent } from './../shared/page-not-found/page-not-found.component';
@@ -59,10 +59,10 @@ import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
     ForumDescriptionComponent,
     ForumCreateFormComponent,
     ForumSubforumPostComponent,
-    PostMainCardComponent,
     CreatePostComponent,
     QuillTextEditorComponent,
-    HtmlToTextPipe
+    HtmlToTextPipe,
+    CommentCardComponent
   ],
   imports: [
     NgxPaginationModule,
