@@ -47,4 +47,8 @@ export class ForumService {
   findForumByName(name: string): Observable<ForumResponse> {
     return this.httpClient.get<ForumResponse>(`${this.baseUrl}/api/forum/${name}`);
   }
+
+  findForumsByNameIgnoreCase(name: String): Observable<ForumResponse[]> {
+    return this.httpClient.get<ForumResponse[]>(`${this.baseUrl}/api/forum/${name}/search`);
+  }
 }

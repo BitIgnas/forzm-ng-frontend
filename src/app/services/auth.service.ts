@@ -64,8 +64,8 @@ export class AuthService {
     return this.httpClient.get<User>(`${this.baseUrl}/api/auth/user/${this.getJwtToken()}`);
   }
 
-  logOut(): void {
-    this.httpClient.post<any>(`${this.baseUrl}/api/auth/logout`, this.getRefreshToken()).subscribe(
+  logout(): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}/api/auth/logout`, this.getRefreshToken()).pipe(
       tap(() => {
           this.localStorageService.clear("authenticationToken");
           this.localStorageService.clear("refreshToken");

@@ -1,29 +1,40 @@
-.navbar-center {
-    position: absolute;
-    margin: 7rem;
-}
-
-ul {
-    padding-left: 2rem;
-}
-
-a {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 32px;
-}
-
-.navbar-background {
-    background-color: #FFF;
+.nav-item {  
+    font-family: Orbitron !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 32px !important;
+    line-height: 38px !important;
 }
 
 .navbar-nav {
-    margin-top: 7.8rem;
-    margin-left: 6rem;
+    margin-top: 2rem;
+    margin-left: 10rem;
 }
 
-@media only screen and (max-width: 1800px) {
-    .navbar-nav {
-        margin-top: 7.8rem;
-        margin-left: 2rem;
-    }
+.img {
+    margin-top: 0.4rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 101px;
 }
+
+.text {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 40px;
+}
+
+.btn-logout {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    color: #4DCD52;
+    border: none;
+    background-color: rgb(250, 248, 248);
+    
+}
+
+

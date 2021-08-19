@@ -1,3 +1,4 @@
+import { ForumSearchComponent } from './../components/forum/forum-search/forum-search.component';
 import { CreatePostComponent } from './../components/post/create-post/create-post.component';
 import { ForumCreateFormComponent } from './../components/forum/forum-create-form/forum-create-form.component';
 import { PageNotFoundComponent } from './../shared/page-not-found/page-not-found.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'forum/all', component: ForumAllComponent },
   { path: 'forum/:forum-name/post/create', component: CreatePostComponent, canActivate: [LoginGuard]},
   { path: 'forum/create', component: ForumCreateFormComponent, canActivate: [LoginGuard]},
+  { path: 'forum/search/:forum-name', component: ForumSearchComponent},
   { path: 'forum/:forum-name/sub-forums', component: ForumSubforumsComponent},
   { path: 'forum/:forum-name/sub-forum/:sub-forum', component: ForumSubforumComponent},
   { path: 'forum/:forum-name/sub-forum/:sub-forum/:post-title/:post-id', component: ForumSubforumPostComponent},
