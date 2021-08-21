@@ -25,7 +25,7 @@
 ### This project uses numerious popular latest technologies, that
 #### help me not to go insane.
 
-- [ Angular ] - evented I/O for the backend
+- [ Angular ] - best web framework
 - [ Quill Editor ] - awesome text editor
 - [ Bootstrap ] - great UI boilerplate for modern web apps
 - [ node ] - evented I/O for the backend
