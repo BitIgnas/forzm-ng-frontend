@@ -19,6 +19,8 @@
             <div class="row d-flex justify-content-center">
                 <app-login-recommendation [text]="'Log in or sign up to create forum'"></app-login-recommendation>
             </div>
+
+            <app-forum-created-card></app-forum-created-card>
             <div class="forums"
                 *ngFor="let forum of (forums$ | async) | paginate: { id: 'forum_pagination',
                                                                                 itemsPerPage: 5,

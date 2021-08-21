@@ -1,3 +1,4 @@
+import { ForumCreatedCardComponent } from './../shared/forum-created-card/forum-created-card.component';
 import { ProfileComponent } from './../components/profile/profile.component';
 import { ForumSearchCardComponent } from './../shared/forum-search-card/forum-search-card.component';
 import { ForumSearchComponent } from './../components/forum/forum-search/forum-search.component';
@@ -68,7 +69,8 @@ import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
     CommentCardComponent,
     ForumSearchComponent,
     ForumSearchCardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ForumCreatedCardComponent
   ],
   imports: [
     NgxPaginationModule,

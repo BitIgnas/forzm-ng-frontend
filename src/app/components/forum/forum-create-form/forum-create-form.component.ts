@@ -1,3 +1,4 @@
+import { ForumStateService } from './../../../services/forum-state.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import { ForumPayload } from './../../../models/forum-payload';
@@ -32,6 +33,7 @@ export class ForumCreateFormComponent implements OnInit {
     private forumService: ForumService,
     private sharing: RegisterStateService,
     private formBuilder: FormBuilder,
+    private forumState: ForumStateService,
     private router: Router,
     private auth: AuthService
   ) {}
@@ -134,6 +136,7 @@ export class ForumCreateFormComponent implements OnInit {
       this.forumService.createForum(this.forumPayload).subscribe(
         (response) => {
           this.router.navigate(['/forum/all']);
+          this.forumState.setCreate();
           this.apiStorage.uploadForumImage(this.file, this.forumPayload.name);
         },
         (error: HttpErrorResponse) => {
@@ -146,6 +149,7 @@ export class ForumCreateFormComponent implements OnInit {
       this.forumService.createForum(this.forumPayload).subscribe(
         (response) => {
           this.router.navigate(['/forum/all']);
+          this.forumState.setCreate();
         },
         (error: HttpErrorResponse) => {
           if(error.status == 409) {
