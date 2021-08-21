@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LoginStateService } from './login-state.service';
 import { RefreshToken } from './../models/refresh-token';
 import { LoginPayload } from '../models/login-payload';
@@ -19,7 +20,8 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private localStorageService: LocalStorageService,
-    private loginStateService: LoginStateService
+    private loginStateService: LoginStateService,
+    private router: Router
   ) { }
 
   private baseUrl = environment.baseUrl;
@@ -71,6 +73,8 @@ export class AuthService {
           this.localStorageService.clear("refreshToken");
           this.localStorageService.clear("expiresAt");
           this.localStorageService.clear("username");
+
+          this.router.navigate(['/home'])
       })
     );
   }

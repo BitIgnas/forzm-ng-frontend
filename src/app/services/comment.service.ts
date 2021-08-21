@@ -34,4 +34,8 @@ export class CommentService {
     return this.httpClient.get<CommentResponse[]>(`${this.baseUrl}/api/comment/${postTitle}/${postId}`);
   }
 
+  getCommentPostCount(username: string): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseUrl}/api/comment/user/${username}/comments/count`);
+  }
+
 }

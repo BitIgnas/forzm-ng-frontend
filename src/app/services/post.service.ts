@@ -39,4 +39,8 @@ export class PostService {
   getPostCountByForumName(forumName: string): Observable<number> {
     return this.httpClient.get<number>(`${this.baseUrl}/api/post/${forumName}/posts/count`);
   }
+
+  getPostCountByUsername(username: string): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseUrl}/api/post/user/${username}/posts/count`);
+  }
 } 

@@ -120,6 +120,7 @@ export class ForumSubforumPostComponent implements OnInit {
     this.authService.getCurrentUserFromAuthToken().subscribe(
       (user: User) => {
           this.currentUser = user;
+          this.isUserLoggedIn = true;
         },
         (error: HttpErrorResponse) => {
           this.isUserLoggedIn = false;

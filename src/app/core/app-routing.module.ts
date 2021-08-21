@@ -28,7 +28,7 @@ const routes: Routes = [
     { path: 'profile', component: RegisterProfileComponent, canActivate: [RegisterGuard]},
     { path: 'success', component: RegisterConfirmationComponent}
   ]},
-  { path: 'user/profile', component: ProfileComponent},
+  { path: 'user/profile', component: ProfileComponent, canActivate: [LoginGuard]},
   { path: 'forum/all', component: ForumAllComponent },
   { path: 'forum/:forum-name/post/create', component: CreatePostComponent, canActivate: [LoginGuard]},
   { path: 'forum/create', component: ForumCreateFormComponent, canActivate: [LoginGuard]},

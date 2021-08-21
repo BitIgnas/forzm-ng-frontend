@@ -1,3 +1,4 @@
+import { PostResponse } from './../models/post-response';
 import { RefreshService } from './refresh.service';
 import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
@@ -50,5 +51,9 @@ export class ForumService {
 
   findForumsByNameIgnoreCase(name: String): Observable<ForumResponse[]> {
     return this.httpClient.get<ForumResponse[]>(`${this.baseUrl}/api/forum/${name}/search`);
+  }
+
+  findAllUserForums(username: string): Observable<ForumResponse[]> {
+    return this.httpClient.get<ForumResponse[]>(`${this.baseUrl}/api/forum/${username}/forums`);
   }
 }

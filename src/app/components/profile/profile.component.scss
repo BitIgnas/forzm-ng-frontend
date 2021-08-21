@@ -15,7 +15,8 @@
 
 .img {
     background: url("../../../assets/img/bg-home.jpg");
-    height: 835px;
+    min-height: 835px;
+    height: auto;
 }
 
 .profile-stats {
@@ -55,4 +56,38 @@
     background: #061022;
     width: 1067px;
     height: auto;
+  }
+
+  .count-text {
+      color: #4DCD52;
+  }
+
+  .user-forums {
+    background-color: #19202F;
+    width: 1067px;
+    height: auto;
+  }
+
+  .forum-pagination {
+    background: #061022;
+    width: 1067px;
+    padding-top: 0.1rem;
+    padding-right: 4rem;
+  }
+
+  ::ng-deep ul > li:not(.active) {
+    font-family: "Teko", sans-serif;
+    font-size: 20px;
+    color: #fff !important;
+
+  }
+
+  ::ng-deep > .active {
+    font-family: "Teko", sans-serif;
+    font-size: 20px;
+    background-color: #061022 !important;
+  }
+
+  .forum-pagination > .active > a {
+    color: #fff;
   }

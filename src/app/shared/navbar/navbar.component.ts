@@ -45,7 +45,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logoutUser() {
     this.subs.sink = this.authService.logout().subscribe();
     this.isLoggedIn = false;
-    window.location.reload();
   }
 
 }
