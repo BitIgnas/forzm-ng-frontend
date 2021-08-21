@@ -34,6 +34,7 @@ export class ForumSearchComponent implements OnInit {
         this.displayAllForums();
       }
     );
+
     this.displayAllForums();
   }
 
@@ -45,15 +46,17 @@ export class ForumSearchComponent implements OnInit {
               .pipe(
                 tap(() => {
                   this.getForumNumberCount();
+                  this.page = 1;
                 })
-              )
+              );
           } else if(this.activatedRouter.snapshot.params['forum-name']) {
             this.forums$ = this.forumService.findForumsByNameIgnoreCase(params['forum-name'])
               .pipe(
                 tap(() => {
                   this.getForumsByNameIgnoreCaseCount(params['forum-name']);
+                  this.page = 1;
                 })
-              )
+              );
           }
         }
       )

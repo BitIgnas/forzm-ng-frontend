@@ -1,3 +1,4 @@
+import { ProfileComponent } from './../components/profile/profile.component';
 import { ForumSearchComponent } from './../components/forum/forum-search/forum-search.component';
 import { CreatePostComponent } from './../components/post/create-post/create-post.component';
 import { ForumCreateFormComponent } from './../components/forum/forum-create-form/forum-create-form.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
     { path: 'profile', component: RegisterProfileComponent, canActivate: [RegisterGuard]},
     { path: 'success', component: RegisterConfirmationComponent}
   ]},
+  { path: 'user/profile', component: ProfileComponent},
   { path: 'forum/all', component: ForumAllComponent },
   { path: 'forum/:forum-name/post/create', component: CreatePostComponent, canActivate: [LoginGuard]},
   { path: 'forum/create', component: ForumCreateFormComponent, canActivate: [LoginGuard]},

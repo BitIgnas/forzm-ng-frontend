@@ -76,12 +76,6 @@ export class ForumSubforumPostComponent implements OnInit {
       postId: null
     }
 
-    if(this.authService.getJwtToken != null) {
-      this.isUserLoggedIn = true;
-    } else {
-      this.isUserLoggedIn = false;
-    }
-
     this.comments$ = this.refreshService.refreshNeeded.pipe(
       tap(() => {
         this.getCommentCount();
@@ -89,8 +83,9 @@ export class ForumSubforumPostComponent implements OnInit {
       switchMap(_ =>
          this.commentService.findAllPostComments(
           this.utilsService.prepareUrlPostTitle(this.postTitle),
-          this.postId)
-      ),
+          this.postId
+        )
+      )
     )
 
   }
@@ -124,8 +119,11 @@ export class ForumSubforumPostComponent implements OnInit {
   getCurrentUser() {
     this.authService.getCurrentUserFromAuthToken().subscribe(
       (user: User) => {
-        this.currentUser = user;
-      }
+          this.currentUser = user;
+        },
+        (error: HttpErrorResponse) => {
+          this.isUserLoggedIn = false;
+        }
     )
   }
 
@@ -144,6 +142,7 @@ export class ForumSubforumPostComponent implements OnInit {
       },
       tap(() => {
         this.refreshService.refresh();
+
       })
     )
   }

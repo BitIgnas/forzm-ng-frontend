@@ -38,7 +38,11 @@
                         </div>
                     </div>
         
-                    <div class="col-md-12 pt-4 col-buttom">
+                    <div class="col-md-12 pt-4 col-buttom" *ngIf="isUserLoggedIn">
+                        
+                    </div>
+
+                    <div class="col-md-12 pt-4" *ngIf="!isUserLoggedIn">
                         
                     </div>
         
