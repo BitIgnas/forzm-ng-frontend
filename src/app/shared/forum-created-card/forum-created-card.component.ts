@@ -24,6 +24,7 @@ export class ForumCreatedCardComponent implements OnInit, OnDestroy {
 
         setTimeout(()=>{                       
           this.status = false;
+          this.forumState.deleteCreate();
           }, 5000);
         } else {
           this.status = false;

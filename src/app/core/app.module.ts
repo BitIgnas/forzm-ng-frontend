@@ -40,6 +40,9 @@ import { LoginGuard } from './guards/login-guard.guard';
 import { ForumSubforumPostComponent } from '../components/forum-subforum-post/forum-subforum-post.component';
 import { QuillModule } from 'ngx-quill';
 import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -81,7 +84,12 @@ import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
     HttpClientModule,
     RxReactiveFormsModule,
     QuillModule,
-    NgxWebstorageModule.forRoot()
+    NgxWebstorageModule.forRoot(),
+    ToastrModule.forRoot({
+      maxOpened: 1,
+      preventDuplicates: true,
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     RegisterGuard, 

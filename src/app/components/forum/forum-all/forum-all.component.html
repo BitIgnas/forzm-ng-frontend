@@ -8,10 +8,10 @@
                     <div class="col-md-8">
                         <span class="ps-3">All Game Forums</span>
                     </div>
-                    <div class="col-md-2 ps-4 d-flex justify-content-lg-end" *ngIf="loggedIn">
+                    <div class="col-md-2 ps-lg-4 d-flex justify-content-lg-end" *ngIf="loggedIn">
                         <button class="btn-create" [routerLink]="['/forum/create']">create +</button>
                     </div>
-                    <div class="col-md-2 ps-1 d-flex justify-content-lg-start" *ngIf="loggedIn">
+                    <div class="col-md-2 ps-lg-1 d-flex justify-content-lg-start" *ngIf="loggedIn">
                         <button class="btn-search" [routerLink]="['/forum/search/all']">search</button>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
             <app-forum-created-card></app-forum-created-card>
             <div class="forums"
                 *ngFor="let forum of (forums$ | async) | paginate: { id: 'forum_pagination',
-                                                                                itemsPerPage: 5,
+                                                                                itemsPerPage: 6,
                                                                                 currentPage: page,
                                                                                 totalItems: forumNumber }">
                 <app-forum-card [forum]="forum"></app-forum-card>

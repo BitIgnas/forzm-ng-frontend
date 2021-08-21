@@ -59,16 +59,16 @@
     font-size: 24px;
   }
 
-  @media only screen and (max-width: 800px) {
-    .forum-card-title {
-        font-family: Teko;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 24px;
-        line-height: 34px;    
-        position: absolute;
-        padding-right: 5rem;
-        
-        color: #4DCD52;
+  @media only screen and (max-width: 768px) {
+    .titles {
+        margin-left: 5rem;       
       }
+
+    .forum-card-description {
+      font-size: 12px;
+    }
+
+    .img-col {
+      padding-right: 4.4rem;
+    }
 }

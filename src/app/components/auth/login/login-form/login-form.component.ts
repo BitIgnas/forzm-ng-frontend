@@ -1,3 +1,5 @@
+import { AuthenticationResponse } from 'src/app/models/authentication-response';
+import { LoginStateService } from 'src/app/services/login-state.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginPayload } from '../../../../models/login-payload';
@@ -18,6 +20,7 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private loginState: LoginStateService,
     private router: Router
   ) { }
 
@@ -44,8 +47,10 @@ export class LoginFormComponent implements OnInit {
     this.loginPayload.password = this.loginForm.controls['password'].value;
 
     this.authService.login(this.loginPayload).subscribe(
-      response => {
+      (authResponse) => {
         this.router.navigate(['/forum/all'])
+        this.loginState.setUserLoginStatus(true);
+        this.loginState.setUserUsername(this.authService.getUsernameFromLocalStorage());
       },(error: HttpErrorResponse) => {
         if(error.status == 403) {
           this.apiErrorMessage = 'Username or password is incorrect'

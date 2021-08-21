@@ -76,18 +76,15 @@ export class ForumSubforumPostComponent implements OnInit {
       postId: null
     }
 
+    this.getCommentCount();
     this.comments$ = this.refreshService.refreshNeeded.pipe(
-      tap(() => {
-        this.getCommentCount();
-      }),
       switchMap(_ =>
          this.commentService.findAllPostComments(
           this.utilsService.prepareUrlPostTitle(this.postTitle),
           this.postId
         )
-      )
-    )
-
+      ))
+    
   }
 
   checkIfForumExists(forumName: string) {
@@ -137,13 +134,12 @@ export class ForumSubforumPostComponent implements OnInit {
   }
 
   getCommentCount() {
-    this.commentService.findAllPostComments(this.postTitle, this.postId).subscribe(
+    this.commentService.findAllPostComments(this.utilsService.prepareUrlPostTitle(this.postTitle), this.postId).subscribe(
       (data) => {
         this.commentNumber = data.length;
       },
       tap(() => {
         this.refreshService.refresh();
-
       })
     )
   }

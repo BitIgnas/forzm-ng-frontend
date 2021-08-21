@@ -35,6 +35,3 @@ to Markdown converter
 
 
 
-
-
-

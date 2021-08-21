@@ -16,6 +16,10 @@ export class ForumStateService {
     this.createdForum.next(true);
   }
 
+  deleteCreate() {
+    this.createdForum.next(false);
+  }
+
   constructor() { }
 
 }

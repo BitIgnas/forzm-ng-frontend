@@ -24,7 +24,7 @@ export class LoginStateService {
   }
 
   getUserUsername$() {
-    this.userUsername.asObservable();
+    return this.userUsername.asObservable();
   }
 
   clearUserUsername() {
