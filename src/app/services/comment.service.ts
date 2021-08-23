@@ -38,4 +38,8 @@ export class CommentService {
     return this.httpClient.get<number>(`${this.baseUrl}/api/comment/user/${username}/comments/count`);
   }
 
+  getAllUserCommentsByUsername(username: string): Observable<CommentResponse[]> {
+    return this.httpClient.get<CommentResponse[]>(`${this.baseUrl}/api/comment/user/${username}/comments`)
+  }
+
 }

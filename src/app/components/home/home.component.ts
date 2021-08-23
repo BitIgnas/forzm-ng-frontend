@@ -1,3 +1,5 @@
+import { ToastrService } from 'ngx-toastr';
+import { LoginStateService } from './../../services/login-state.service';
 import { PostService } from './../../services/post.service';
 import { filter, map } from 'rxjs/operators';
 import { ForumService } from './../../services/forum.service';
@@ -15,10 +17,12 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private forumService: ForumService,
-    private postService: PostService
+    private postService: PostService,
+    private toastr: ToastrService,
+    private loginState: LoginStateService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.forums$ = this.forumService.getAllForums().pipe(
       map(forums => forums.filter(forum => forum.imageUrl != null))
     );

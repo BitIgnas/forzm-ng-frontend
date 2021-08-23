@@ -1,0 +1,7 @@
+<div class="bg">
+    <div class="row">
+        <div class="comments" *ngFor="let comment of (userComments$ | async).reverse().slice(0, 7)">
+            <app-comment-list-card [comment]="comment"></app-comment-list-card>
+        </div>
+    </div>
+</div>

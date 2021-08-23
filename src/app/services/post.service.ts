@@ -43,4 +43,12 @@ export class PostService {
   getPostCountByUsername(username: string): Observable<number> {
     return this.httpClient.get<number>(`${this.baseUrl}/api/post/user/${username}/posts/count`);
   }
+
+  getAllUserPostsByUsername(username: string): Observable<PostResponse[]> {
+    return this.httpClient.get<PostResponse[]>(`${this.baseUrl}/api/post/user/${username}/posts`);
+  }
+
+  getAllUserRecentPosts(username: string): Observable<PostResponse[]> {
+    return this.httpClient.get<PostResponse[]>(`${this.baseUrl}/api/post/user/${username}/posts/recent`);
+  }
 } 

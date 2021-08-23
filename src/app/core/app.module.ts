@@ -1,3 +1,9 @@
+import { FeedCommentListComponent } from './../shared/feed-list/feed-comment-list/feed-comment-list.component';
+import { FeedPostListComponent } from './../shared/feed-list/feed-post-list/feed-post-list.component';
+import { FeedComponent } from './../components/feed/feed.component';
+import { CommentListCardComponent } from './../shared/comment-list-card/comment-list-card.component';
+import { CommentListComponent } from './../shared/profile-list/comment-list/comment-list.component';
+import { PostListComponent } from './../shared/profile-list/post-list/post-list.component';
 import { ForumCreatedCardComponent } from './../shared/forum-created-card/forum-created-card.component';
 import { ProfileComponent } from './../components/profile/profile.component';
 import { ForumSearchCardComponent } from './../shared/forum-search-card/forum-search-card.component';
@@ -42,6 +48,7 @@ import { QuillModule } from 'ngx-quill';
 import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ForumListComponent } from '../shared/profile-list/forum-list/forum-list.component';
 
 
 @NgModule({
@@ -73,7 +80,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ForumSearchComponent,
     ForumSearchCardComponent,
     ProfileComponent,
-    ForumCreatedCardComponent
+    ForumCreatedCardComponent,
+    ForumListComponent,
+    PostListComponent,
+    CommentListComponent,
+    CommentListCardComponent,
+    FeedComponent,
+    FeedPostListComponent,
+    FeedCommentListComponent
   ],
   imports: [
     NgxPaginationModule,
@@ -85,10 +99,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RxReactiveFormsModule,
     QuillModule,
     NgxWebstorageModule.forRoot(),
-    ToastrModule.forRoot({
-      maxOpened: 1,
-      preventDuplicates: true,
-    }),
+    ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [

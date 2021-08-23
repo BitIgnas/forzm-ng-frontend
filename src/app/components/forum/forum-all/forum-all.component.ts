@@ -34,31 +34,13 @@ export class ForumAllComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subs.sink = this.loginStateService.getUserUsername$().subscribe(
-      (username: string) => {
-        this.username = username;
-        this.subs.sink = this.loginStateService.getUserLoginStatus$().subscribe(
-          (status: boolean) => {
-            if(status) {
-              this.toastr.success(`Welcome, ${this.username}`, 'Login Succesfull', {
-                timeOut: 3500,
-                tapToDismiss: true,
-              });
-              this.loginStateService.setUserLoginStatus(false);
-            }
-          }
-        )
-      }
-    )
-
     this.subs.sink = this.refreshService.getRefresh()
       .subscribe(() => {
         this.displayAllForums();
       }
     );
-
-    this.isUserLoggedIn();
     this.getForumNumberCount();
+    this.isUserLoggedIn();
     this.displayAllForums();
   }
 

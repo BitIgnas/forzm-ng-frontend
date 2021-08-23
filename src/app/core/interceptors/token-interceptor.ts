@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, throwError } from "rxjs";
-import { catchError, switchMap, filter, take } from "rxjs/operators";
+import { catchError, switchMap, filter, take, finalize } from "rxjs/operators";
 import { AuthenticationResponse } from "src/app/models/authentication-response";
 import { AuthService } from "src/app/services/auth.service";
 
@@ -14,12 +14,12 @@ export class TokenInterceptor implements HttpInterceptor {
 
     constructor(public authService: AuthService) { }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler):
-        Observable<HttpEvent<any>> {
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         if (req.url.indexOf('refresh') !== -1 || req.url.indexOf('login') !== -1) {
             return next.handle(req);
         }
+        
         const jwtToken = this.authService.getJwtToken();
 
         if (jwtToken) {
@@ -35,8 +35,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     }
 
-    private handleAuthErrors(req: HttpRequest<any>, next: HttpHandler)
-        : Observable<HttpEvent<any>> {
+    private handleAuthErrors(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (!this.isTokenRefreshing) {
             this.isTokenRefreshing = true;
             this.refreshTokenSubject.next(null);
@@ -46,8 +45,19 @@ export class TokenInterceptor implements HttpInterceptor {
                     this.isTokenRefreshing = false;
                     this.refreshTokenSubject.next(refreshTokenResponse.authenticationToken);
                     return next.handle(this.addToken(req,refreshTokenResponse.authenticationToken));
-                })
-            )
+                }),
+                catchError(err => {
+                    if (err instanceof HttpErrorResponse) {          
+                      if (err.status === 404) {
+                          this.authService.logout().subscribe();
+                      }
+
+                      return throwError(err);
+                    }
+                  }),
+                  finalize(() => {
+                        return next.handle(req);
+                  }))
         } else {
             return this.refreshTokenSubject.pipe(
                 filter(result => result !== null),

@@ -48,9 +48,8 @@ export class LoginFormComponent implements OnInit {
 
     this.authService.login(this.loginPayload).subscribe(
       (authResponse) => {
-        this.router.navigate(['/forum/all'])
+        this.router.navigate(['/home'])
         this.loginState.setUserLoginStatus(true);
-        this.loginState.setUserUsername(this.authService.getUsernameFromLocalStorage());
       },(error: HttpErrorResponse) => {
         if(error.status == 403) {
           this.apiErrorMessage = 'Username or password is incorrect'

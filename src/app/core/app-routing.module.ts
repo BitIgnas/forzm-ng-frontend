@@ -1,3 +1,9 @@
+import { FeedCommentListComponent } from './../shared/feed-list/feed-comment-list/feed-comment-list.component';
+import { FeedPostListComponent } from './../shared/feed-list/feed-post-list/feed-post-list.component';
+import { FeedComponent } from './../components/feed/feed.component';
+import { CommentListComponent } from './../shared/profile-list/comment-list/comment-list.component';
+import { PostListComponent } from './../shared/profile-list/post-list/post-list.component';
+import { ForumListComponent } from './../shared/profile-list/forum-list/forum-list.component';
 import { ProfileComponent } from './../components/profile/profile.component';
 import { ForumSearchComponent } from './../components/forum/forum-search/forum-search.component';
 import { CreatePostComponent } from './../components/post/create-post/create-post.component';
@@ -28,16 +34,24 @@ const routes: Routes = [
     { path: 'profile', component: RegisterProfileComponent, canActivate: [RegisterGuard]},
     { path: 'success', component: RegisterConfirmationComponent}
   ]},
-  { path: 'user/profile', component: ProfileComponent, canActivate: [LoginGuard]},
+  { path: 'user/profile', component: ProfileComponent, children: [
+    {path: 'forums', component: ForumListComponent},
+    {path: 'posts', component: PostListComponent},
+    {path: 'comments', component: CommentListComponent},
+    { path: 'user/profile', redirectTo: '/user/profile/forum', pathMatch: 'full'}
+  ]},
+  { path: 'user/feed', redirectTo: '/user/feed/posts', pathMatch: 'full'},
+  { path: 'user/feed', component: FeedComponent, children: [
+    {path: 'posts', component: FeedPostListComponent},
+    {path: 'comments', component: FeedCommentListComponent}
+  ]},
   { path: 'forum/all', component: ForumAllComponent },
   { path: 'forum/:forum-name/post/create', component: CreatePostComponent, canActivate: [LoginGuard]},
   { path: 'forum/create', component: ForumCreateFormComponent, canActivate: [LoginGuard]},
   { path: 'forum/search/:forum-name', component: ForumSearchComponent},
   { path: 'forum/:forum-name/sub-forums', component: ForumSubforumsComponent},
   { path: 'forum/:forum-name/sub-forum/:sub-forum', component: ForumSubforumComponent},
-  { path: 'forum/:forum-name/sub-forum/:sub-forum/:post-title/:post-id', component: ForumSubforumPostComponent},
-  { path: '**', redirectTo: 'page-not-found', pathMatch: 'full'},
-  { path: 'page-not-found', component: PageNotFoundComponent}
+  { path: 'forum/:forum-name/sub-forum/:sub-forum/:post-title/:post-id', component: ForumSubforumPostComponent}
 ];
 
 @NgModule({
