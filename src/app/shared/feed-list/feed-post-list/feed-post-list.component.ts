@@ -13,6 +13,7 @@ import { PostService } from 'src/app/services/post.service';
 export class FeedPostListComponent implements OnInit {
 
   userPosts$: Observable<PostResponse[]>;
+  userUsername: string;
 
   constructor(
     private authService: AuthService,
@@ -21,7 +22,7 @@ export class FeedPostListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userPosts$ = this.postService.getAllUserRecentPosts(this.authService.getUsernameFromLocalStorage());
-
+    this.userUsername = this.authService.getUsernameFromLocalStorage();
+    this.userPosts$ = this.postService.getAllUserRecentPosts(this.userUsername);
   }
 }

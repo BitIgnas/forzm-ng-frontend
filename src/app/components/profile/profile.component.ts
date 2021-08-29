@@ -1,3 +1,5 @@
+import { catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 import { CommentService } from './../../services/comment.service';
 import { PostService } from './../../services/post.service';
 import { SubSink } from 'subsink';
@@ -7,7 +9,7 @@ import { User } from './../../models/user';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ForumResponse } from 'src/app/models/forum-response';
-import { tap } from 'rxjs/operators';
+import { tap, retry, retryWhen } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',

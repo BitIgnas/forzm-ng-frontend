@@ -20,8 +20,6 @@ export class ForumListComponent implements OnInit {
   user: User;
   page: number = 1;
   forumCount: number;
-  postCount: number;
-  commentCount: number;
 
   constructor(
     private authService: AuthService,
@@ -43,12 +41,21 @@ export class ForumListComponent implements OnInit {
       (authUser: User) => {
         this.user = authUser;
         this.getUserForums();
+        this.getUserForumCount();
       }
     )
   }
 
   getUserForums() {
     this.userForums$ = this.forumService.findAllUserForums(this.user.username);
+  }
+
+  getUserForumCount() {
+    this.subs.sink = this.forumService.findAllUserForums(this.user.username).subscribe(
+      (forums) => {
+        this.forumCount = forums.length;
+      }
+    )
   }
 
 }

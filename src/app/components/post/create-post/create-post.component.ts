@@ -78,6 +78,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
       this.postPayload.contentMarkup = this.postForm.controls['textEditor'].value;
       this.postPayload.postType = this.postForm.controls['postType'].value;
       this.postPayload.forumName = this.forum.name;
+      console.log(this.postPayload)
 
       this.postType = this.postForm.controls['postType'].value;
       this.postService.addPost(this.postPayload).subscribe(
@@ -85,9 +86,11 @@ export class CreatePostComponent implements OnInit, OnDestroy {
           this.router.navigate(['/forum/', this.forum.name,'sub-forum', this.postType.toLowerCase()])
         }
       );
-    } else {
-      this.errorMessage = "Post type is required"
-    }
+    } else if(this.postForm.controls['postType'].value == "" && this.postForm.controls['postType'].value == "") {
+        this.errorMessage = "Post title and post type is required";
+    } else if(this.postForm.controls['postType'].value == "") {
+        this.errorMessage = "Post type is required";
+    } 
 
   }
 

@@ -1,18 +1,18 @@
-import { UtilsService } from './../../services/utils.service';
+import { UtilsService } from '../../../services/utils.service';
 import { switchMap, tap } from 'rxjs/operators';
 import { take, shareReplay } from 'rxjs/operators';
-import { RefreshService } from './../../services/refresh.service';
-import { CommentPayload } from './../../models/comment-payload';
+import { RefreshService } from '../../../services/refresh.service';
+import { CommentPayload } from '../../../models/comment-payload';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from './../../models/user';
+import { User } from '../../../models/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CommentService } from './../../services/comment.service';
+import { CommentService } from '../../../services/comment.service';
 import { Observable } from 'rxjs';
-import { CommentResponse } from './../../models/comment-response';
+import { CommentResponse } from '../../../models/comment-response';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ForumResponse } from 'src/app/models/forum-response';
-import { PostResponse } from './../../models/post-response';
-import { PostService } from './../../services/post.service';
+import { PostResponse } from '../../../models/post-response';
+import { PostService } from '../../../services/post.service';
 import { SubSink } from 'subsink';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -83,7 +83,7 @@ export class ForumSubforumPostComponent implements OnInit {
           this.utilsService.prepareUrlPostTitle(this.postTitle),
           this.postId
         )
-      ))
+      ));
     
   }
 
@@ -101,7 +101,7 @@ export class ForumSubforumPostComponent implements OnInit {
   }
 
   validatePost(postTitle: string, postId: number) {
-    this.postService.findByPostTitleAndId(this.utilsService.prepareUrlPostTitle(this.postTitle), this.postId).subscribe(
+    this.subs.sink = this.postService.findByPostTitleAndId(this.utilsService.prepareUrlPostTitle(this.postTitle), this.postId).subscribe(
       (post: PostResponse) => {
         this.post = post;
       },
@@ -114,7 +114,7 @@ export class ForumSubforumPostComponent implements OnInit {
   }
   
   getCurrentUser() {
-    this.authService.getCurrentUserFromAuthToken().subscribe(
+    this.subs.sink = this.authService.getCurrentUserFromAuthToken().subscribe(
       (user: User) => {
           this.currentUser = user;
           this.isUserLoggedIn = true;
@@ -134,7 +134,7 @@ export class ForumSubforumPostComponent implements OnInit {
   }
 
   getCommentCount() {
-    this.commentService.findAllPostComments(this.utilsService.prepareUrlPostTitle(this.postTitle), this.postId).subscribe(
+    this.subs.sink = this.commentService.findAllPostComments(this.utilsService.prepareUrlPostTitle(this.postTitle), this.postId).subscribe(
       (data) => {
         this.commentNumber = data.length;
       },
@@ -149,12 +149,17 @@ export class ForumSubforumPostComponent implements OnInit {
     this.commentPayload.postTitle = this.postTitle;
     this.commentPayload.postId = this.postId;
 
-    this.commentService.addComment(this.commentPayload).pipe(
+    this.subs.sink = this.commentService.addComment(this.commentPayload).pipe(
       tap(() => {
         this.commentForm.reset();
         this.displayForm = false;
+        this.getCommentCount();
+        this.refreshService.refresh();
+        this.page = 1;
       })
-    ).subscribe(); 
+    ).subscribe(
+
+    ); 
   }
 
 }

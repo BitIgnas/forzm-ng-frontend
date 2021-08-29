@@ -1,10 +1,10 @@
-<div class="row d-flex justify-content-center mt-3 mb-1">
+<div class="row d-flex justify-content-center mt-2 mb-1">
     <div class="col-md-10 ps-3 pe-5 forum-card"
         [routerLink]="['/forum/', post.forumForumName, 'sub-forum', post.postType.toLowerCase(), post.title, post.id]">
         <div class="row">
             <div class="col-md-1 col-2  ms-1 mt-4"><img src="../../../assets/img/subforum-icon.png">
             </div>
-            <div class="col-md-9 col-8 pt-4 pe-2">
+            <div class="col-md-9 title-group col-8 pt-4 pe-2">
                 <div class="row p-x-5">
                     <div class="col-md-12">
                         <a [routerLink]="['/forum/', post.forumForumName, 'sub-forum', post.postType.toLowerCase(), post.title, post.id]"><span class="forum-card-title pe-1">{{

@@ -16,8 +16,8 @@
                             <div class="col-10 ps-lg-3 d-flex justify-content-start">
                                 <span class="card-username pt-2 ps-lg-5">{{ post?.userUsername }}</span>
                             </div>
-                            <div class="col-10 d-flex justify-content-start">
-                                <span class="card-username pt-2"><img [src]="post?.userProfileImageUrl" onerror="this.src='../../../assets/img/user-stock.png'" class="img"></span>
+                            <div class="col-md-10 ">
+                                <span class="card-username pt-2"><img [src]="post?.userProfileImageUrl" onerror="this.src='../../../assets/img/user-stock.png'" class="img user-post-img"></span>
                             </div>
                             <div class="col-10 d-flex justify-content-start">
                                 <span class="card-date pt-5 ps-lg-5">Date Joined: {{ post?.userDateCreated |  date: 'MMM  y'  }}</span>

@@ -114,3 +114,21 @@
   .submit:active {
     background-color: #22EF6A;
   }
+
+  @media only screen and (max-width: 420px) {
+
+    .submit {
+      background-color: #52BB77;
+      border-radius: 0 12px 12px 0 ;
+      border: 0;
+      box-sizing: border-box;
+      color: #eee;
+      cursor: pointer;
+      height: 50px;
+      text-align: center;
+      width: 100%;
+      font-family: "Teko", sans-serif;
+      font-size: 22px;
+      width: 100%;
+    }
+  }

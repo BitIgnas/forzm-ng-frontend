@@ -161,4 +161,13 @@ section {
     color: #fff;
   }
 
+  @media only screen and (max-width: 420px) {
+    section {
+      min-height: 900px;
+      width: 100%;
+      height: auto;
+      position: relative;
+    }  
+  }
+
   

@@ -5,21 +5,31 @@
         </div>
     </div>
     
-    <div class="col-md-10 user-forums mt-1 mb-2">
-        <div class="forums" *ngFor="let forum of (userForums$ | async)| paginate: { id: 'forum_pagination',
+    <div class="col-md-10 user-forums mt-1 mb-2" *ngIf="(userForums$ | async)?.length != 0">
+        <div class="forums" *ngFor="let forum of (userForums$ | async) | paginate: { id: 'forum_pagination',
                                                                                             itemsPerPage: 5,
                                                                                             currentPage: page,
                                                                                             totalItems: forumCount }">
             <div class="row">
                 <app-forum-card [forum]="forum"></app-forum-card>                        
             </div>
-            </div>
-        </div>    
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10 d-flex justify-content-center text-center forum-pagination mb-2">
+        </div>
+    </div>    
+        <div class="row d-flex justify-content-center" *ngIf="(userForums$ | async)?.length != 0">
+            <div class="col-md-10 d-flex justify-content-center text-center forum-pagination mb-2" >
                 <pagination-controls class="forum_pagination" id="forum_pagination" [maxSize]="forumCount"
                     (pageChange)="page = $event" directionLinks="true">
                 </pagination-controls>
             </div>
         </div>  
+
+        <div class="empty-list mt-1" *ngIf="(userForums$ | async)?.length == 0">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 d-flex justify-content-center mt-2 mb-2">
+                    <span class="empty-text">Looks like forum list is empty!</span>
+                </div>
+            </div>
+        </div>
 </div>
+
+

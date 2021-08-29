@@ -50,8 +50,9 @@ export class LoginFormComponent implements OnInit {
       (authResponse) => {
         this.router.navigate(['/home'])
         this.loginState.setUserLoginStatus(true);
-      },(error: HttpErrorResponse) => {
-        if(error.status == 403) {
+      },
+      (error: HttpErrorResponse) => {
+        if(error.status == 401) {
           this.apiErrorMessage = 'Username or password is incorrect'
         }
       })

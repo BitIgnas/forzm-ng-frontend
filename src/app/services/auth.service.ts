@@ -32,7 +32,8 @@ export class AuthService {
       .pipe(
         map(data => {
           return data.status 
-        }));
+        })
+      );
   }
 
   login(loginPayload: LoginPayload): Observable<boolean> {
@@ -52,7 +53,7 @@ export class AuthService {
 
   refresAuthenticationToken(): Observable<AuthenticationResponse> {
     return this.httpClient.post<AuthenticationResponse>(`${this.baseUrl}/api/auth/token/refresh`, this.getRefreshToken()).pipe(
-      (tap(response => {
+      (tap((response: AuthenticationResponse) => {
         this.localStorageService.clear('authenticationToken');
         this.localStorageService.clear('expiresAt');
 

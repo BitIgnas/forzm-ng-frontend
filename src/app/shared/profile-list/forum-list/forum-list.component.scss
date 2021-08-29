@@ -96,6 +96,21 @@
     background-color: #322B4E;
   }
 
+  .empty-list {
+    background-color: #19202F;
+    width: 1067px;
+  }
+
+  .empty-text {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 46px;
+    color: #fff;
+  }
+
+
   @media only screen and (max-width: 768px) { 
     .left-col {
         margin-left: 3.9rem;

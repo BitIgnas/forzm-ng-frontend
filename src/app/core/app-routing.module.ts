@@ -16,13 +16,13 @@ import { RegisterConfirmationComponent } from '../components/auth/register/regis
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { RegisterComponent } from '../components/auth/register/register-form/register.component';
-import { HomeComponent } from '../components/home/home.component';
 import { RegisterGuard } from './guards/register-guard.guard';
 import { RegisterProfileComponent } from '../components/auth/register/register-profile/register-profile.component';
 import { LoginFormComponent } from '../components/auth/login/login-form/login-form.component';
 import { ForumSubforumComponent } from '../components/forum/forum-subforum/forum-subforum.component';
 import { LoginGuard } from './guards/login-guard.guard';
-import { ForumSubforumPostComponent } from '../components/forum-subforum-post/forum-subforum-post.component';
+import { ForumSubforumPostComponent } from '../components/post/forum-subforum-post/forum-subforum-post.component';
+import { HomeComponent } from '../components/home/home.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent},
@@ -51,7 +51,9 @@ const routes: Routes = [
   { path: 'forum/search/:forum-name', component: ForumSearchComponent},
   { path: 'forum/:forum-name/sub-forums', component: ForumSubforumsComponent},
   { path: 'forum/:forum-name/sub-forum/:sub-forum', component: ForumSubforumComponent},
-  { path: 'forum/:forum-name/sub-forum/:sub-forum/:post-title/:post-id', component: ForumSubforumPostComponent}
+  { path: 'forum/:forum-name/sub-forum/:sub-forum/:post-title/:post-id', component: ForumSubforumPostComponent},
+  { path: '**', redirectTo: '/page-not-found', pathMatch: 'full'},
+  { path: 'page-not-found', component: PageNotFoundComponent}
 ];
 
 @NgModule({

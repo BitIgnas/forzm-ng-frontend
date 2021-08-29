@@ -1,3 +1,8 @@
+.navbar {
+    width: 100%;
+}
+
+
 .nav-item {  
     font-family: Orbitron !important;
     font-style: normal !important;
@@ -8,7 +13,7 @@
 
 .navbar-nav {
     margin-top: 2rem;
-    margin-left: 10rem;
+    margin-left: 6rem;
 }
 
 .img {
@@ -36,5 +41,71 @@
     background-color: rgb(250, 248, 248);
     
 }
+
+@media only screen and (max-width: 1530px) {
+    .navbar-nav {
+        margin-left: 0.5rem;
+        margin-top: 2.2rem;
+    }
+
+    .nav-item {  
+        font-family: Orbitron !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-size: 24px !important;
+        line-height: 38px !important;
+    }
+  }
+
+@media only screen and (max-width: 1300px) {
+    .navbar-nav {
+        margin-left: 0rem;
+        margin-top: 2.2rem;
+    }
+
+    .nav-item {  
+        font-family: Orbitron !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-size: 20px !important;
+        line-height: 38px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .navbar-nav {
+        margin-top: 3.8rem;
+    }
+
+    .nav-item {  
+        font-family: Orbitron !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-size: 24px !important;
+        line-height: 38px !important;
+    }
+    
+  }
+
+  @media only screen and (max-width: 1110px) {
+    .navbar-nav {
+        margin-top: 3rem;
+    }
+
+    .nav-item {  
+        font-family: Orbitron !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-size: 24px !important;
+        line-height: 38px !important;
+    }
+    
+  }
+
+  @media only screen and (max-width: 420px) {
+    img {
+        width: 280px;
+    }
+  }
 
 

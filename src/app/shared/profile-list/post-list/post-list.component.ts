@@ -42,6 +42,7 @@ export class PostListComponent implements OnInit {
       (authUser: User) => {
         this.user = authUser;
         this.getUserPosts();
+        this.getUserPostCount();
       }
     )
   }
@@ -50,4 +51,11 @@ export class PostListComponent implements OnInit {
     this.userPosts$ = this.postService.getAllUserPostsByUsername(this.user.username);
   }
 
+  getUserPostCount() {
+    this.subs.sink = this.postService.getPostCountByUsername(this.user.username).subscribe(
+      (posts) => {
+        this.postCount = posts;
+      }
+    )
+  }
 }

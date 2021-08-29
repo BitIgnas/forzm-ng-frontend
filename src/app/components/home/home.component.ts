@@ -1,11 +1,11 @@
-import { ToastrService } from 'ngx-toastr';
-import { LoginStateService } from './../../services/login-state.service';
-import { PostService } from './../../services/post.service';
-import { filter, map } from 'rxjs/operators';
-import { ForumService } from './../../services/forum.service';
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ForumResponse } from 'src/app/models/forum-response';
+import { ForumService } from 'src/app/services/forum.service';
+import { LoginStateService } from 'src/app/services/login-state.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +13,7 @@ import { ForumResponse } from 'src/app/models/forum-response';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   forums$: Observable<ForumResponse[]>;
 
   constructor(

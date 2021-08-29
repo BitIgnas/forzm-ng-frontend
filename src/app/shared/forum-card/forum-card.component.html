@@ -10,12 +10,12 @@
                             <a [routerLink]="['/forum', forum.name, 'sub-forums']"><span class="forum-card-title pe-1">{{ forum.name }} -
                                     Forum</span></a>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 card-title-description">
                             <div class="row">
-                                <div class="col-9 pt-4">
+                                <div class="col-md-9 col-sm-12 pt-4">
                                     <span class="forum-card-description"> {{ forum.description.slice(0,68) }}</span>
                                 </div>
-                                <div class="col-3 ps-5 ps-5 pb-5 post-col d-flex justify-content-end d-inline-block">
+                                <div class="col-3 ps-5 ps-5 pb-5 post-col d-flex justify-content-end d-inline-block ">
                                     <span class="ps-5 post-count">&nbsp;&nbsp;&nbsp; {{ forumPostCount }} <br /> <span
                                             class="post-heading">posts
                                         </span></span>

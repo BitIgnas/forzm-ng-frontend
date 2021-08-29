@@ -11,9 +11,14 @@ import { PostResponse } from 'src/app/models/post-response';
   styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent implements OnInit {
-  
+  username: string;
+
+  constructor(
+    private authService: AuthService
+  ) { }
+
   ngOnInit(): void {
-    
+    this.username = this.authService.getUsernameFromLocalStorage();
   }
   
 

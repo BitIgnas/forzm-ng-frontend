@@ -41,7 +41,7 @@ export class ForumSearchComponent implements OnInit {
   displayAllForums() {
       this.activatedRouter.params.subscribe(
         (params) => {
-          if(this.activatedRouter.snapshot.params['forum-name'] === "all") {
+          if(this.activatedRouter.snapshot.params['forum-name'] === "all" || "" ) {
             this.forums$ = this.forumService.getAllForums()
               .pipe(
                 tap(() => {

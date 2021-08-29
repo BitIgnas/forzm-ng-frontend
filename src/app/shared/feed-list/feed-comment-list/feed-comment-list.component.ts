@@ -13,6 +13,7 @@ import { PostService } from 'src/app/services/post.service';
 export class FeedCommentListComponent implements OnInit {
 
   userComments$: Observable<CommentResponse[]>;
+  userUsername: string;
 
   constructor(
     private authService: AuthService,
@@ -20,7 +21,8 @@ export class FeedCommentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userComments$ = this.commentService.getAllUserCommentsByUsername(this.authService.getUsernameFromLocalStorage());
+    this.userUsername = this.authService.getUsernameFromLocalStorage();
+    this.userComments$ = this.commentService.getAllUserCommentsByUsername(this.userUsername);
 
   }
 

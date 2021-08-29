@@ -26,6 +26,7 @@
 }
 
 a {
+  color: #fff;
   text-decoration: none;
 }
 
@@ -76,7 +77,7 @@ a {
   }
 
   .count-text {
-    color: #52BB77;
+    color: #2fd669;
   }
 
   ::ng-deep ul > li:not(.active) {
@@ -97,7 +98,43 @@ a {
   }
 
   .stat-btn {
-    background-color: #322B4E;
+    // background-color: #322B4E;
+  }
+
+  .btn-list {
+      margin-top: 0.3rem;
+      background-color: #322B4E;
+      border-radius: 18px;
+      border: 0;
+      box-sizing: border-box;
+      color: #eee;
+      cursor: pointer;
+      height: 35px;
+      text-align: center;
+      width: 100%;
+      width: auto;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      font-family: "Teko", sans-serif;
+      font-size: 26px;
+  }
+
+  .btn-list-bg {
+    margin-top: 0.3rem;
+      background-color: #322B4E;
+      border-radius: 18px;
+      border: 0;
+      box-sizing: border-box;
+      color: #eee;
+      cursor: pointer;
+      height: 35px;
+      text-align: center;
+      width: 100%;
+      width: auto;
+      padding-right: 0.8rem;
+      padding-left: 0.8rem;
+      font-family: "Teko", sans-serif;
+      font-size: 26px;
   }
 
   @media only screen and (max-width: 768px) { 

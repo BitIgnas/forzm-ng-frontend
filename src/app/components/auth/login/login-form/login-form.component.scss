@@ -1,7 +1,14 @@
 
+section {
+  width: 100%;
+  height: auto;
+}
+
 .login-form {
     background-color: #322B4E;
     min-height: 835px;
+    height: auto;
+    
 }
 
 .login-body {
@@ -195,4 +202,13 @@
     padding-left: 9rem;
     position: absolute;
     margin-top: 18px;
+  }
+
+  @media only screen and (max-width: 414px) {
+    .login-form {
+      background-color: #322B4E;
+      min-height: 1000px;
+      height: auto;
+      
+    }
   }

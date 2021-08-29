@@ -75,6 +75,20 @@
     color: #52BB77;
   }
 
+  .empty-list {
+    background-color: #19202F;
+    width: 1067px;
+  }
+
+  .empty-text {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 46px;
+    color: #fff;
+  }
+
   ::ng-deep ul > li:not(.active) {
     font-family: "Teko", sans-serif;
     font-size: 20px;

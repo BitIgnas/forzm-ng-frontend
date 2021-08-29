@@ -5,6 +5,7 @@ import { User } from './../../models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -33,7 +34,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   checkIfUserLoggedIn() {
     if(this.authService.getJwtToken() != null && this.authService.getRefreshToken() != null) {
       this.isLoggedIn = true;
-      this.subs.sink = this.authService.getCurrentUserFromAuthToken().subscribe(
+      this.subs.sink = this.authService.getCurrentUserFromAuthToken().pipe(
+        retry(3)
+      ).subscribe(
         (authUser: User) => {
           this.user = authUser;
         }
@@ -47,5 +50,4 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subs.sink = this.authService.logout().subscribe();
     this.isLoggedIn = false;
   }
-
 }

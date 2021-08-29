@@ -1,3 +1,5 @@
+import { ForumCardComponent } from './../shared/forum-card/forum-card.component';
+import { RouterModule } from '@angular/router';
 import { FeedCommentListComponent } from './../shared/feed-list/feed-comment-list/feed-comment-list.component';
 import { FeedPostListComponent } from './../shared/feed-list/feed-post-list/feed-post-list.component';
 import { FeedComponent } from './../components/feed/feed.component';
@@ -38,12 +40,11 @@ import { RegisterProfileComponent } from '../components/auth/register/register-p
 import { LoginFormComponent } from '../components/auth/login/login-form/login-form.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
-import { ForumCardComponent } from '../shared/forum-card/forum-card.component';
 import { ForumSubforumComponent } from '../components/forum/forum-subforum/forum-subforum.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { LoginGuard } from './guards/login-guard.guard';
-import { ForumSubforumPostComponent } from '../components/forum-subforum-post/forum-subforum-post.component';
+import { ForumSubforumPostComponent } from '../components/post/forum-subforum-post/forum-subforum-post.component';
 import { QuillModule } from 'ngx-quill';
 import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
 import { ToastrModule } from 'ngx-toastr';
@@ -100,7 +101,7 @@ import { ForumListComponent } from '../shared/profile-list/forum-list/forum-list
     QuillModule,
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     RegisterGuard, 

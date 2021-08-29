@@ -46,10 +46,12 @@
             </div>
 
             <div class="col-md-10 created-stats mt-1">
-                <div class="row ps-4">
-                    <div class="col-md-2 me-3 stat-btn d-flex justify-content-center"><a [routerLink]="['/user/profile/forums']"><span class="start-heading mt-1">Forums: <span class="count-text">{{ forumCount }}</span></span></a></div>
-                    <div class="col-md-2 me-3 stat-btn d-flex justify-content-center"><a [routerLink]="['/user/profile/posts']"><span class="start-heading mt-1">Posts: <span class="count-text">{{ postCount }}</span></span></a></div>
-                    <div class="col-md-2 me-3 stat-btn d-flex justify-content-center"><a [routerLink]="['/user/profile/comments']"><span class="start-heading mt-1">Comments: <span class="count-text">{{ commentCount }}</span></span></a></div>
+                <div class="row ps-4 pb-2">
+                    <div class="col-md-12">
+                        <button class="btn-list"><a [routerLink]="['/user/profile/forums']">Forums: <span class="count-text">{{ forumCount }}</span></a></button>
+                        <button class="btn-list ms-3"><a [routerLink]="['/user/profile/posts']">Posts: <span class="count-text">{{ postCount }}</span></a></button>
+                        <button class="btn-list-bg ms-3"><a [routerLink]="['/user/profile/comments']">Comments: <span class="count-text">{{ commentCount }}</span></a></button>
+                    </div>
                 </div>
             </div>
                 <div class="row d-flex justify-content-center">

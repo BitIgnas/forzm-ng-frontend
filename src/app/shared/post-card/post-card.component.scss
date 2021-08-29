@@ -47,3 +47,19 @@
     font-size: 20px;
     font-family: Teko;
   }
+
+  @media only screen and (max-width: 420px) {
+    .forum-card-date {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #FFFFFF;
+    }
+
+    .title-group {
+      margin-left: 0.5rem;
+    }
+  }

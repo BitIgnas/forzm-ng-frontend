@@ -24,6 +24,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-12 d-flex justify-content-center" *ngIf="(userPosts$ | async).length == 0">
+            <span class="empty-text">Looks like post feed is empty!</span>
+        </div>
     </div>
 </div>
 

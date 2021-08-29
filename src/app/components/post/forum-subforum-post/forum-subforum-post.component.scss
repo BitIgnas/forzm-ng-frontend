@@ -304,6 +304,15 @@ section {
   color: #fff;
 }
 
+@media only screen and (max-width: 420px) {
+    .img {
+      width: 50px;
+      height: 50px;
+      border-radius: 101px;
+
+    }
+}
+
 
 
   
