@@ -137,6 +137,23 @@ a {
       font-size: 26px;
   }
 
+  .btn-list-avatar {
+    background-color: #322B4E;
+      border-radius: 18px;
+      border: 0;
+      box-sizing: border-box;
+      color: #eee;
+      cursor: pointer;
+      height: 35px;
+      text-align: center;
+      width: 100%;
+      width: auto;
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+      font-family: "Teko", sans-serif;
+      font-size: 18px;
+  }
+
   @media only screen and (max-width: 768px) { 
     .left-col {
         margin-left: 3.9rem;

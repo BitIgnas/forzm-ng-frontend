@@ -9,6 +9,11 @@
                 <div class="row">
                     <div class="col-2 pt-4">
                         <img class="user-img" [src]="user?.profileImageUrl" onerror="this.src='../../../assets/img/user-stock.png'">
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center ms-1 mt-3">
+                                <button class="btn-list-avatar" (click)="displayAvatarForm()"><a>Change Avatar</a></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-4 pt-4 left-col">
                         <div class="row d-flex justify-content-start">
@@ -44,6 +49,8 @@
 
                 </div>
             </div>
+  
+            <app-profile-change-avatar [username]="user?.username" *ngIf="displayForm"></app-profile-change-avatar>
 
             <div class="col-md-10 created-stats mt-1">
                 <div class="row ps-4 pb-2">

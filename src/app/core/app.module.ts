@@ -50,6 +50,7 @@ import { HtmlToTextPipe } from './pipes/html-to-text.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForumListComponent } from '../shared/profile-list/forum-list/forum-list.component';
+import { ProfileChangeAvatarComponent } from '../shared/profile-change-avatar/profile-change-avatar.component';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { ForumListComponent } from '../shared/profile-list/forum-list/forum-list
     CommentListCardComponent,
     FeedComponent,
     FeedPostListComponent,
-    FeedCommentListComponent
+    FeedCommentListComponent,
+    ProfileChangeAvatarComponent
   ],
   imports: [
     NgxPaginationModule,

@@ -1,0 +1,155 @@
+.top-card {
+    background: #061022;
+    height: 50px;
+    width: 1067px;
+}
+
+.main-card {
+    background: #061022;
+    height: auto;
+    width: 1067px;
+}
+
+.main-title {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 46px;
+    color: #FFFFFF;
+}
+
+.img-container {
+    width: 520px;
+    height: 160px;
+    padding: 1.2rem;
+    text-align: center;
+    border: dashed 1px #979797;
+    background-color: #3E4854;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 18px;
+  
+    input {
+      opacity: 0;
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  
+    label {
+      color: white;
+      width: 130px;
+      height: 44px;
+      border-radius: 21.5px;
+      background-color: #003479;
+      padding: 8px 16px;
+      font-size: 15px;
+    }
+  
+    #fileDropRef:hover {
+        background-color: red;
+    }
+  
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #38424c;
+    }
+  }
+
+  .files-list {
+    margin-top: 1.5rem;
+  
+    .single-file {
+      width: 520px;
+      display: flex;
+      align-items: center;
+      border: dashed 1px #fff;
+      margin-bottom: 0rem;
+  
+      img.delete {
+        margin-left: 0.5rem;
+        cursor: pointer;
+        align-self: flex-end;
+      }
+  
+  
+      display: flex;
+      flex-grow: 1;
+  
+      .name {
+        font-size: 20px;
+        font-weight: 500;
+        color: #fff;
+        margin: 0;
+        font-family: "Teko", sans-serif;
+  
+      }
+  
+      .size {
+        font-size: 16px;
+        font-weight: 500;
+        color: #a4a4a4;
+        margin: 0;
+        margin-bottom: 0.25rem;
+        font-family: "Teko", sans-serif;
+      }
+  
+      .info {
+        width: 100%;
+        font-family: "Teko", sans-serif;
+      }
+    }
+  }
+
+  .btn-submit {
+    background-color: #52BB77;
+    border-radius: 18px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    height: 50px;
+    margin-top: 18px;
+    // outline: 0;
+    text-align: center;
+    width: 100%;
+    width: 15.6rem;
+    font-family: "Teko", sans-serif;
+    font-size: 36px;
+  }
+  
+  .btn-submit:active {
+    background-color: #22EF6A;
+  }
+
+  .btn-cancel {
+    background-color: #F16055;
+    border-radius: 18px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    height: 50px;
+    margin-top: 18px;
+    // outline: 0;
+    text-align: center;
+    width: 100%;
+    width: 15.6rem;
+    font-family: "Teko", sans-serif;
+    font-size: 36px;
+  }
+  
+  .btn-cancel:active {
+    background-color: #f32718;
+  }
+
+  .error-heading {
+    font-family: "Teko", sans-serif;
+    font-size: 20px;
+    color: #DD5347
+  }

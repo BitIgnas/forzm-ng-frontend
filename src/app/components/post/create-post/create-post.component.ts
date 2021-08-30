@@ -78,8 +78,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
       this.postPayload.contentMarkup = this.postForm.controls['textEditor'].value;
       this.postPayload.postType = this.postForm.controls['postType'].value;
       this.postPayload.forumName = this.forum.name;
-      console.log(this.postPayload)
-
+ 
       this.postType = this.postForm.controls['postType'].value;
       this.postService.addPost(this.postPayload).subscribe(
         (res) => {

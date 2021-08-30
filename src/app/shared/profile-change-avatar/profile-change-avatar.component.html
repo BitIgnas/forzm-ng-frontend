@@ -1,0 +1,57 @@
+
+<div class="row d-flex justify-content-center mt-2">
+    <div class="col-md-12 top-card d-flex justify-content-center">
+        <div class="col-md-6">
+            <span class="main-title">Change Avatar:</span>
+        </div>
+    </div>
+        <div class="col-md-12 main-card pb-3">
+            <form [formGroup]="avatarPhotoForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="img-container" appDnd (fileDropped)="onFileDropped($event)">
+                <input [writeFile]="true" formControlName="profilePhoto" type="file" #fileDropRef
+                    id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+                <h3 style="color: aliceblue;">Drag and drop file here</h3>
+                <h3 style="color: aliceblue;">or</h3>
+                <label for=" fileDropRef">Browse for file</label>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div class="files-list">
+                        <div class="single-file" *ngFor="let file of filesList | slice:0:1; let i = index">
+                            <div class="info">
+                                <h4 class="name">
+                                    {{ file?.name }}
+                                </h4>
+                                <p class="size">
+                                    {{ formatBytes(file?.size) }}
+                                </p>
+                                <app-progress [progress]="file?.progress"></app-progress>
+                            </div>
+                            <img src="../../../assets/img/ic-delete-file 1.svg" class="delete" width="20px"
+                                alt="file" (click)="deleteFile(i)">
+                        </div>
+                </div>
+            </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8 error-heading">
+                        <div class="col-md- error-heading">
+                          
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <span class="error-heading"> {{ errorMessage }} </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 d-flex justify-content-end">
+                    <button class="btn-submit">Change</button>
+                </div>
+                <div class="col-md-6 d-flex justify-content-lg-start">
+                    <button class="btn-cancel" (click)="cancelForm()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+   
+    </div>

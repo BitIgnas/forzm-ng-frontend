@@ -1,5 +1,7 @@
+import { tap } from 'rxjs/operators';
+import { RefreshService } from './refresh.service';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -8,7 +10,10 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiStorageService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private refreshService: RefreshService
+    ) { }
 
   private baseUrl = environment.baseUrl;
 
@@ -29,6 +34,17 @@ export class ApiStorageService {
     const xhr = new XMLHttpRequest();
 
     xhr.open('POST', `${this.baseUrl}/api/storage/forum/${forumName}/upload`, true);
+    xhr.send(formData);
+    this.refreshService.refresh();
+  }
+
+  updateUserProfile(file: File, username: string) {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', `${this.baseUrl}/api/storage/user/${username}/profile/update`, true);
     xhr.send(formData);
   }
 }

@@ -1,3 +1,4 @@
+import { RefreshService } from './../../services/refresh.service';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommentService } from './../../services/comment.service';
@@ -18,6 +19,7 @@ import { tap, retry, retryWhen } from 'rxjs/operators';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
+  displayForm: boolean = false;
 
   userForums$: Observable<ForumResponse[]>;
   user: User;
@@ -30,7 +32,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private forumService: ForumService,
     private postService: PostService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private refreshService: RefreshService
   ) { }
 
   ngOnInit(): void {
@@ -79,6 +82,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.commentCount = commentCount;
       } 
     )
+  }
+
+  displayAvatarForm() {
+    if(!this.displayForm) {
+      this.displayForm = true;
+    } else if(this.displayForm) {
+      this.displayForm = false;
+    }
   }
 
 }
