@@ -36,13 +36,17 @@ export class ForumService {
       );
   }
 
-  deleteForum(forum: ForumPayload): Observable<any> {
-    return this.httpClient.delete<any>(`${this.baseUrl}/api/forum/delete`, { body: forum })
+  deleteForum(forumName: string): Observable<any> {
+    return this.httpClient.delete<any>(`${this.baseUrl}/api/forum/${forumName}/delete`)
       .pipe(
         tap(() => {
           this.refreshService.refresh();
         })
       );
+  }
+
+  checkIfForumIsUsers(forumName: string, username: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.baseUrl}/api/forum/${forumName}/user/${username}`);
   }
 
   findForumByName(name: string): Observable<ForumResponse> {

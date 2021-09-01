@@ -108,7 +108,7 @@ export class ProfileChangeAvatarComponent implements OnInit {
 
   onSubmit() {
     if(this.avatarPhotoForm.controls['profilePhoto'].value) {
-      this.storageService.uploadUserProfile(this.file, this.username);
+      this.storageService.updateUserProfile(this.file, this.username);
       window.location.reload();
     } else {
       this.errorMessage = "Profile avatar cannot be empty";

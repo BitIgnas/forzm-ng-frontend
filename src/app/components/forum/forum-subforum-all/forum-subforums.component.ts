@@ -1,9 +1,12 @@
+import { DeleteStateService } from './../../../services/delete-state.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import { ForumResponse } from './../../../models/forum-response';
 import { SubSink } from 'subsink';
 import { ForumService } from '../../../services/forum.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-forum-subforums',
@@ -15,11 +18,13 @@ export class ForumSubforumsComponent implements OnInit, OnDestroy {
   forumName: string;
   forum: ForumResponse;
   isUserLoggedIn: boolean;
+  isUserForum: boolean;
 
   constructor(
     private activatedRouter: ActivatedRoute,
     private authService: AuthService,
     private forumService: ForumService,
+    private deleteState: DeleteStateService,
     private router: Router
   ) { }
 
@@ -32,6 +37,7 @@ export class ForumSubforumsComponent implements OnInit, OnDestroy {
 
     this.checkIfUserLoggedIn();
     this.getForumSubForums();
+    this.checkIfForumIsUsers();
   }
 
   ngOnDestroy(): void {
@@ -47,6 +53,21 @@ export class ForumSubforumsComponent implements OnInit, OnDestroy {
           this.router.navigate(['**']);
         }
     );
+  }
+
+  checkIfForumIsUsers() {
+    return this.forumService.checkIfForumIsUsers(this.forumName, this.authService.getUsernameFromLocalStorage())
+      .subscribe(
+        (response: boolean) => {
+          if(response) {
+            this.isUserForum = true;
+            this.deleteState.setDeleteRequestStatus(true);
+          }
+        },
+        (error) => {
+          this.isUserForum = false;
+        }
+      )
   }
 
   checkIfUserLoggedIn() {

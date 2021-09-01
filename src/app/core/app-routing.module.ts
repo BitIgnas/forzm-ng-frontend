@@ -1,3 +1,5 @@
+import { DeleteGuardGuard } from './guards/delete-guard.guard';
+import { ForumDeleteComponent } from './../components/forum/forum-delete/forum-delete.component';
 import { FeedCommentListComponent } from './../shared/feed-list/feed-comment-list/feed-comment-list.component';
 import { FeedPostListComponent } from './../shared/feed-list/feed-post-list/feed-post-list.component';
 import { FeedComponent } from './../components/feed/feed.component';
@@ -34,7 +36,7 @@ const routes: Routes = [
     { path: 'profile', component: RegisterProfileComponent, canActivate: [RegisterGuard]},
     { path: 'success', component: RegisterConfirmationComponent}
   ]},
-  { path: 'user/profile', component: ProfileComponent, children: [
+  { path: 'user/profile', canActivate: [LoginGuard], component: ProfileComponent, children: [
     {path: 'forums', component: ForumListComponent},
     {path: 'posts', component: PostListComponent},
     {path: 'comments', component: CommentListComponent},
@@ -52,6 +54,7 @@ const routes: Routes = [
   { path: 'forum/:forum-name/sub-forums', component: ForumSubforumsComponent},
   { path: 'forum/:forum-name/sub-forum/:sub-forum', component: ForumSubforumComponent},
   { path: 'forum/:forum-name/sub-forum/:sub-forum/:post-title/:post-id', component: ForumSubforumPostComponent},
+  { path: 'forum/:forum-name/delete', component: ForumDeleteComponent, canActivate: [DeleteGuardGuard, LoginGuard]},
   { path: '**', redirectTo: '/page-not-found', pathMatch: 'full'},
   { path: 'page-not-found', component: PageNotFoundComponent}
 ];

@@ -35,7 +35,6 @@ export class ApiStorageService {
 
     xhr.open('POST', `${this.baseUrl}/api/storage/forum/${forumName}/upload`, true);
     xhr.send(formData);
-    this.refreshService.refresh();
   }
 
   updateUserProfile(file: File, username: string) {

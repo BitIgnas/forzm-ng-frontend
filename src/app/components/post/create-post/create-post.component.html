@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <section>
-  <img class="img-fluid img-container" [src]="forum?.imageUrl">
+  <img class="img-fluid img-container" [src]="forum?.imageUrl" onerror="this.src='../../../../assets/img/forum-default.png'">
     <div class="container content-container ">
         <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
             <div class="row d-flex justify-content-center">

@@ -77,6 +77,15 @@
     font-family: Teko;
   }
 
+  .btn-delete {
+    width: 55px;
+    height: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #DD5347;
+  }
+
   @media only screen and (max-width: 800px) {
     .forum-card-title {
         font-family: Teko;

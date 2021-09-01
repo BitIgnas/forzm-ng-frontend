@@ -1,0 +1,131 @@
+.img {
+    background-size: cover;
+    height: auto;
+  }
+
+  .cont-img {
+    width: 100%;
+    height: 835px;
+    position: absolute;
+    }
+
+   .card-body-confirmation {
+       margin-top: 10rem;
+    width: 520px;
+    height: 400px;
+ 
+    background: #322B4E;
+    border-radius: 74px;
+   }
+
+  .sub-forums {
+    position: relative;
+  }
+
+  .forum-card-start {
+    width: 1065px;
+    background: #061022;
+    margin-top: 2rem;
+    color: #fff;
+    font-family: "Teko", sans-serif;
+    font-size: 28px;
+  }
+
+  .type-heading {
+      color: #4DCD52;
+  }
+
+  .text {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 46px;
+    
+    color: #FFFFFF;
+  }
+  
+  .forum-pagination {
+    background: #061022;
+    width: 1065px;
+    padding-top: 0.3rem;
+    padding-right: 4rem;
+  }
+
+  ::ng-deep ul > li:not(.active) {
+    font-family: "Teko", sans-serif;
+    font-size: 20px;
+    color: #fff !important;
+
+  }
+
+  ::ng-deep > .active {
+    font-family: "Teko", sans-serif;
+    font-size: 20px;
+    background-color: #061022 !important;
+  }
+
+  .forum-pagination > .active > a {
+    color: #fff;
+  }
+
+  .btn-skip {
+    background-color: #52BB77;
+    border-radius: 18px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    height: 50px;
+    margin-top: 18px;
+    // outline: 0;
+    text-align: center;
+    width: 100%;
+    width: 12rem;
+    font-family: "Teko", sans-serif;
+    font-size: 36px;
+  }
+  
+  .btn-skip:active {
+    background-color: #22EF6A;
+  }
+
+  .btn-cancel {
+    background-color: #F16055;
+    border-radius: 18px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    height: 50px;
+    margin-top: 18px;
+    // outline: 0;
+    text-align: center;
+    width: 100%;
+    width: 12rem;
+    font-family: "Teko", sans-serif;
+    font-size: 36px;
+  }
+  
+  .btn-cancel:active {
+    background-color: #f32718;
+  }
+  
+  .btn-cancel:active {
+    background-color: #f32718;
+  }
+
+  .error-heading {
+    font-family: "Teko", sans-serif;
+    font-size: 20px;
+    color: #DD5347
+  }
+
+  .empty-box {
+    width: 1065px;
+    height: 42px;
+    background-color: #061022;
+    font-family: "Teko", sans-serif;
+    font-size: 20px;
+    color: #fff;
+  }

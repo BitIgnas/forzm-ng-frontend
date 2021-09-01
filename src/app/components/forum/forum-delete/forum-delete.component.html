@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<section class="img">
+    <img class="img-fluid cont-img" [src]="forum?.imageUrl" onerror="this.src='../../../../assets/img/forum-default.png'">
+    <div class="container sub-forums">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12 ps-2 pe-2 " >
+                <div class="row d-flex justify-content-center">
+                    <div class="card card-body-confirmation">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-10 pt-5 mt-4">
+                                <span class="text">Are you sure you wannt to delete {{ forum?.name }} forum ?</span>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center mt-5">
+                            <div class="col-md-6 d-flex justify-content-end">
+                                <button class="btn-cancel" (click)="deleteForum()">Delete Forum</button>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-lg-start">
+                                <button class="btn-skip" [routerLink]="['/forum', forum?.name, 'sub-forums']">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</section>

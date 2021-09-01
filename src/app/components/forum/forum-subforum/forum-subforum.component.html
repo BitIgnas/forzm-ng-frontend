@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <section class="img">
-    <img class="img-fluid cont-img" [src]="forum?.imageUrl" >
+    <img class="img-fluid cont-img" [src]="forum?.imageUrl" onerror="this.src='../../../../assets/img/forum-default.png'" >
     <div class="container sub-forums">
         <app-forum-recommendation></app-forum-recommendation>
         <div class="row d-flex justify-content-center">

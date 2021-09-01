@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <section class="main-section">
-    <img class="img-fluid cont-img" [src]="post?.forumImageUrl" >
+    <img class="img-fluid cont-img" [src]="post?.forumImageUrl" onerror="this.src='../../../../assets/img/forum-default.png'">
     <div class="container sub-forums">
         <div class="row d-flex justify-content-center">
             <div class="col-md-10 card-head pt-lg-2 mt-lg-2 ps-lg-4">
