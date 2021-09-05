@@ -1,3 +1,4 @@
+import { CreatePostImageComponent } from './../components/post/create-post-image/create-post-image.component';
 import { DeleteGuardGuard } from './guards/delete-guard.guard';
 import { ForumDeleteComponent } from './../components/forum/forum-delete/forum-delete.component';
 import { FeedCommentListComponent } from './../shared/feed-list/feed-comment-list/feed-comment-list.component';
@@ -49,6 +50,7 @@ const routes: Routes = [
   ]},
   { path: 'forum/all', component: ForumAllComponent },
   { path: 'forum/:forum-name/post/create', component: CreatePostComponent, canActivate: [LoginGuard]},
+  { path: 'forum/:forum-name/post/create/img', component: CreatePostImageComponent, canActivate: [LoginGuard]},
   { path: 'forum/create', component: ForumCreateFormComponent, canActivate: [LoginGuard]},
   { path: 'forum/search/:forum-name', component: ForumSearchComponent},
   { path: 'forum/:forum-name/sub-forums', component: ForumSubforumsComponent},

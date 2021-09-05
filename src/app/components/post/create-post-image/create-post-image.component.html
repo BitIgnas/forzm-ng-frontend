@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <section>
-  <img class="img-fluid img-container" [src]="forum?.imageUrl" onerror="this.src='../../../../assets/img/forum-default.png'">
+  <img class="img-fluid img-container-tag" [src]="forum?.imageUrl" onerror="this.src='../../../../assets/img/forum-default.png'">
     <div class="container content-container ">
         <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
             <div class="row d-flex justify-content-center">
@@ -10,8 +10,8 @@
 
                 <div class="col-md-10 post-start-type">
                   <div class="row d-flex justify-content-center">
-                    <div class="col-md-5 d-flex justify-content-center" [routerLink]="['/forum', forum?.name, 'post', 'create']" routerLinkActive="post-type-col">
-                      <span class="heading-type"><a [routerLink]="['/forum', forum?.name, 'post', 'create']" routerLinkActive="post-type-col">Post</a></span>
+                    <div class="col-md-5 d-flex justify-content-center" [routerLink]="['/forum', forum?.name, 'post', 'create']">
+                      <span class="heading-type"><a [routerLink]="['/forum', forum?.name, 'post', 'create']">Post</a></span>
                     </div>
                     <div class="col-md-5 d-flex justify-content-center" [routerLink]="['/forum', forum?.name, 'post', 'create', 'img']" routerLinkActive="post-type-col">
                       <span class="heading-type"><a [routerLink]="['/forum', forum?.name, 'post', 'create', 'img']" routerLinkActive="post-type-col">Image</a></span>
@@ -47,19 +47,61 @@
                          (postForm.controls['postTitle'].dirty || postForm.controls['postTitle'].touched)">
                           <span class="invalid-text">Post title is too long</span>
                         </div>
-                        <div class="col-md-7 pt-3 pb-2">
-                            <span class="heading">Post content - optional</span>
-                        </div>
-                        <div class="col-md-12 ps-lg-5 pt-2 d-flex justify-content-center">
-                            <div class="row d-flex justify-content-center">
-                              <div class="col-xl-12 col-lg-9 col-md-6 col-sm-8 col-9">
-                                <div class="form-group text-editor quill-editor" >
-                                  <quill-editor  formControlName="textEditor" [styles]="textEditorStyle" [modules]="config"></quill-editor>
+                        <div class="col-md-7 pt-3">
+                            <div class="row d-flex justify-content-start">
+                                <div class="col-md-4 pt-4 me-4 pb-2">
+                                    <div class="img-container" appDnd (fileDropped)="onFileDropped($event)">
+                                        <input [writeFile]="true" formControlName="profilePhoto" type="file" #fileDropRef
+                                            id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+                                        <h3 style="color: aliceblue;">Drag and drop file here</h3>
+                                        <h3 style="color: aliceblue;">or</h3>
+                                        <label for=" fileDropRef">Browse for file</label>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
                         </div>
-                        <div class="col-md-7 pt-4 pb-2">
+                        <div class="row d-flex justify-content-center" *ngIf="file != null">
+                            <div class="col-7 file-message">
+                              <span>{{ fileMessage }}</span>
+                              <img src="../../../assets/img/ic-delete-file 1.svg" class="delete ms-2" width="20px"
+                              alt="file" (click)="deleteFile()">
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="col-7 error-heading">
+                              <div
+                                  *ngIf="dropFileAccepted || (postForm.controls['profilePhoto'].errors?.required &&
+                                   (postForm.controls['profilePhoto'].touched ||postForm.controls['profilePhoto'].dirty))">Post image is required</div>
+                              </div>
+                          </div>
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="col-7 error-heading">
+                              <div
+                                  *ngIf="postForm.controls['profilePhoto'].errors?.extension &&
+                                   (postForm.controls['profilePhoto'].touched ||postForm.controls['profilePhoto'].dirty)">Wrong file type</div>
+                              </div>
+                          </div>
+
+                          <div class="row d-flex justify-content-center">
+                            <div class="col-7 error-heading">
+                                <div
+                                    *ngIf="postForm.controls['profilePhoto'].errors?.image &&
+                                     (postForm.controls['profilePhoto'].touched ||postForm.controls['profilePhoto'].dirty)">Image to big</div>
+                                </div>
+                            </div>
+
+                          <div class="row d-flex justify-content-center">
+                            <div class="col-7 error-heading">
+                                <div>
+                                  {{ dropFileErrorMessage }}
+                                </div>
+                            </div>
+                          </div>
+
+                        
+                        <div class="col-md-7 pt-2 pb-2">
                             <span class="heading">Post type</span>
                         </div>
                         <div class="col-md-8 ps-lg-5">
@@ -121,11 +163,20 @@
                             >Updates</label
                           >
                         </div>
+
+                        <div class="row d-flex justify-content-center">
+                          <div class="col-7 error-heading">
+                              <div
+                                  *ngIf="postForm.controls['postType'].errors?.required &&
+                                   (postForm.controls['postType'].touched ||postForm.controls['postType'].dirty)">Post type is required</div>
+                              </div>
+                          </div>
+
                         <div class="col-md-7 invalid-col">
                           <span class="invalid-text">{{ errorMessage }}</span>
                         </div>
-                        <div class="col-md-8 pt-3 ps-lg-5 d-flex justify-content-center">
-                          <button type="submit" class="submit me-3">create post</button>
+                        <div class="col-md-8 pt-3 ps-lg-5 d-flex justify-content-center pb-5">
+                          <button type="submit" class="submit me-3" [disabled]="postForm.invalid">create post</button>
                           <button type="text" class="discard" [routerLink]="['/forum', forum?.name, 'sub-forums']">discard</button>
                         </div>
                     </div>

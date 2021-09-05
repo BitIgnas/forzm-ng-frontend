@@ -5,6 +5,7 @@ export interface PostResponse {
     contentMarkup: string;
     created: Date;
     postType: string;
+    postImageUrl: string;
     forumForumName: string;
     forumImageUrl: string;
     userUsername: string;

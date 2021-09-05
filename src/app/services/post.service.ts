@@ -19,8 +19,8 @@ export class PostService {
 
     private baseUrl = environment.baseUrl;
 
-  addPost(post: PostPayload): Observable<PostPayload> {
-    return this.httpClient.post<PostPayload>(`${this.baseUrl}/api/post/save`, post)
+  addPost(post: PostPayload): Observable<PostResponse> {
+    return this.httpClient.post<PostResponse>(`${this.baseUrl}/api/post/save`, post)
       .pipe(
         tap(() => {
           this.refreshService.refresh();

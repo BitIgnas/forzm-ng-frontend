@@ -46,4 +46,14 @@ export class ApiStorageService {
     xhr.open('POST', `${this.baseUrl}/api/storage/user/${username}/profile/update`, true);
     xhr.send(formData);
   }
+
+  uploadPostImage(file: File, postTitle: string, postId: number): void {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', `${this.baseUrl}/api/storage/post/${postTitle}/id/${postId}/upload`, true);
+    xhr.send(formData);
+  }
 }

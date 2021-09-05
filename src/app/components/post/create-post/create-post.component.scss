@@ -71,6 +71,28 @@
     padding-bottom: 3rem;
   }
   
+  .post-start-type {
+    background: #061022;
+    height: 48px;
+  }
+
+  .heading-type {
+    font-family: Teko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 34px;
+    color: #fff;
+  }
+
+  .post-type-col {
+    background: #322B4E;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
   .cut {
     background-color: #322B4E;
     border-radius: 10px;
@@ -195,11 +217,11 @@
     background-color: #e62b1d;
   }
 
-  
-
   .invalid-text {
     font-family: Teko;
     color: #F16055;
     font-size: 20px;
   }
+
+ 
   

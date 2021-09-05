@@ -1,3 +1,4 @@
+import { CreatePostImageComponent } from './../components/post/create-post-image/create-post-image.component';
 import { ForumDeleteComponent } from './../components/forum/forum-delete/forum-delete.component';
 import { ForumCardComponent } from './../shared/forum-card/forum-card.component';
 import { RouterModule } from '@angular/router';
@@ -53,8 +54,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForumListComponent } from '../shared/profile-list/forum-list/forum-list.component';
 import { ProfileChangeAvatarComponent } from '../shared/profile-change-avatar/profile-change-avatar.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +92,8 @@ import { ProfileChangeAvatarComponent } from '../shared/profile-change-avatar/pr
     FeedPostListComponent,
     FeedCommentListComponent,
     ProfileChangeAvatarComponent,
-    ForumDeleteComponent
+    ForumDeleteComponent,
+    CreatePostImageComponent
   ],
   imports: [
     NgxPaginationModule,

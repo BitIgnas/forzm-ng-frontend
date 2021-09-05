@@ -22,9 +22,9 @@
                             <div class="col-10 d-flex justify-content-start">
                                 <span class="card-date pt-5 ps-lg-5">Date Joined: {{ post?.userDateCreated |  date: 'MMM  y'  }}</span>
                             </div>
-                        </div>
-                        
+                        </div>      
                     </div>
+
                     <div class="col-9 d-inline-block">
                         <div class="row pt-3 col-buttom">
                             <div class="col-md-12">
@@ -32,8 +32,11 @@
                             </div>
                         </div>
                         <div class="row pt-3">
-                            <div class="col-md-12">
+                            <div class="col-md-12" *ngIf="post?.contentMarkup == null">
                                 <p class="post-content" [innerHTML]="post?.contentMarkup"></p>
+                            </div>
+                            <div class="col-md-12" *ngIf="post?.contentMarkup != null">
+                                <img [src]="post?.postImageUrl" class="post-img">
                             </div>
                         </div>
                     </div>
