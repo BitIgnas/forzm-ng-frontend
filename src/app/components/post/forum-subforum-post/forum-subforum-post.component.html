@@ -32,10 +32,10 @@
                             </div>
                         </div>
                         <div class="row pt-3">
-                            <div class="col-md-12" *ngIf="post?.contentMarkup == null">
+                            <div class="col-md-12" *ngIf="post?.contentMarkup != null">
                                 <p class="post-content" [innerHTML]="post?.contentMarkup"></p>
                             </div>
-                            <div class="col-md-12" *ngIf="post?.contentMarkup != null">
+                            <div class="col-md-12" *ngIf="post?.contentMarkup == null">
                                 <img [src]="post?.postImageUrl" class="post-img">
                             </div>
                         </div>

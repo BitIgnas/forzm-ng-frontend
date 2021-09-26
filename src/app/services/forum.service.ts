@@ -60,4 +60,12 @@ export class ForumService {
   findAllUserForums(username: string): Observable<ForumResponse[]> {
     return this.httpClient.get<ForumResponse[]>(`${this.baseUrl}/api/forum/${username}/forums`);
   }
+
+  findAllForumsByForumGameType(gameType: string): Observable<ForumResponse[]> {
+    return this.httpClient.get<ForumResponse[]>(`${this.baseUrl}/api/forum/type/${gameType}`);
+  }
+
+  findAllForumsByNameAndForumGameType(name: string, gameType: string): Observable<ForumResponse[]> {
+      return this.httpClient.get<ForumResponse[]>(`${this.baseUrl}/api/forum/${name}/${gameType}/search`);
+  }
 }

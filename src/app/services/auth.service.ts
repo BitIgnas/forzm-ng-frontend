@@ -67,6 +67,19 @@ export class AuthService {
     return this.httpClient.get<User>(`${this.baseUrl}/api/auth/user/${this.getJwtToken()}`);
   }
 
+  reSignUser(): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}/api/auth/logout`, this.getRefreshToken()).pipe(
+      tap(() => {
+          this.localStorageService.clear("authenticationToken");
+          this.localStorageService.clear("refreshToken");
+          this.localStorageService.clear("expiresAt");
+          this.localStorageService.clear("username");
+
+          this.router.navigate(['/login'])
+      })
+    );
+  }
+
   logout(): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/api/auth/logout`, this.getRefreshToken()).pipe(
       tap(() => {

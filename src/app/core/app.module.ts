@@ -1,3 +1,4 @@
+import { RegistrationStorageGuard } from './guards/registration-storage.guard';
 import { CreatePostImageComponent } from './../components/post/create-post-image/create-post-image.component';
 import { ForumDeleteComponent } from './../components/forum/forum-delete/forum-delete.component';
 import { ForumCardComponent } from './../shared/forum-card/forum-card.component';
@@ -110,6 +111,7 @@ import { ProfileChangeAvatarComponent } from '../shared/profile-change-avatar/pr
   ],
   providers: [
     RegisterGuard, 
+    RegistrationStorageGuard,
     LoginGuard,
     {
       provide: HTTP_INTERCEPTORS,

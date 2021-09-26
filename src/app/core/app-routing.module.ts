@@ -1,3 +1,4 @@
+import { RegistrationStorageGuard } from './guards/registration-storage.guard';
 import { CreatePostImageComponent } from './../components/post/create-post-image/create-post-image.component';
 import { DeleteGuardGuard } from './guards/delete-guard.guard';
 import { ForumDeleteComponent } from './../components/forum/forum-delete/forum-delete.component';
@@ -35,7 +36,7 @@ const routes: Routes = [
   { path: 'register', children: [
     { path: 'user', component: RegisterComponent},
     { path: 'profile', component: RegisterProfileComponent, canActivate: [RegisterGuard]},
-    { path: 'success', component: RegisterConfirmationComponent}
+    { path: 'success', component: RegisterConfirmationComponent, canActivate: [RegistrationStorageGuard]}
   ]},
   { path: 'user/profile', canActivate: [LoginGuard], component: ProfileComponent, children: [
     {path: 'forums', component: ForumListComponent},
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'forum/:forum-name/post/create', component: CreatePostComponent, canActivate: [LoginGuard]},
   { path: 'forum/:forum-name/post/create/img', component: CreatePostImageComponent, canActivate: [LoginGuard]},
   { path: 'forum/create', component: ForumCreateFormComponent, canActivate: [LoginGuard]},
+  { path: 'forum/search', component: ForumSearchComponent},
   { path: 'forum/search/:forum-name', component: ForumSearchComponent},
   { path: 'forum/:forum-name/sub-forums', component: ForumSubforumsComponent},
   { path: 'forum/:forum-name/sub-forum/:sub-forum', component: ForumSubforumComponent},

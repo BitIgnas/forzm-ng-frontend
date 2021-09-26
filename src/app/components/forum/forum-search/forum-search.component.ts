@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -13,12 +13,15 @@ import { SubSink } from 'subsink';
   templateUrl: './forum-search.component.html',
   styleUrls: ['./forum-search.component.scss']
 })
-export class ForumSearchComponent implements OnInit {
+export class ForumSearchComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   forums$: Observable<ForumResponse[]>;
   forumNumber: number;
   loggedIn: boolean;
   page: number = 1;
+
+  forumTypeButtons: Array<string> = ["All", "FPS", "RPG", "MMO", "ADVENTURE", "STRATEGY", "FIGHTING", "SPORT", "SIMULATION", "MUSIC"];
+  selectedTypeButtom: string = this.forumTypeButtons[0];
 
   constructor(
     private forumService: ForumService,
@@ -38,8 +41,12 @@ export class ForumSearchComponent implements OnInit {
     this.displayAllForums();
   }
 
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
   displayAllForums() {
-      this.activatedRouter.params.subscribe(
+    this.subs.sink = this.activatedRouter.params.subscribe(
         (params) => {
           if(this.activatedRouter.snapshot.params['forum-name'] === "all" || "" ) {
             this.forums$ = this.forumService.getAllForums()
@@ -84,4 +91,45 @@ export class ForumSearchComponent implements OnInit {
     )
   }
 
+  displaySelectedGameTypeForums(gameType: string) {
+    if(this.activatedRouter.snapshot.params['forum-name'] == "all") {
+    this.forums$ = this.forumService.findAllForumsByForumGameType(gameType.toUpperCase())
+        .pipe(
+          tap(() => {
+            this.getForumGameTypeForumCount(gameType);
+          })
+        );
+    } else if(this.activatedRouter.snapshot.params['forum-name'] != "all") {
+      this.forums$ = this.forumService.findAllForumsByNameAndForumGameType(this.activatedRouter.snapshot.params['forum-name'], gameType.toUpperCase())
+      .pipe(
+        tap(() => {
+          this.getForumGameTypeForumCount(gameType);
+        })
+      );
+    }
+  }
+
+  getForumGameTypeForumCount(gameType: string) {
+    this.subs.sink = this.forumService.findAllForumsByForumGameType(gameType).subscribe(
+      (data) => {
+        this.forumNumber = data.length;
+      }
+    )
+  }
+
+  isButtonSelected(button: string) {
+    return button === this.selectedTypeButtom;
+    this.displaySelectedGameTypeForums(button);
+  }
+
+  switchButton(button: string) {
+    this.selectedTypeButtom = button;
+    
+    if(button == "All") {
+      this.displayAllForums();
+      this.router.navigate(['/forum/search/all']);
+    } else {
+      this.displaySelectedGameTypeForums(button);
+    }
+ }
 }

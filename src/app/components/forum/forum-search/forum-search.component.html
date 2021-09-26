@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <section class="img">
-    <div class="container">
+    <img class="img-fluid cont-img" src="../../../../assets/img/bg-home.jpg">
+    <div class="container cont">
         <div class="row d-flex justify-content-center pt-1">
             <div class="col-md-10 comment-box-start ps-lg-4">
                 <span class="text">Search forum</span>
@@ -8,6 +9,13 @@
             <div class="col-md-12 comment-box ps-lg-4">
                 <div class="row">
                     <app-forum-search-card></app-forum-search-card>
+                </div>
+            </div>
+            <div class="col-md-12 type-box mt-1">
+                <div class="row d-flex justify-content-between">
+                        <div class="col-2 col-md-2 col-xl-1 mt-1 me-1 mb-1 d-flex justify-content-center type-card" *ngFor="let button of forumTypeButtons">
+                            <button [ngClass]="{'type-text-selected':isButtonSelected(button)}" (click)="switchButton(button)" class="filter-text btn-filter">{{ button }}</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,7 +38,7 @@
 
         <div class="row d-flex justify-content-center" *ngIf="(forums$ | async)?.length == 0">
             <div class="col-md-12 no-result-box mt-2 text-center text pt-5" >
-                <span class="">No forums were found</span>
+                <span class="empty-list mt-5">No forums were found</span>
             </div>
         </div>
     </div>

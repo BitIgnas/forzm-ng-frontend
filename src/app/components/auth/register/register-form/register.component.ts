@@ -1,3 +1,4 @@
+import { RegistrationStorageService } from './../../../../services/registration-storage.service';
 import { Router } from '@angular/router';
 import { RegisterPayload } from 'src/app/models/register-payload';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private registerState: RegisterStateService,
+    private registrationStorageService: RegistrationStorageService,
     private router: Router
     ) {}
 
@@ -66,7 +68,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.registerState.setUser(this.registerPayload);
         this.registerState.setRegisteredComplete(true);
 
-        console.log(this.registerPayload)
+        this.registrationStorageService.saveRegisteredUserUsernameAndEmail(
+          this.registerPayload.username,
+          this.registerPayload.email)
       }
   },
       (error: HttpErrorResponse) => {

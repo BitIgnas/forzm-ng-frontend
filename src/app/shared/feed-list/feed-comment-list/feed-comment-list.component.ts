@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { CommentResponse } from './../../../models/comment-response';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -23,7 +24,6 @@ export class FeedCommentListComponent implements OnInit {
   ngOnInit(): void {
     this.userUsername = this.authService.getUsernameFromLocalStorage();
     this.userComments$ = this.commentService.getAllUserCommentsByUsername(this.userUsername);
-
   }
 
 }

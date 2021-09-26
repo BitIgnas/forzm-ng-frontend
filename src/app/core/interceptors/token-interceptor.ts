@@ -49,7 +49,7 @@ export class TokenInterceptor implements HttpInterceptor {
                 catchError(err => {
                     if (err instanceof HttpErrorResponse) {          
                       if (err.status === 404) {
-                          this.authService.logout().subscribe();
+                          this.authService.reSignUser().subscribe();
                       }
 
                       return throwError(err);
@@ -76,4 +76,6 @@ export class TokenInterceptor implements HttpInterceptor {
                 'Bearer ' + jwtToken)
         });
     }
+
+    
 }

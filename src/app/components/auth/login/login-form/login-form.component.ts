@@ -1,3 +1,4 @@
+import { RegistrationStorageService } from './../../../../services/registration-storage.service';
 import { AuthenticationResponse } from 'src/app/models/authentication-response';
 import { LoginStateService } from 'src/app/services/login-state.service';
 import { Router } from '@angular/router';
@@ -21,6 +22,7 @@ export class LoginFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private loginState: LoginStateService,
+    private registrationStorage: RegistrationStorageService,
     private router: Router
   ) { }
 
@@ -36,12 +38,6 @@ export class LoginFormComponent implements OnInit {
     }
   }
 
-  checkIfErrorExist(isPresent: boolean) {
-    if(isPresent) {
-      return false;
-    }
-  }
-
   onSubmit() {
     this.loginPayload.username = this.loginForm.controls['username'].value;
     this.loginPayload.password = this.loginForm.controls['password'].value;
@@ -50,9 +46,11 @@ export class LoginFormComponent implements OnInit {
       (authResponse) => {
         this.router.navigate(['/home'])
         this.loginState.setUserLoginStatus(true);
+
+        this.registrationStorage.clearRegisteredUserUsernameAndEmail();
       },
       (error: HttpErrorResponse) => {
-        if(error.status == 401) {
+        if(error.status == 403) {
           this.apiErrorMessage = 'Username or password is incorrect'
         }
       })
